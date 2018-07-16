@@ -4,9 +4,66 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Tests"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="700" d:DesignWidth="742"
+             Loaded="UserControl_Loaded">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <Label Margin="10 10" FontWeight="Bold" FontSize="26">Test kritične snage</Label>
+            <Label Margin="10 0" FontWeight="Bold" FontSize="18">Uvod</Label>
+            <TextBlock Margin="10 5 0 0" TextWrapping="WrapWithOverflow">Da bi ste uspostavili profil kritične snage potrebno je uraditi 5 hronometara, 
+                od 12 sekundi, 1 min, 6 min, 12 min, 30 min. Svaki test je maksimalni napor tokom celog trajanja testa. Najbolje je rasporediti testove na nekoliko dana.
+            </TextBlock>
+            <TextBlock Margin="10 5 0 0" TextWrapping="WrapWithOverflow">Ovaj test može vam pomoći da odredite koliko snažno možete da vozite u datom periodu.</TextBlock>
+            <Label Margin="10" FontWeight="Bold" FontSize="18">Test</Label>
+            <TextBlock Margin="10 -10 10 0" TextWrapping="Wrap">Postoji "kriva učenja" u ovom testu. Uobičajno je da se krene prebrzo na svakom hornometru pa da se onda usporava kako se bliži kraj.
+                Ovaj test može uzeti 2-3 pokušaja tokom nekoliko dana ili čak nekoliko nedelja kako bi se uspostavila prava brzina. Da bi se smanjila potreba za takvim testiranjem najbolje je početi svaki test manjom snagom nego što mislite da je potrebno. 
+                Počnite sa ovakvim testiranjem u ranom Baznom periodu sa najmanje jednom nedeljom praćenog odmora pre nego što krenete u period podizanja forme.
+            </TextBlock>
+            <Grid Margin="10" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="1">CP 0.2 (0.2 min)</Label>
+                <Label Grid.Row="0" Grid.Column="2">CP 1 (1 min)</Label>
+                <Label Grid.Row="0" Grid.Column="3">CP 6 (6 min)</Label>
+                <Label Grid.Row="0" Grid.Column="4">CP 12 (12 min)</Label>
+                <Label Grid.Row="0" Grid.Column="5">CP 30 (30 min)</Label>
+
+                <Label Grid.Row="1" Grid.Column="0">Power</Label>
+                <TextBox Name="txtCP0" Grid.Row="1" Grid.Column="1" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP1" Grid.Row="1" Grid.Column="2" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP6" Grid.Row="1" Grid.Column="3" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP12" Grid.Row="1" Grid.Column="4" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP30" Grid.Row="1" Grid.Column="5" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+            </Grid>
+            <Button Name="submit" Click="submit_Click" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Unesi</Button>
+
+            <Label Margin="10 0" FontWeight="Bold" FontSize="18">Rezultati testa</Label>
+            <Grid MinHeight="250">
+                <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" >
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="SNAGA (WATTS)" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="DUŽINA TRAJANJA (MIN.)" Labels="{Binding Labels}"></lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                </lvc:CartesianChart>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

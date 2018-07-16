@@ -1,0 +1,207 @@
+﻿<UserControl x:Class="BiciTreningPlan.View.Tests.GradedExerciseTest"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BiciTreningPlan.View.Tests"
+             mc:Ignorable="d" 
+             d:DesignHeight="1300" d:DesignWidth="742">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <Label Margin="10 10" FontWeight="Bold" FontSize="26">Test ocenjivanja</Label>
+            <Label Margin="10 0" FontWeight="Bold" FontSize="18">Uvod</Label>
+            <TextBlock Margin="10 -10 0 0" TextWrapping="WrapWithOverflow" xml:space="preserve">
+    1. Test mora biti odrađen sa stacionarnom biciklom koja prikazuje brzinu ili vate.
+    2. Potreban vam je asistent kako bi zabeležio informacije tokom treninga.
+    3. Zagrejte se 5 do 10 minuta.
+            </TextBlock>
+            <Label Margin="10" FontWeight="Bold" FontSize="18">Test</Label>
+            <TextBlock Margin="10 -10 10 0" TextWrapping="Wrap" xml:space="preserve">    1. Tokom testa, održavaćete brzinu ili snagu. Počnite sa 25 km/h (ili 100 vata) i povećavajte za 1 km/h (ili 20 vata) svaki minut dok ne budete više mogli da izdržite. Ostanite na sedištu tokom testa. Menjajte brzine u bilo koje vreme.
+    2. Na kraju svake minute, recite svom asistentu kako se osećate koristeći uputstvo ispod:
+            </TextBlock>
+            <Grid HorizontalAlignment="Center" ShowGridLines="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0">6</Label>
+                <Label Grid.Row="0" Grid.Column="2">14</Label>
+                <Label Grid.Row="1" Grid.Column="0">7</Label>
+                <Label Grid.Row="1" Grid.Column="1">VEOMA, VEOMA LAGANO</Label>
+                <Label Grid.Row="1" Grid.Column="2">15</Label>
+                <Label Grid.Row="1" Grid.Column="3">TEŠKO</Label>
+                <Label Grid.Row="2" Grid.Column="0">8</Label>
+                <Label Grid.Row="2" Grid.Column="2">16</Label>
+                <Label Grid.Row="3" Grid.Column="0">9</Label>
+                <Label Grid.Row="3" Grid.Column="1">VEOMA LAGANO</Label>
+                <Label Grid.Row="3" Grid.Column="2">17</Label>
+                <Label Grid.Row="3" Grid.Column="3">VEOMA TEŠKO</Label>
+                <Label Grid.Row="4" Grid.Column="0">10</Label>
+                <Label Grid.Row="4" Grid.Column="2">18</Label>
+                <Label Grid.Row="5" Grid.Column="0">11</Label>
+                <Label Grid.Row="5" Grid.Column="1">SKORO LAGANO</Label>
+                <Label Grid.Row="5" Grid.Column="2">19</Label>
+                <Label Grid.Row="5" Grid.Column="3">VEOMA, VEOMA TEŠKO</Label>
+                <Label Grid.Row="6" Grid.Column="0">12</Label>
+                <Label Grid.Row="6" Grid.Column="2">20</Label>
+                <Label Grid.Row="7" Grid.Column="0">13</Label>
+                <Label Grid.Row="7" Grid.Column="1">MALO TEŠKO</Label>
+            </Grid>
+            <TextBlock Margin="10" TextWrapping="Wrap" xml:space="preserve">    3. Vaš asistent će upisati vaš nivo osećaja i brzinu otkucaja srca na kraju svakog minuta i reći vam da povećate snagu.
+    4. Nastavi dok ne budeš mogao da izdržiš najmanje 15 sekundi.
+    5. Prikupljeni podaci bi trebalo da izgledaju ovako:
+            </TextBlock>
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" MinWidth="50">Snaga</Label>
+                <Label Grid.Row="0" Grid.Column="1" MinWidth="50">Otkucaj srca</Label>
+                <Label Grid.Row="0" Grid.Column="2" MinWidth="50">Subjektivni osećaj</Label>
+
+                <Label Grid.Row="2" Grid.Column="0">120</Label>
+                <Label Grid.Row="2" Grid.Column="1">118</Label>
+                <Label Grid.Row="2" Grid.Column="2">11</Label>
+
+                <Label Grid.Row="3" Grid.Column="0">140</Label>
+                <Label Grid.Row="3" Grid.Column="1">125</Label>
+                <Label Grid.Row="3" Grid.Column="2">12</Label>
+
+                <Label Grid.Row="4" Grid.Column="0">180</Label>
+                <Label Grid.Row="4" Grid.Column="1">135</Label>
+                <Label Grid.Row="4" Grid.Column="2">13</Label>
+
+                <Label Grid.Row="5" Grid.Column="0">180</Label>
+                <Label Grid.Row="5" Grid.Column="1">142</Label>
+                <Label Grid.Row="5" Grid.Column="2">14</Label>
+
+                <Label Grid.Row="6" Grid.Column="0">200</Label>
+                <Label Grid.Row="6" Grid.Column="1">147</Label>
+                <Label Grid.Row="6" Grid.Column="2">15</Label>
+
+                <Label Grid.Row="7" Grid.Column="0">220</Label>
+                <Label Grid.Row="7" Grid.Column="1">153</Label>
+                <Label Grid.Row="7" Grid.Column="2">17</Label>
+
+                <Label Grid.Row="8" Grid.Column="0">240</Label>
+                <Label Grid.Row="8" Grid.Column="1">156</Label>
+                <Label Grid.Row="8" Grid.Column="2">19</Label>
+
+                <Label Grid.Row="9" Grid.Column="0">260</Label>
+                <Label Grid.Row="9" Grid.Column="1">159</Label>
+                <Label Grid.Row="9" Grid.Column="2">20</Label>
+
+            </Grid>
+
+            <Label Margin="10 0" FontWeight="Bold" FontSize="18">Rezultati testa</Label>
+
+
+            <Grid Name="gridTestResults" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" MinWidth="50">Snaga</Label>
+                <Label Grid.Row="0" Grid.Column="1" MinWidth="50">Otkucaj srca</Label>
+                <Label Grid.Row="0" Grid.Column="2" MinWidth="50">Subjektivni osećaj</Label>
+                <Label Grid.Row="0" Grid.Column="3">VT*</Label>
+
+                <TextBox Name="txtPower1" Grid.Row="1" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate1" Grid.Row="1" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion1" Grid.Row="1" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT1" IsChecked="True" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPower2" Grid.Row="2" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate2" Grid.Row="2" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion2" Grid.Row="2" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT2" IsChecked="False" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPower3" Grid.Row="3" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate3" Grid.Row="3" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion3" Grid.Row="3" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT3" IsChecked="False" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPower4" Grid.Row="4" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate4" Grid.Row="4" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion4" Grid.Row="4" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT4" IsChecked="False" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPowe5" Grid.Row="5" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate5" Grid.Row="5" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion5" Grid.Row="5" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT5" IsChecked="False" Grid.Row="5" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPower6" Grid.Row="6" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate6" Grid.Row="6" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion6" Grid.Row="6" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT6" IsChecked="False" Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPower7" Grid.Row="7" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate7" Grid.Row="7" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion7" Grid.Row="7" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT7" IsChecked="False" Grid.Row="7" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPower8" Grid.Row="8" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate8" Grid.Row="8" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion8" Grid.Row="8" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT8" IsChecked="False" Grid.Row="8" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"  GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPower9" Grid.Row="9" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate9" Grid.Row="9" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion9" Grid.Row="9" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT9" IsChecked="False" Grid.Row="9" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+
+                <TextBox Name="txtPower10" Grid.Row="10" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate10" Grid.Row="10" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion10" Grid.Row="10" Grid.Column="2" Margin="2 0"></TextBox>
+                <RadioButton Name="rbVT10" IsChecked="False" Grid.Row="10" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+            </Grid>
+            
+            <Button Name="submit" Click="submit_Click" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Submit</Button>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
