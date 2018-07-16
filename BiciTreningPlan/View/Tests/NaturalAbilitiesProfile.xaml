@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="BiciTreningPlan.View.Tests.NaturalAbilitiesProfile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BiciTreningPlan.View.Tests"
+             mc:Ignorable="d" 
+             d:DesignHeight="562" d:DesignWidth="742">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="26">Profil prirodnih sposobnosti.</Label>
+            <Label Grid.Row="1"/>
+            <TextBlock Grid.Row="2" Grid.ColumnSpan="3" TextWrapping="WrapWithOverflow" Margin="10" FontSize="14">
+            Ovaj test ima za cilj da proveri kojoj grupi vozača pripadate. Čitajte svaku rečenicu ispod i odlučite da li se slažete ili se ne slažete sa datim iskazom. Ako niste sigurni vodite se instiktom. Važno je da iskreno odgovarate na pitanja.
+            </TextBlock>
+            <Label Grid.Row="3"/>
+
+            <RadioButton Name="rbStrength1" Grid.Row="4" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength1">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="4" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength1">Ne slažem se</RadioButton>
+            <Label Grid.Row="4" Grid.Column="2">Više volim da vozim teži prenos sa manjom kadencom nego većina mojih kolega.</Label>
+
+            <RadioButton Name="rbSpeed1" Grid.Row="5" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed1">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="5" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed1">Ne slažem se</RadioButton>
+            <Label Grid.Row="5" Grid.Column="2">Najbolje vozim kriterijumske i kratke trke.</Label>
+
+            <RadioButton Name="rbSpeed2" Grid.Row="6" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed2">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="6" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed2">Ne slažem se</RadioButton>
+            <Label Grid.Row="6" Grid.Column="2">Dobar sam na sprintu.</Label>
+
+            <RadioButton Name="rbEndurance1" Grid.Row="7" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance1">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="7" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance1">Ne slažem se</RadioButton>
+            <Label Grid.Row="7" Grid.Column="2">Jači sam na kraju dugih treninga od mojih kolega.</Label>
+
+            <RadioButton Name="rbStrength2" Grid.Row="8" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength2">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="8" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength2">Ne slažem se</RadioButton>
+            <Label Grid.Row="8" Grid.Column="2">Mogu da uradim više čučnjeva sa tegovima od većine mojih kolega u mojoj kategoriji.</Label>
+
+            <RadioButton Name="rbEndurance2" Grid.Row="9" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance2">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="9" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance2">Ne slažem se</RadioButton>
+            <Label Grid.Row="9" Grid.Column="2">Više volim duge trke.</Label>
+
+            <RadioButton Name="rbStrength3" Grid.Row="10" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength3">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="10" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength3">Ne slažem se</RadioButton>
+            <Label Grid.Row="10" Grid.Column="2">Koristim duže ručke volana od većine kolega moje visine.</Label>
+
+            <RadioButton Name="rbEndurance3" Grid.Row="11" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance3">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="11" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance3">Ne slažem se</RadioButton>
+            <Label Grid.Row="11" Grid.Column="2">Postajem jači na etapnim trkama ili na treninzima visokog intenziteta.</Label>
+
+            <RadioButton Name="rbSpeed3" Grid.Row="12" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed3">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="12" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed3">Ne slažem se</RadioButton>
+            <Label Grid.Row="12" Grid.Column="2">Komforno koristim manju brzinu sa većom kadencom nego većina sa kojima treniram.</Label>
+
+            <RadioButton Name="rbSpeed4" Grid.Row="13" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed4">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="13" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed4">Ne slažem se</RadioButton>
+            <Label Grid.Row="13" Grid.Column="2">Uvek sam bio brži od većine drugih ljudi za svaki sport koji sam trenirao.</Label>
+
+            <RadioButton Name="rbEndurance4" Grid.Row="14" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance4">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="14" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance4">Ne slažem se</RadioButton>
+            <Label Grid.Row="14" Grid.Column="2">U većini sportova, uspevao sam da završim jači od većine drugih.</Label>
+
+            <RadioButton Name="rbStrength4" Grid.Row="15" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength4">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="15" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength4">Ne slažem se</RadioButton>
+            <Label Grid.Row="15" Grid.Column="2">Uvek sam imao veću mišićnu snagu nego većina drugih sa kojima sam trenirao.</Label>
+
+            <RadioButton Name="rbStrength5" Grid.Row="16" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength5">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="16" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength5">Ne slažem se</RadioButton>
+            <Label Grid.Row="16" Grid.Column="2">Najbolje se penjam sedeći.</Label>
+
+            <RadioButton Name="rbSpeed5" Grid.Row="17" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed5">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="17" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed5">Ne slažem se</RadioButton>
+            <Label Grid.Row="17" Grid.Column="2">Više volim kratke ali brze treninge.</Label>
+
+            <RadioButton Name="rbEndurance5" Grid.Row="18" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance5">Slažem se</RadioButton>
+            <RadioButton IsChecked="true" Grid.Row="18" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance5">Ne slažem se</RadioButton>
+            <Label Grid.Row="18" Grid.Column="2">Uveren sam u moju izdržljivost na početku dugih trka.</Label>
+
+            <Button Name="btnSubmit" Click="btnSubmit_Click" Grid.Row="19" Grid.Column="2" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
