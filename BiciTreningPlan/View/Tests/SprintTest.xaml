@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="BiciTreningPlan.View.Tests.SprintTest"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BiciTreningPlan.View.Tests"
+             mc:Ignorable="d" 
+             d:DesignHeight="1002" d:DesignWidth="742">
+    <!--d:DesignHeight="562"-->
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <Label Margin="10 20" FontWeight="Bold" FontSize="26">Test snage u sprintu</Label>
+            <Label Margin="10 20" FontWeight="Bold" FontSize="18">Uvod</Label>
+            <TextBlock Margin="10 0" TextWrapping="WrapWithOverflow">Biće vam potreban jedan ili dva asistenta da zabeleže informacije i eventualno za sigurnost 
+                (postoji rizik od prevrtanja bricikle usled maksimalnog napora). Postavite i podesite opremu kao što je napisano u uputstvu.
+                Zagrejte se za 10 minuta i podesite opremu. Odaberite rutu dugu 0.3 km.</TextBlock>
+            <Label Margin="10" FontWeight="Bold" FontSize="18">Test</Label>
+            <TextBlock Margin="10 0" TextWrapping="WrapWithOverflow" xml:space="preserve">
+        1. Nakon zagrevanja, odradite dve ili tri snažnije serije po 8-12 sekundi da bi ste utvrdili najbolju brzinu za početak testa.
+        2. Tokom testa, možete stajati ili sedeti i menjati brzine tokom testa kako vam odgovara. 
+        3. Kada budete bili spremni za test, zaustavite točkove da se ne okreću i recite asistentu da klikne na dugme za start na brzinometru kada počnete test.
+        4. Sprintajte 0.3 km koliko god snažno budete mogli. To će verovatano trajati 25-40 sekundi.
+        5. Po završetku testa, sačuvajte maksimalnu i prosečnu snagu u vatima.
+        6. Oporavite se okrećući pedale na lakšoj brzini nekoliko minuta.</TextBlock>
+
+            <Grid HorizontalAlignment="Center" Margin="0 20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Black">SENIORI MUŠKARCI</Label>
+                <Label Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Black">SENIORI ŽENE</Label>
+
+                <Label Grid.Row="1" Grid.Column="0" FontWeight="Bold" HorizontalAlignment="Center">RANK</Label>
+                <Label Grid.Row="1" Grid.Column="1" FontWeight="Bold" HorizontalAlignment="Center">OCENA</Label>
+                <Label Grid.Row="1" Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center">MAKSIMUM</Label>
+                <Label Grid.Row="1" Grid.Column="3" FontWeight="Bold" HorizontalAlignment="Center">PROSEK</Label>
+                <Label Grid.Row="1" Grid.Column="4" FontWeight="Bold" HorizontalAlignment="Center">MAKSIMUM</Label>
+                <Label Grid.Row="1" Grid.Column="5" FontWeight="Bold" HorizontalAlignment="Center">PROSEK</Label>
+
+                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">ODLIČNO</Label>
+                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">5</Label>
+                <Label Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center">1,100+</Label>
+                <Label Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center">750+</Label>
+                <Label Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center">1,000+</Label>
+                <Label Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center">675+</Label>
+
+                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center">DOBRO</Label>
+                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">4</Label>
+                <Label Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center">950-1,090</Label>
+                <Label Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center">665-749</Label>
+                <Label Grid.Row="3" Grid.Column="4" HorizontalAlignment="Center">850-999</Label>
+                <Label Grid.Row="3" Grid.Column="5" HorizontalAlignment="Center">600-674</Label>
+
+                <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center">PROSEČNO</Label>
+                <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center">3</Label>
+                <Label Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center">800-949</Label>
+                <Label Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center">560-664</Label>
+                <Label Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center">720-849</Label>
+                <Label Grid.Row="4" Grid.Column="5" HorizontalAlignment="Center">500-599</Label>
+
+                <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center">OK</Label>
+                <Label Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center">2</Label>
+                <Label Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center">650-799</Label>
+                <Label Grid.Row="5" Grid.Column="3" HorizontalAlignment="Center">455-559</Label>
+                <Label Grid.Row="5" Grid.Column="4" HorizontalAlignment="Center">585-719</Label>
+                <Label Grid.Row="5" Grid.Column="5" HorizontalAlignment="Center">410-499</Label>
+
+                <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center">LOŠE</Label>
+                <Label Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center"></Label>
+                <Label Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center">&lt;650</Label>
+                <Label Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center">&lt;455</Label>
+                <Label Grid.Row="6" Grid.Column="4" HorizontalAlignment="Center">&lt;585</Label>
+                <Label Grid.Row="6" Grid.Column="5" HorizontalAlignment="Center">&lt;410</Label>
+            </Grid>
+
+            <Label Margin="10" FontWeight="Bold" FontSize="18">Rezultat testa</Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Margin="10">Maksimalna snaga:</Label>
+                <TextBox Name="txtMax" Grid.Row="0" Grid.Column="1" Margin="10" MinWidth="80"></TextBox>
+                <Label Grid.Row="1" Grid.Column="0" Margin="10">Prosečna snaga:</Label>
+                <TextBox Name="txtAvg" Grid.Row="1" Grid.Column="1" Margin="10"></TextBox>
+                <Button Name="btnSave" Click="btnSave_Click" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="10" Content="Sačuvaj"/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
