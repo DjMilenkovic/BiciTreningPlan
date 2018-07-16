@@ -1,0 +1,57 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BiciTreningPlan">
+    <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="#ffffff" />
+        <Setter Property="Background" Value="#222d32" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Margin" Value="20 10 20 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#1a2226"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="dashboardButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#222d32" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Margin" Value="15"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Name="ButtonTemplate" TargetType="{x:Type Button}">
+                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Button.Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="Black" Direction="320" ShadowDepth="4" BlurRadius="6" Opacity="0.5" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="radioButtonStyle" TargetType="{x:Type RadioButton}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+</ResourceDictionary>
