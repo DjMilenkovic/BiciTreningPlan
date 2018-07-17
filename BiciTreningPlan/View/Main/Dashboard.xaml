@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="BiciTreningPlan.View.Main.Dashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="569" d:DesignWidth="942">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom">
+            <RichTextBox Padding="30" IsEnabled="False"></RichTextBox>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+            </Grid.RowDefinitions>
+            <Button Name="btnFirst" Grid.Column="0" Style="{StaticResource dashboardButtonStyle}">
+                <StackPanel Orientation="Vertical" >
+                    <Label Name="lblWeatherDescription1" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblTemp1" HorizontalContentAlignment="Center" FontSize="28" Foreground="#ffffff" Content="N/A"/>
+                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblWindSpeed1" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Image Name="lblWindDirection1" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                    </StackPanel>
+                    <Label Name="lblShortDesc1" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
+                    <Label Name="lblDate1" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                </StackPanel>
+            </Button>
+            <Button Name="btnSecond" Grid.Column="1" Style="{StaticResource dashboardButtonStyle}">
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblWeatherDescription2" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblTemp2" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblWindSpeed2" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Image Name="lblWindDirection2" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                    </StackPanel>
+                    <Label Name="lblShortDesc2" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
+                    <Label Name="lblDate2" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                </StackPanel>
+            </Button>
+            <Button Name="btnThird" Grid.Column="2" Style="{StaticResource dashboardButtonStyle}">
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblWeatherDescription3" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblTemp3" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblWindSpeed3" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Image Name="lblWindDirection3" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                    </StackPanel>
+                    <Label Name="lblShortDesc3" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <Label Name="lblDate3" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                </StackPanel>
+            </Button>
+            <Button Name="btnFourth" Grid.Column="3" Style="{StaticResource dashboardButtonStyle}">
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblWeatherDescription4" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblTemp4" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblWindSpeed4" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Image Name="lblWindDirection4" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                    </StackPanel>
+                    <Label Name="lblShortDesc4" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
+                    <Label Name="lblDate4" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                </StackPanel>
+            </Button>
+            <Button Name="btnFifth" Grid.Column="4" Style="{StaticResource dashboardButtonStyle}">
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblWeatherDescription5" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblTemp5" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblWindSpeed5" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Image Name="lblWindDirection5" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                    </StackPanel>
+                    <Label Name="lblShortDesc5" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <Label Name="lblDate5" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                </StackPanel>
+            </Button>
+            <!-- <Button Name="btnSixth" Grid.Column="5" Style="{StaticResource dashboardButtonStyle}">
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblWeatherDescription6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblTemp6" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Name="lblWindSpeed6" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                        <Image Name="lblWindDirection6" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                    </StackPanel>
+                    <Label Name="lblShortDesc6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                    <Label Name="lblDate6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </DockPanel>
+</UserControl>
