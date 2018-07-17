@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:BiciTreningPlan.View.ChangeRider"
              mc:Ignorable="d" 
                 d:DesignHeight="742" d:DesignWidth="569"
-                Loaded="UserControl_Loaded">
+                >
+    <!--Loaded="UserControl_Loaded"-->
     <Grid VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -18,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Orientation="Vertical">
-            <Button Margin="0 20" Background="Transparent" BorderThickness="0" Name="btnChoosePicture" Click="btnChoosePicture_Click">
+            <Button Margin="0 20" Background="Transparent" BorderThickness="0" Name="btnChoosePicture" >
                 <Ellipse Name="photo" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="/Resources/defaultPicture.png"/>
@@ -95,8 +96,8 @@
             </Grid>
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="0 10 0 0" Orientation="Vertical">
-            <Button Click="btnNew_Click" Name="btnNew" Style="{StaticResource buttonStyle}" Foreground="#ffffff" MinHeight="30" MinWidth="100" Margin="10">Obriši unos</Button>
-            <Button Click="btnSave_Click" Name="btnSave" Style="{StaticResource buttonStyle}" Foreground="#ffffff" MinHeight="30" MinWidth="100" Margin="10">Sačuvaj</Button>
+            <Button Name="btnNew" Style="{StaticResource buttonStyle}" Foreground="#ffffff" MinHeight="30" MinWidth="100" Margin="10">Obriši unos</Button>
+            <Button Name="btnSave" Style="{StaticResource buttonStyle}" Foreground="#ffffff" MinHeight="30" MinWidth="100" Margin="10">Sačuvaj</Button>
         </StackPanel>
     </Grid>
 </UserControl>

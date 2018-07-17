@@ -103,6 +103,6 @@
         <RadioButton Grid.Row="18" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="climb5" IsChecked="True">Ne slažem se</RadioButton>
         <Label Grid.Row="18" Grid.Column="2">Kada vozim stojeći na brdu, osećam se lagano.</Label>
 
-        <Button Name="brnSave" Click="brnSave_Click" Grid.Row="19" Grid.Column="2" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
+        <Button Name="brnSave" Grid.Row="19" Grid.Column="2" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
     </Grid>
 </UserControl>

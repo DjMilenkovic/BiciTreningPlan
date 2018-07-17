@@ -201,7 +201,7 @@
                 <RadioButton Name="rbVT10" IsChecked="False" Grid.Row="10" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
             </Grid>
             
-            <Button Name="submit" Click="submit_Click" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Submit</Button>
+            <Button Name="submit" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Submit</Button>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

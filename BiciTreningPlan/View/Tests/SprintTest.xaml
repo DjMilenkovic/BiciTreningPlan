@@ -103,7 +103,7 @@
                 <TextBox Name="txtMax" Grid.Row="0" Grid.Column="1" Margin="10" MinWidth="80"></TextBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="10">Prosečna snaga:</Label>
                 <TextBox Name="txtAvg" Grid.Row="1" Grid.Column="1" Margin="10"></TextBox>
-                <Button Name="btnSave" Click="btnSave_Click" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="10" Content="Sačuvaj"/>
+                <Button Name="btnSave" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="10" Content="Sačuvaj"/>
             </Grid>
         </StackPanel>
     </ScrollViewer>

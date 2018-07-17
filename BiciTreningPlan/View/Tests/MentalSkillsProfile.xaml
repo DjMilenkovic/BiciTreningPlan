@@ -304,7 +304,7 @@
             <RadioButton Name="motAlways6"      Grid.Row="33" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="motivation6">Uvek</RadioButton>
             <Label Grid.Row="33" Grid.Column="6">Trudim se da budem najbolji sportista koji mogu biti.</Label>
 
-            <Button Name="btnSubmit" Click="btnSubmit_Click" Grid.Row="34" Grid.Column="6" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
+            <Button Name="btnSubmit" Grid.Row="34" Grid.Column="6" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
         </Grid>
     </ScrollViewer>
 </UserControl>

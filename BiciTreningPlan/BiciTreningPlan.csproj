@@ -45,6 +45,14 @@
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -80,7 +88,89 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\ChangeRider\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ChangeRider\NewRiderViewModel.cs" />
+    <Compile Include="ViewModel\Command.cs" />
+    <Compile Include="ViewModel\Main\ChangeUserViewModel.cs" />
+    <Compile Include="ViewModel\Main\DashboardViewModel.cs" />
+    <Compile Include="ViewModel\Main\RiderProfileViewModel.cs" />
+    <Compile Include="ViewModel\Main\TestsViewModel.cs" />
+    <Compile Include="ViewModel\Main\TrainingPlanViewModel.cs" />
+    <Compile Include="ViewModel\NavigationViewModel.cs" />
+    <Compile Include="ViewModel\Tests\CriticalPowerTestViewModel.cs" />
+    <Compile Include="ViewModel\Tests\GradedExerciseTestViewModel.cs" />
+    <Compile Include="ViewModel\Tests\MentalSkillsProfileViewModel.cs" />
+    <Compile Include="ViewModel\Tests\NaturalAbilitiesProfileViewModel.cs" />
+    <Compile Include="ViewModel\Tests\ProficienciesProfileViewModel.cs" />
+    <Compile Include="ViewModel\Tests\SprintTestViewModel.cs" />
+    <Compile Include="ViewModel\TrainingPlan\DescriptionViewModel.cs" />
+    <Compile Include="ViewModel\TrainingPlan\NewTrainingPlanViewModel.cs" />
+    <Compile Include="ViewModel\TrainingPlan\RacesInSeasonViewModel.cs" />
+    <Compile Include="ViewModel\TrainingPlan\RacesViewModel.cs" />
+    <Compile Include="ViewModel\TrainingPlan\RoutesViewModel.cs" />
+    <Compile Include="View\ChangeRider\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangeRider\NewRider.xaml.cs">
+      <DependentUpon>NewRider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\ChangeUser.xaml.cs">
+      <DependentUpon>ChangeUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\RiderProfile.xaml.cs">
+      <DependentUpon>RiderProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\Tests.xaml.cs">
+      <DependentUpon>Tests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\TrainingPlan.xaml.cs">
+      <DependentUpon>TrainingPlan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tests\CriticalPowerTest.xaml.cs">
+      <DependentUpon>CriticalPowerTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tests\GradedExerciseTest.xaml.cs">
+      <DependentUpon>GradedExerciseTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tests\MentalSkillsProfile.xaml.cs">
+      <DependentUpon>MentalSkillsProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tests\NaturalAbilitiesProfile.xaml.cs">
+      <DependentUpon>NaturalAbilitiesProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tests\ProficienciesProfile.xaml.cs">
+      <DependentUpon>ProficienciesProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tests\SprintTest.xaml.cs">
+      <DependentUpon>SprintTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrainingPlan\Description.xaml.cs">
+      <DependentUpon>Description.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrainingPlan\NewTrainingPlan.xaml.cs">
+      <DependentUpon>NewTrainingPlan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrainingPlan\Races.xaml.cs">
+      <DependentUpon>Races.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrainingPlan\RacesInSeason.xaml.cs">
+      <DependentUpon>RacesInSeason.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrainingPlan\Routes.xaml.cs">
+      <DependentUpon>Routes.xaml</DependentUpon>
+    </Compile>
     <Page Include="Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChangeRider\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChangeRider\NewRider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,6 +186,70 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Main\ChangeUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Main\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Main\RiderProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Main\Tests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Main\TrainingPlan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tests\CriticalPowerTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tests\GradedExerciseTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tests\MentalSkillsProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tests\NaturalAbilitiesProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tests\ProficienciesProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tests\SprintTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrainingPlan\Description.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrainingPlan\NewTrainingPlan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrainingPlan\Races.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrainingPlan\RacesInSeason.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrainingPlan\Routes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -130,7 +284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\app.png" />

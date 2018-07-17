@@ -104,7 +104,7 @@
             <RadioButton IsChecked="true" Grid.Row="18" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance5">Ne slažem se</RadioButton>
             <Label Grid.Row="18" Grid.Column="2">Uveren sam u moju izdržljivost na početku dugih trka.</Label>
 
-            <Button Name="btnSubmit" Click="btnSubmit_Click" Grid.Row="19" Grid.Column="2" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
+            <Button Name="btnSubmit" Grid.Row="19" Grid.Column="2" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
         </Grid>
     </ScrollViewer>
 </UserControl>

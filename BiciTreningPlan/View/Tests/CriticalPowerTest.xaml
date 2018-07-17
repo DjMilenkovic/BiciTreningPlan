@@ -7,7 +7,8 @@
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="742"
-             Loaded="UserControl_Loaded">
+             >
+    <!--Loaded="UserControl_Loaded"-->
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
             <Label Margin="10 10" FontWeight="Bold" FontSize="26">Test kritične snage</Label>
@@ -51,7 +52,7 @@
                 <TextBox Name="txtCP12" Grid.Row="1" Grid.Column="4" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
                 <TextBox Name="txtCP30" Grid.Row="1" Grid.Column="5" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
             </Grid>
-            <Button Name="submit" Click="submit_Click" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Unesi</Button>
+            <Button Name="submit" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Unesi</Button>
 
             <Label Margin="10 0" FontWeight="Bold" FontSize="18">Rezultati testa</Label>
             <Grid MinHeight="250">

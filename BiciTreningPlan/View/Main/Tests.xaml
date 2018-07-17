@@ -4,8 +4,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
+             xmlns:localViewTests="clr-namespace:BiciTreningPlan.View.Tests"
+             xmlns:localVM="clr-namespace:BiciTreningPlan.ViewModel"
+             xmlns:localViewModelTests="clr-namespace:BiciTreningPlan.ViewModel.Tests"            
              mc:Ignorable="d" 
              d:DesignHeight="569" d:DesignWidth="942">
+    <UserControl.DataContext>
+        <localVM:NavigationViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type localViewModelTests:ProficienciesProfileViewModel}">
+            <localViewTests:ProficienciesProfile/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModelTests:MentalSkillsProfileViewModel}">
+            <localViewTests:MentalSkillsProfile/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModelTests:NaturalAbilitiesProfileViewModel}">
+            <localViewTests:NaturalAbilitiesProfile/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModelTests:GradedExerciseTestViewModel}">
+            <localViewTests:GradedExerciseTest/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModelTests:SprintTestViewModel}">
+            <localViewTests:SprintTest/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModelTests:CriticalPowerTestViewModel}">
+            <localViewTests:CriticalPowerTest/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
         <DockPanel LastChildFill="True">
             <StackPanel Name="Sidebar" Width="200" Background="#222d32">

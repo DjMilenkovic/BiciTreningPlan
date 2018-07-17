@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
-             mc:Ignorable="d" 
-             Loaded="UserControl_Loaded"
+             mc:Ignorable="d"              
              d:DesignHeight="569" d:DesignWidth="942">
+    <!--Loaded="UserControl_Loaded"-->
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Bottom">
             <RichTextBox Padding="30" IsEnabled="False"></RichTextBox>

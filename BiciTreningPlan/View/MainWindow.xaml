@@ -4,12 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiciTreningPlan"
+        xmlns:localVM="clr-namespace:BiciTreningPlan.ViewModel"
+        xmlns:localViewChangeRider="clr-namespace:BiciTreningPlan.View.ChangeRider"
+        xmlns:localView="clr-namespace:BiciTreningPlan.View.Main"
+        xmlns:localViewModel="clr-namespace:BiciTreningPlan.ViewModel.Main"
+        xmlns:localViewModelChangeRider="clr-namespace:BiciTreningPlan.ViewModel.ChangeRider"        
         mc:Ignorable="d"
             Title="BiciTreningPlan"        
             Height="600" Width="1200"
             MinHeight="600" MinWidth="1200"
             WindowStartupLocation="CenterScreen"
             Icon="/Resources/app.png">
+    <Window.DataContext>
+        <localVM:NavigationViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type localViewModelChangeRider:LoginViewModel}">
+            <localViewChangeRider:Login/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModel:ChangeUserViewModel}">
+            <localView:ChangeUser/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModel:DashboardViewModel}">
+            <localView:Dashboard/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModel:TrainingPlanViewModel}">
+            <localView:TrainingPlan/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModel:TestsViewModel}">
+            <localView:Tests/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModel:RiderProfileViewModel}">
+            <localView:RiderProfile/>
+        </DataTemplate>
+    </Window.Resources>
     <DockPanel LastChildFill="True">
         <Grid Name="Sidebar" Width="250" Background="#222d32">
             <Grid.ColumnDefinitions>

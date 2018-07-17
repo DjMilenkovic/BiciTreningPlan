@@ -6,12 +6,14 @@
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
              mc:Ignorable="d" 
              d:DesignHeight="569" d:DesignWidth="942"  
-             Loaded="UserControl_Loaded">
+             >
+    <!--Loaded="UserControl_Loaded"-->
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Right" Margin="10">
-            <Button Name="btnGenerate" Click="btnGenerate_Click" Style="{StaticResource buttonStyle}" Height="30" MinWidth="160">Generiši novi trening plan</Button>
+            <Button Name="btnGenerate" Style="{StaticResource buttonStyle}" Height="30" MinWidth="160">Generiši novi trening plan</Button>
         </StackPanel>
-        <DataGrid Name="dgTrainingPlan" MouseDoubleClick="dgTrainingPlan_MouseDoubleClick" Margin="10" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
+        <DataGrid Name="dgTrainingPlan"  Margin="10" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
       VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Single"/>
+        <!--MouseDoubleClick="dgTrainingPlan_MouseDoubleClick"-->
     </DockPanel>
 </UserControl>

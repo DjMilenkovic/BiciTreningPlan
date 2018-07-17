@@ -4,8 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
+             xmlns:localVM="clr-namespace:BiciTreningPlan.ViewModel"
+             xmlns:localViewChangeRider="clr-namespace:BiciTreningPlan.View.ChangeRider"
+             xmlns:localViewModelChangeRider="clr-namespace:BiciTreningPlan.ViewModel.ChangeRider"             
              mc:Ignorable="d" 
          d:DesignHeight="569" d:DesignWidth="942">
+    <UserControl.DataContext>
+        <localVM:NavigationViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type localViewModelChangeRider:NewRiderViewModel}">
+            <localViewChangeRider:NewRider/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type localViewModelChangeRider:LoginViewModel}">
+            <localViewChangeRider:Login/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
         <DockPanel LastChildFill="True">
             <Grid Name="Sidebar" Width="200" Background="#222d32">

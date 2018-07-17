@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:BiciTreningPlan.View.TrainingPlan"
         mc:Ignorable="d"
         Title="Trke u sezoni" Height="300" Width="380"
-        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen" 
         Icon="/Resources/app.png">
+        <!--Loaded="Window_Loaded"-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -26,11 +27,11 @@
             <ComboBox Name="cmbRaces" MinWidth="130" Margin="5"/>
             <DatePicker Name="dtRaceDate" VerticalAlignment="Center" Margin="5"/>
         </StackPanel>
-        <Button Name="btnNewRace" Click="btnNewRace_Click" Grid.Row="1" Grid.Column="1" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="30" MinWidth="100" Margin="5">Dodaj novu trku</Button>
-        <Button Name="btnAddRaceToSeason" Click="btnAddRaceToSeason_Click" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5">Dodaj trku za ovu sezonu</Button>
+        <Button Name="btnNewRace" Grid.Row="1" Grid.Column="1" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="30" MinWidth="100" Margin="5">Dodaj novu trku</Button>
+        <Button Name="btnAddRaceToSeason" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5">Dodaj trku za ovu sezonu</Button>
         <Label VerticalAlignment="Center" Grid.Row="3">Trke u ovoj sezoni:</Label>
         <DataGrid Name="dgRaces" Grid.Row="4" Grid.ColumnSpan="2" ColumnWidth="*" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
       VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Extended"/>
-        <Button Name="btnDelete" Click="btnDelete_Click" Grid.Row="5" Grid.Column="1" Content="Obriši trku iz ove sezone"  Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5"/>
+        <Button Name="btnDelete" Grid.Row="5" Grid.Column="1" Content="Obriši trku iz ove sezone"  Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5"/>
     </Grid>
 </Window>
