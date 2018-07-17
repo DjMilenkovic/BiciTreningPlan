@@ -111,6 +111,7 @@
                     <Label Name="lblDate6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
                 </StackPanel>
             </Button>
+-->
         </Grid>
     </DockPanel>
 </UserControl>
