@@ -8,5 +8,6 @@ namespace BiciTreningPlan.ViewModel.TrainingPlan
 {
     class NewTrainingPlanViewModel
     {
+
     }
 }

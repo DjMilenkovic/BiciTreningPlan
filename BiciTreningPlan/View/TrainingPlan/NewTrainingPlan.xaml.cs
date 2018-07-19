@@ -17,7 +17,7 @@ namespace BiciTreningPlan.View.TrainingPlan
     /// <summary>
     /// Interaction logic for NewTrainingPlan.xaml
     /// </summary>
-    public partial class NewTrainingPlan : Window
+    public partial class NewTrainingPlan : UserControl
     {
         public NewTrainingPlan()
         {

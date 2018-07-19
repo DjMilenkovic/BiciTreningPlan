@@ -30,7 +30,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Name="lblWindSpeed1" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection1" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                        <Image Name="lblWindDirection1" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
                     </StackPanel>
                     <Label Name="lblShortDesc1" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
                     <Label Name="lblDate1" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
@@ -45,7 +45,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Name="lblWindSpeed2" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection2" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                        <Image Name="lblWindDirection2" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
                     </StackPanel>
                     <Label Name="lblShortDesc2" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
                     <Label Name="lblDate2" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
@@ -60,7 +60,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Name="lblWindSpeed3" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection3" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                        <Image Name="lblWindDirection3" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
                     </StackPanel>
                     <Label Name="lblShortDesc3" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
                     <Label Name="lblDate3" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
@@ -75,7 +75,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Name="lblWindSpeed4" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection4" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                        <Image Name="lblWindDirection4" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
                     </StackPanel>
                     <Label Name="lblShortDesc4" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
                     <Label Name="lblDate4" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
@@ -90,7 +90,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Name="lblWindSpeed5" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection5" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                        <Image Name="lblWindDirection5" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
                     </StackPanel>
                     <Label Name="lblShortDesc5" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
                     <Label Name="lblDate5" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
@@ -105,7 +105,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Name="lblWindSpeed6" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection6" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/Images/wind.png"/>
+                        <Image Name="lblWindDirection6" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
                     </StackPanel>
                     <Label Name="lblShortDesc6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
                     <Label Name="lblDate6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>

@@ -2,9 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BiciTreningPlan"
+             xmlns:vm="clr-namespace:BiciTreningPlan.ViewModel.TrainingPlan"
+             xmlns:vw="clr-namespace:BiciTreningPlan.View.TrainingPlan"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <DataTemplate DataType="{x:Type vm:NewTrainingPlanViewModel}">
+                <vw:NewTrainingPlan/>
+            </DataTemplate>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>

@@ -4,13 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
+             xmlns:localVM="clr-namespace:BiciTreningPlan.ViewModel.Main"
              mc:Ignorable="d" 
              d:DesignHeight="569" d:DesignWidth="942"  
              >
     <!--Loaded="UserControl_Loaded"-->
+    <UserControl.DataContext>
+        <localVM:TrainingPlanViewModel/>
+    </UserControl.DataContext>
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Right" Margin="10">
-            <Button Name="btnGenerate" Style="{StaticResource buttonStyle}" Height="30" MinWidth="160">Generiši novi trening plan</Button>
+            <Button Name="btnGenerate" IsEnabled="True" Style="{StaticResource buttonStyle}" Command="{Binding OpenNewTrainingPlan}" Height="30" MinWidth="160">Generiši novi trening plan</Button>
         </StackPanel>
         <DataGrid Name="dgTrainingPlan"  Margin="10" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
       VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Single"/>
