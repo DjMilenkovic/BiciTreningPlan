@@ -17,7 +17,7 @@ namespace BiciTreningPlan.View.TrainingPlan
     /// <summary>
     /// Interaction logic for Routes.xaml
     /// </summary>
-    public partial class Routes : Window
+    public partial class Routes : UserControl
     {
         public Routes()
         {
