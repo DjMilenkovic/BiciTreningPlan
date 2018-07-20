@@ -93,7 +93,7 @@
     <Compile Include="Services\WindowService.cs" />
     <Compile Include="ViewModel\ChangeRider\LoginViewModel.cs" />
     <Compile Include="ViewModel\ChangeRider\NewRiderViewModel.cs" />
-    <Compile Include="ViewModel\Command.cs" />
+    <Compile Include="Command\Command.cs" />
     <Compile Include="ViewModel\Main\ChangeUserViewModel.cs" />
     <Compile Include="ViewModel\Main\DashboardViewModel.cs" />
     <Compile Include="ViewModel\Main\RiderProfileViewModel.cs" />
