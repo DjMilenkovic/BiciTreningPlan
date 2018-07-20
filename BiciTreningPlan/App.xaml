@@ -10,6 +10,9 @@
             <DataTemplate DataType="{x:Type vm:NewTrainingPlanViewModel}">
                 <vw:NewTrainingPlan/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:RacesInSeasonViewModel}">
+                <vw:RacesInSeason/>
+            </DataTemplate>
             
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles.xaml" />

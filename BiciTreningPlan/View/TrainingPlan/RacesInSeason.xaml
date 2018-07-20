@@ -1,14 +1,12 @@
-﻿<Window x:Class="BiciTreningPlan.View.TrainingPlan.RacesInSeason"
+﻿<UserControl x:Class="BiciTreningPlan.View.TrainingPlan.RacesInSeason"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiciTreningPlan.View.TrainingPlan"
         mc:Ignorable="d"
-        Title="Trke u sezoni" Height="300" Width="380"
-        WindowStartupLocation="CenterScreen" 
-        Icon="/Resources/app.png">
-        <!--Loaded="Window_Loaded"-->
+        Height="300" Width="380">
+    <!--Loaded="Window_Loaded"-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -34,4 +32,4 @@
       VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Extended"/>
         <Button Name="btnDelete" Grid.Row="5" Grid.Column="1" Content="Obriši trku iz ove sezone"  Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5"/>
     </Grid>
-</Window>
+</UserControl>

@@ -17,7 +17,7 @@ namespace BiciTreningPlan.View.TrainingPlan
     /// <summary>
     /// Interaction logic for RacesInSeason.xaml
     /// </summary>
-    public partial class RacesInSeason : Window
+    public partial class RacesInSeason : UserControl
     {
         public RacesInSeason()
         {
