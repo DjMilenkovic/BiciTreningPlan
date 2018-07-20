@@ -33,7 +33,7 @@ namespace BiciTreningPlan.ViewModel.TrainingPlan
 
         public void ShowWindow(Object obj)
         {
-            service.showWindow(new RacesViewModel(), "Putanje");
+            service.showWindow(new RoutesViewModel(), "Putanje");
         }
     }
 }
