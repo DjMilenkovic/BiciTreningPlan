@@ -1,0 +1,1773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectDBModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=&quot;C:\Users\PC\OneDrive\Veštačka Inteligencija - Projekat\CyclingTrainingPlan\CyclingTrainingPlan\Resources\BiciTreningPlanDB.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Biciklista">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Datum_Rodjenja" Type="datetime" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Grad" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Drzava" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Tezina" Type="integer" />
+          <Property Name="Visina" Type="integer" />
+          <Property Name="Omiljena_Trka_A" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Omiljena_Trka_B" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Omiljena_Trka_C" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Slika" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Zaposlenje" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="ID_Nivo_Iskustva" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dani">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dnevni_Trening_Periodi">
+          <Key>
+            <PropertyRef Name="ID_Trening_period" />
+            <PropertyRef Name="ID_Dana" />
+            <PropertyRef Name="ID_Tipovi_treninga" />
+          </Key>
+          <Property Name="ID_Trening_period" Type="integer" Nullable="false" />
+          <Property Name="ID_Dana" Type="integer" Nullable="false" />
+          <Property Name="ID_Tipovi_treninga" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Glavni_Tipovi_Treninga">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="ID_Treniraj_ili_ne" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Iskustveni_Nivo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lista_Trka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Naziv_trke" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="ID_Putanje" Type="integer" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mentalne_Sposobnosti">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="datetime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="Motivacija" Type="int" Nullable="false" />
+          <Property Name="Samopouzdanje" Type="int" Nullable="false" />
+          <Property Name="Navika" Type="int" Nullable="false" />
+          <Property Name="Fokus" Type="int" Nullable="false" />
+          <Property Name="Vizualizacija" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nedelja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Broj_nedelje" Type="integer" Nullable="false" />
+          <Property Name="Datum_pocetka" Type="datetime" Nullable="false" />
+          <Property Name="Datum_zavrsetka" Type="datetime" Nullable="false" />
+          <Property Name="ID_Sezone" Type="integer" Nullable="false" />
+          <Property Name="ID_Trening_perioda" Type="integer" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="Prirodne_Sposobnosti">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="datetime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="Snaga" Type="int" Nullable="false" />
+          <Property Name="Brzina" Type="int" Nullable="false" />
+          <Property Name="Izdrzljivost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profilisanje_Profila_Vozaca">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="datetime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="Brdo" Type="int" Nullable="false" />
+          <Property Name="Sprint" Type="int" Nullable="false" />
+          <Property Name="Hronometar" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Putanja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Pocetno_odrediste" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Odrediste_izmedju" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Krajnje_odrediste" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Cela_putanja" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="ID_Tip_putanje" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sezona">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="Datum_pocetka" Type="datetime" Nullable="false" />
+          <Property Name="Datum_zavrsetka" Type="datetime" Nullable="false" />
+          <Property Name="Godina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sprint_Test">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="datetime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="Maksimalna_Snaga" Type="int" Nullable="false" />
+          <Property Name="Prosecna_Snaga" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Test_Kriticne_Snage">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="datetime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="CP0" Type="int" Nullable="false" />
+          <Property Name="CP1" Type="int" Nullable="false" />
+          <Property Name="CP6" Type="int" Nullable="false" />
+          <Property Name="CP12" Type="int" Nullable="false" />
+          <Property Name="CP30" Type="int" Nullable="false" />
+          <Property Name="CP60" Type="int" Nullable="false" />
+          <Property Name="CP90" Type="int" Nullable="false" />
+          <Property Name="CP180" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Test_Ocenjivanja">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+            <PropertyRef Name="Napor" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="datetime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="Snaga" Type="int" Nullable="false" />
+          <Property Name="Otkucaji_srca" Type="int" Nullable="false" />
+          <Property Name="Napor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tip_putanje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipovi_Treninga">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="ID_Glavni_tipovi_treninga" Type="integer" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="Trening_Dani">
+          <Key>
+            <PropertyRef Name="ID_Bicikliste" />
+            <PropertyRef Name="Datum_treninga" />
+          </Key>
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="Datum_treninga" Type="datetime" Nullable="false" />
+          <Property Name="ID_Nedelje" Type="integer" Nullable="false" />
+          <Property Name="ID_Treninga" Type="integer" Nullable="false" />
+          <Property Name="ID_Putanje" Type="integer" Nullable="false" />
+          <Property Name="Vreme_treninga" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Prosecna_brzina" Type="int" />
+          <Property Name="Maksimalna_brzina" Type="int" />
+          <Property Name="Distanca" Type="int" />
+          <Property Name="Nadmorska_visina" Type="int" />
+          <Property Name="Prosecna_snaga" Type="int" />
+          <Property Name="Makimalna_snaga" Type="int" />
+          <Property Name="Prosecni_otkucaji_srca" Type="int" />
+          <Property Name="Maksimalni_otkucaji_srca" Type="int" />
+          <Property Name="Jutarnji_otkucaji_srca" Type="int" />
+          <Property Name="Subjektivni_osecaj_pre_treninga" Type="int" />
+          <Property Name="Subjektivni_osecaj_posle_treninga" Type="int" />
+        </EntityType>
+        <EntityType Name="Trening_Periodi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="Treninzi">
+          <Key>
+            <PropertyRef Name="ID_Iskustveni_nivo" />
+            <PropertyRef Name="ID_Tipovi_treninga" />
+            <PropertyRef Name="ID_Trening_perioda" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="ID_Iskustveni_nivo" Type="integer" Nullable="false" />
+          <Property Name="ID_Tipovi_treninga" Type="integer" Nullable="false" />
+          <Property Name="ID_Trening_perioda" Type="integer" Nullable="false" />
+          <Property Name="Zona_srcane_frekvencije" Type="int" Nullable="false" />
+          <Property Name="Duzina_treninga" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Treniraj_Ili_Ne">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trke_U_Sezoni">
+          <Key>
+            <PropertyRef Name="ID_Sezone" />
+            <PropertyRef Name="ID_Bicikliste" />
+            <PropertyRef Name="ID_Trke" />
+            <PropertyRef Name="Datum_trke" />
+          </Key>
+          <Property Name="ID_Sezone" Type="integer" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
+          <Property Name="ID_Trke" Type="integer" Nullable="false" />
+          <Property Name="Datum_trke" Type="datetime" Nullable="false" />
+          <Property Name="Prioritet" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Osvojeno_mesto" Type="int" />
+        </EntityType>
+        <EntityType Name="Vreme">
+          <Key>
+            <PropertyRef Name="Datum" />
+          </Key>
+          <Property Name="Datum" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="Temperatura" Type="int" />
+          <Property Name="Brzina_vetra" Type="int" />
+          <Property Name="Smer_vetra" Type="int" />
+          <Property Name="Vlaznost_vazduha" Type="int" />
+          <Property Name="Oblacnost" Type="int" />
+          <Property Name="Slika" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ID_Grada" Type="integer" />
+        </EntityType>
+        <Association Name="FK_Biciklista_0_0">
+          <End Role="Iskustveni_Nivo" Type="Self.Iskustveni_Nivo" Multiplicity="1" />
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iskustveni_Nivo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Biciklista">
+              <PropertyRef Name="ID_Nivo_Iskustva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dnevni_Trening_Periodi_0_0">
+          <End Role="Tipovi_Treninga" Type="Self.Tipovi_Treninga" Multiplicity="1" />
+          <End Role="Dnevni_Trening_Periodi" Type="Self.Dnevni_Trening_Periodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipovi_Treninga">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dnevni_Trening_Periodi">
+              <PropertyRef Name="ID_Tipovi_treninga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dnevni_Trening_Periodi_1_0">
+          <End Role="Dani" Type="Self.Dani" Multiplicity="1" />
+          <End Role="Dnevni_Trening_Periodi" Type="Self.Dnevni_Trening_Periodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dani">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dnevni_Trening_Periodi">
+              <PropertyRef Name="ID_Dana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dnevni_Trening_Periodi_2_0">
+          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="1" />
+          <End Role="Dnevni_Trening_Periodi" Type="Self.Dnevni_Trening_Periodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trening_Periodi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dnevni_Trening_Periodi">
+              <PropertyRef Name="ID_Trening_period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Glavni_Tipovi_Treninga_0_0">
+          <End Role="Treniraj_Ili_Ne" Type="Self.Treniraj_Ili_Ne" Multiplicity="1" />
+          <End Role="Glavni_Tipovi_Treninga" Type="Self.Glavni_Tipovi_Treninga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Treniraj_Ili_Ne">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Glavni_Tipovi_Treninga">
+              <PropertyRef Name="ID_Treniraj_ili_ne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lista_Trka_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lista_Trka">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lista_Trka_1_0">
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
+          <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putanja">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lista_Trka">
+              <PropertyRef Name="ID_Putanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mentalne_Sposobnosti_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Mentalne_Sposobnosti" Type="Self.Mentalne_Sposobnosti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mentalne_Sposobnosti">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nedelja_1_0">
+          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="1" />
+          <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trening_Periodi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Nedelja">
+              <PropertyRef Name="ID_Trening_perioda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prirodne_Sposobnosti_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Prirodne_Sposobnosti" Type="Self.Prirodne_Sposobnosti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Prirodne_Sposobnosti">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profilisanje_Profila_Vozaca_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Profilisanje_Profila_Vozaca" Type="Self.Profilisanje_Profila_Vozaca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Profilisanje_Profila_Vozaca">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Putanja_0_0">
+          <End Role="Tip_putanje" Type="Self.Tip_putanje" Multiplicity="1" />
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_putanje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Putanja">
+              <PropertyRef Name="ID_Tip_putanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sezona_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Sezona" Type="Self.Sezona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sezona">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sprint_Test_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Sprint_Test" Type="Self.Sprint_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sprint_Test">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Kriticne_Snage_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Test_Kriticne_Snage" Type="Self.Test_Kriticne_Snage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test_Kriticne_Snage">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Ocenjivanja_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Test_Ocenjivanja" Type="Self.Test_Ocenjivanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test_Ocenjivanja">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipovi_Treninga_0_0">
+          <End Role="Glavni_Tipovi_Treninga" Type="Self.Glavni_Tipovi_Treninga" Multiplicity="1" />
+          <End Role="Tipovi_Treninga" Type="Self.Tipovi_Treninga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Glavni_Tipovi_Treninga">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tipovi_Treninga">
+              <PropertyRef Name="ID_Glavni_tipovi_treninga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trening_Dani_0_0">
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
+          <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putanja">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trening_Dani">
+              <PropertyRef Name="ID_Putanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_Trening_Dani_1_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_Trening_Dani_1_0" />-->
+        <Association Name="FK_Trening_Dani_2_0">
+          <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="1" />
+          <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nedelja">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trening_Dani">
+              <PropertyRef Name="ID_Nedelje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trening_Dani_3_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trening_Dani">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treninzi_0_0">
+          <End Role="Tipovi_Treninga" Type="Self.Tipovi_Treninga" Multiplicity="1" />
+          <End Role="Treninzi" Type="Self.Treninzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipovi_Treninga">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treninzi">
+              <PropertyRef Name="ID_Tipovi_treninga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treninzi_1_0">
+          <End Role="Iskustveni_Nivo" Type="Self.Iskustveni_Nivo" Multiplicity="1" />
+          <End Role="Treninzi" Type="Self.Treninzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iskustveni_Nivo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treninzi">
+              <PropertyRef Name="ID_Iskustveni_nivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treninzi_2_0">
+          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="1" />
+          <End Role="Treninzi" Type="Self.Treninzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trening_Periodi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treninzi">
+              <PropertyRef Name="ID_Trening_perioda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trke_U_Sezoni_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Trke_U_Sezoni" Type="Self.Trke_U_Sezoni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trke_U_Sezoni">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trke_U_Sezoni_1_0">
+          <End Role="Sezona" Type="Self.Sezona" Multiplicity="1" />
+          <End Role="Trke_U_Sezoni" Type="Self.Trke_U_Sezoni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sezona">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trke_U_Sezoni">
+              <PropertyRef Name="ID_Sezone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trke_U_Sezoni_2_0">
+          <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="1" />
+          <End Role="Trke_U_Sezoni" Type="Self.Trke_U_Sezoni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lista_Trka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trke_U_Sezoni">
+              <PropertyRef Name="ID_Trke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectDBModelStoreContainer">
+          <EntitySet Name="Biciklista" EntityType="Self.Biciklista" store:Type="Tables" />
+          <EntitySet Name="Dani" EntityType="Self.Dani" store:Type="Tables" />
+          <EntitySet Name="Dnevni_Trening_Periodi" EntityType="Self.Dnevni_Trening_Periodi" store:Type="Tables" />
+          <EntitySet Name="Glavni_Tipovi_Treninga" EntityType="Self.Glavni_Tipovi_Treninga" store:Type="Tables" />
+          <EntitySet Name="Iskustveni_Nivo" EntityType="Self.Iskustveni_Nivo" store:Type="Tables" />
+          <EntitySet Name="Lista_Trka" EntityType="Self.Lista_Trka" store:Type="Tables" />
+          <EntitySet Name="Mentalne_Sposobnosti" EntityType="Self.Mentalne_Sposobnosti" store:Type="Tables" />
+          <EntitySet Name="Nedelja" EntityType="Self.Nedelja" store:Type="Tables" />
+          <EntitySet Name="Prirodne_Sposobnosti" EntityType="Self.Prirodne_Sposobnosti" store:Type="Tables" />
+          <EntitySet Name="Profilisanje_Profila_Vozaca" EntityType="Self.Profilisanje_Profila_Vozaca" store:Type="Tables" />
+          <EntitySet Name="Putanja" EntityType="Self.Putanja" store:Type="Tables" />
+          <EntitySet Name="Sezona" EntityType="Self.Sezona" store:Type="Tables" />
+          <EntitySet Name="Sprint_Test" EntityType="Self.Sprint_Test" store:Type="Tables" />
+          <EntitySet Name="Test_Kriticne_Snage" EntityType="Self.Test_Kriticne_Snage" store:Type="Tables" />
+          <EntitySet Name="Test_Ocenjivanja" EntityType="Self.Test_Ocenjivanja" store:Type="Tables" />
+          <EntitySet Name="Tip_putanje" EntityType="Self.Tip_putanje" store:Type="Tables" />
+          <EntitySet Name="Tipovi_Treninga" EntityType="Self.Tipovi_Treninga" store:Type="Tables" />
+          <EntitySet Name="Trening_Dani" EntityType="Self.Trening_Dani" store:Type="Tables" />
+          <EntitySet Name="Trening_Periodi" EntityType="Self.Trening_Periodi" store:Type="Tables" />
+          <EntitySet Name="Treninzi" EntityType="Self.Treninzi" store:Type="Tables" />
+          <EntitySet Name="Treniraj_Ili_Ne" EntityType="Self.Treniraj_Ili_Ne" store:Type="Tables" />
+          <EntitySet Name="Trke_U_Sezoni" EntityType="Self.Trke_U_Sezoni" store:Type="Tables" />
+          <EntitySet Name="Vreme" EntityType="Self.Vreme" store:Type="Tables" />
+          <AssociationSet Name="FK_Biciklista_0_0" Association="Self.FK_Biciklista_0_0">
+            <End Role="Iskustveni_Nivo" EntitySet="Iskustveni_Nivo" />
+            <End Role="Biciklista" EntitySet="Biciklista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dnevni_Trening_Periodi_0_0" Association="Self.FK_Dnevni_Trening_Periodi_0_0">
+            <End Role="Tipovi_Treninga" EntitySet="Tipovi_Treninga" />
+            <End Role="Dnevni_Trening_Periodi" EntitySet="Dnevni_Trening_Periodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dnevni_Trening_Periodi_1_0" Association="Self.FK_Dnevni_Trening_Periodi_1_0">
+            <End Role="Dani" EntitySet="Dani" />
+            <End Role="Dnevni_Trening_Periodi" EntitySet="Dnevni_Trening_Periodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dnevni_Trening_Periodi_2_0" Association="Self.FK_Dnevni_Trening_Periodi_2_0">
+            <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
+            <End Role="Dnevni_Trening_Periodi" EntitySet="Dnevni_Trening_Periodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Glavni_Tipovi_Treninga_0_0" Association="Self.FK_Glavni_Tipovi_Treninga_0_0">
+            <End Role="Treniraj_Ili_Ne" EntitySet="Treniraj_Ili_Ne" />
+            <End Role="Glavni_Tipovi_Treninga" EntitySet="Glavni_Tipovi_Treninga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lista_Trka_0_0" Association="Self.FK_Lista_Trka_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Lista_Trka" EntitySet="Lista_Trka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lista_Trka_1_0" Association="Self.FK_Lista_Trka_1_0">
+            <End Role="Putanja" EntitySet="Putanja" />
+            <End Role="Lista_Trka" EntitySet="Lista_Trka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mentalne_Sposobnosti_0_0" Association="Self.FK_Mentalne_Sposobnosti_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Mentalne_Sposobnosti" EntitySet="Mentalne_Sposobnosti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nedelja_1_0" Association="Self.FK_Nedelja_1_0">
+            <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
+            <End Role="Nedelja" EntitySet="Nedelja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prirodne_Sposobnosti_0_0" Association="Self.FK_Prirodne_Sposobnosti_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Prirodne_Sposobnosti" EntitySet="Prirodne_Sposobnosti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profilisanje_Profila_Vozaca_0_0" Association="Self.FK_Profilisanje_Profila_Vozaca_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Profilisanje_Profila_Vozaca" EntitySet="Profilisanje_Profila_Vozaca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Putanja_0_0" Association="Self.FK_Putanja_0_0">
+            <End Role="Tip_putanje" EntitySet="Tip_putanje" />
+            <End Role="Putanja" EntitySet="Putanja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sezona_0_0" Association="Self.FK_Sezona_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Sezona" EntitySet="Sezona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sprint_Test_0_0" Association="Self.FK_Sprint_Test_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Sprint_Test" EntitySet="Sprint_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Kriticne_Snage_0_0" Association="Self.FK_Test_Kriticne_Snage_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Test_Kriticne_Snage" EntitySet="Test_Kriticne_Snage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Ocenjivanja_0_0" Association="Self.FK_Test_Ocenjivanja_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Test_Ocenjivanja" EntitySet="Test_Ocenjivanja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipovi_Treninga_0_0" Association="Self.FK_Tipovi_Treninga_0_0">
+            <End Role="Glavni_Tipovi_Treninga" EntitySet="Glavni_Tipovi_Treninga" />
+            <End Role="Tipovi_Treninga" EntitySet="Tipovi_Treninga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trening_Dani_0_0" Association="Self.FK_Trening_Dani_0_0">
+            <End Role="Putanja" EntitySet="Putanja" />
+            <End Role="Trening_Dani" EntitySet="Trening_Dani" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trening_Dani_2_0" Association="Self.FK_Trening_Dani_2_0">
+            <End Role="Nedelja" EntitySet="Nedelja" />
+            <End Role="Trening_Dani" EntitySet="Trening_Dani" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trening_Dani_3_0" Association="Self.FK_Trening_Dani_3_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Trening_Dani" EntitySet="Trening_Dani" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treninzi_0_0" Association="Self.FK_Treninzi_0_0">
+            <End Role="Tipovi_Treninga" EntitySet="Tipovi_Treninga" />
+            <End Role="Treninzi" EntitySet="Treninzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treninzi_1_0" Association="Self.FK_Treninzi_1_0">
+            <End Role="Iskustveni_Nivo" EntitySet="Iskustveni_Nivo" />
+            <End Role="Treninzi" EntitySet="Treninzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treninzi_2_0" Association="Self.FK_Treninzi_2_0">
+            <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
+            <End Role="Treninzi" EntitySet="Treninzi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trke_U_Sezoni_0_0" Association="Self.FK_Trke_U_Sezoni_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Trke_U_Sezoni" EntitySet="Trke_U_Sezoni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trke_U_Sezoni_1_0" Association="Self.FK_Trke_U_Sezoni_1_0">
+            <End Role="Sezona" EntitySet="Sezona" />
+            <End Role="Trke_U_Sezoni" EntitySet="Trke_U_Sezoni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trke_U_Sezoni_2_0" Association="Self.FK_Trke_U_Sezoni_2_0">
+            <End Role="Lista_Trka" EntitySet="Lista_Trka" />
+            <End Role="Trke_U_Sezoni" EntitySet="Trke_U_Sezoni" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Biciklista">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Datum_Rodjenja" Type="DateTime" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Grad" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Drzava" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tezina" Type="Int64" />
+          <Property Name="Visina" Type="Int64" />
+          <Property Name="Omiljena_Trka_A" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Omiljena_Trka_B" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Omiljena_Trka_C" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Slika" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Zaposlenje" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Nivo_Iskustva" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Iskustveni_Nivo" Relationship="Self.FK_Biciklista_0_0" FromRole="Biciklista" ToRole="Iskustveni_Nivo" />
+          <NavigationProperty Name="Lista_Trka" Relationship="Self.FK_Lista_Trka_0_0" FromRole="Biciklista" ToRole="Lista_Trka" />
+          <NavigationProperty Name="Mentalne_Sposobnosti" Relationship="Self.FK_Mentalne_Sposobnosti_0_0" FromRole="Biciklista" ToRole="Mentalne_Sposobnosti" />
+          <NavigationProperty Name="Prirodne_Sposobnosti" Relationship="Self.FK_Prirodne_Sposobnosti_0_0" FromRole="Biciklista" ToRole="Prirodne_Sposobnosti" />
+          <NavigationProperty Name="Profilisanje_Profila_Vozaca" Relationship="Self.FK_Profilisanje_Profila_Vozaca_0_0" FromRole="Biciklista" ToRole="Profilisanje_Profila_Vozaca" />
+          <NavigationProperty Name="Sezonas" Relationship="Self.FK_Sezona_0_0" FromRole="Biciklista" ToRole="Sezona" />
+          <NavigationProperty Name="Sprint_Test" Relationship="Self.FK_Sprint_Test_0_0" FromRole="Biciklista" ToRole="Sprint_Test" />
+          <NavigationProperty Name="Test_Kriticne_Snage" Relationship="Self.FK_Test_Kriticne_Snage_0_0" FromRole="Biciklista" ToRole="Test_Kriticne_Snage" />
+          <NavigationProperty Name="Test_Ocenjivanja" Relationship="Self.FK_Test_Ocenjivanja_0_0" FromRole="Biciklista" ToRole="Test_Ocenjivanja" />
+          <NavigationProperty Name="Trening_Dani" Relationship="Self.FK_Trening_Dani_3_0" FromRole="Biciklista" ToRole="Trening_Dani" />
+          <NavigationProperty Name="Trke_U_Sezoni" Relationship="Self.FK_Trke_U_Sezoni_0_0" FromRole="Biciklista" ToRole="Trke_U_Sezoni" />
+        </EntityType>
+        <EntityType Name="Dani">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Dnevni_Trening_Periodi" Relationship="Self.FK_Dnevni_Trening_Periodi_1_0" FromRole="Dani" ToRole="Dnevni_Trening_Periodi" />
+        </EntityType>
+        <EntityType Name="Dnevni_Trening_Periodi">
+          <Key>
+            <PropertyRef Name="ID_Trening_period" />
+            <PropertyRef Name="ID_Dana" />
+            <PropertyRef Name="ID_Tipovi_treninga" />
+          </Key>
+          <Property Name="ID_Trening_period" Type="Int64" Nullable="false" />
+          <Property Name="ID_Dana" Type="Int64" Nullable="false" />
+          <Property Name="ID_Tipovi_treninga" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Dani" Relationship="Self.FK_Dnevni_Trening_Periodi_1_0" FromRole="Dnevni_Trening_Periodi" ToRole="Dani" />
+          <NavigationProperty Name="Tipovi_Treninga" Relationship="Self.FK_Dnevni_Trening_Periodi_0_0" FromRole="Dnevni_Trening_Periodi" ToRole="Tipovi_Treninga" />
+          <NavigationProperty Name="Trening_Periodi" Relationship="Self.FK_Dnevni_Trening_Periodi_2_0" FromRole="Dnevni_Trening_Periodi" ToRole="Trening_Periodi" />
+        </EntityType>
+        <EntityType Name="Glavni_Tipovi_Treninga">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Treniraj_ili_ne" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Treniraj_Ili_Ne" Relationship="Self.FK_Glavni_Tipovi_Treninga_0_0" FromRole="Glavni_Tipovi_Treninga" ToRole="Treniraj_Ili_Ne" />
+          <NavigationProperty Name="Tipovi_Treninga" Relationship="Self.FK_Tipovi_Treninga_0_0" FromRole="Glavni_Tipovi_Treninga" ToRole="Tipovi_Treninga" />
+        </EntityType>
+        <EntityType Name="Iskustveni_Nivo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Biciklistas" Relationship="Self.FK_Biciklista_0_0" FromRole="Iskustveni_Nivo" ToRole="Biciklista" />
+          <NavigationProperty Name="Treninzis" Relationship="Self.FK_Treninzi_1_0" FromRole="Iskustveni_Nivo" ToRole="Treninzi" />
+        </EntityType>
+        <EntityType Name="Lista_Trka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Naziv_trke" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Putanje" Type="Int64" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Lista_Trka_0_0" FromRole="Lista_Trka" ToRole="Biciklista" />
+          <NavigationProperty Name="Putanja" Relationship="Self.FK_Lista_Trka_1_0" FromRole="Lista_Trka" ToRole="Putanja" />
+          <NavigationProperty Name="Trke_U_Sezoni" Relationship="Self.FK_Trke_U_Sezoni_2_0" FromRole="Lista_Trka" ToRole="Trke_U_Sezoni" />
+        </EntityType>
+        <EntityType Name="Mentalne_Sposobnosti">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="DateTime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="Motivacija" Type="Int32" Nullable="false" />
+          <Property Name="Samopouzdanje" Type="Int32" Nullable="false" />
+          <Property Name="Navika" Type="Int32" Nullable="false" />
+          <Property Name="Fokus" Type="Int32" Nullable="false" />
+          <Property Name="Vizualizacija" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Mentalne_Sposobnosti_0_0" FromRole="Mentalne_Sposobnosti" ToRole="Biciklista" />
+        </EntityType>
+        <EntityType Name="Nedelja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Broj_nedelje" Type="Int64" Nullable="false" />
+          <Property Name="Datum_pocetka" Type="DateTime" Nullable="false" />
+          <Property Name="Datum_zavrsetka" Type="DateTime" Nullable="false" />
+          <Property Name="ID_Sezone" Type="Int64" Nullable="false" />
+          <Property Name="ID_Trening_perioda" Type="Int64" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Trening_Periodi" Relationship="Self.FK_Nedelja_1_0" FromRole="Nedelja" ToRole="Trening_Periodi" />
+          <NavigationProperty Name="Trening_Dani" Relationship="Self.FK_Trening_Dani_2_0" FromRole="Nedelja" ToRole="Trening_Dani" />
+        </EntityType>
+        <EntityType Name="Prirodne_Sposobnosti">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="DateTime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="Snaga" Type="Int32" Nullable="false" />
+          <Property Name="Brzina" Type="Int32" Nullable="false" />
+          <Property Name="Izdrzljivost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Prirodne_Sposobnosti_0_0" FromRole="Prirodne_Sposobnosti" ToRole="Biciklista" />
+        </EntityType>
+        <EntityType Name="Profilisanje_Profila_Vozaca">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="DateTime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="Brdo" Type="Int32" Nullable="false" />
+          <Property Name="Sprint" Type="Int32" Nullable="false" />
+          <Property Name="Hronometar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Profilisanje_Profila_Vozaca_0_0" FromRole="Profilisanje_Profila_Vozaca" ToRole="Biciklista" />
+        </EntityType>
+        <EntityType Name="Putanja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Pocetno_odrediste" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Odrediste_izmedju" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Krajnje_odrediste" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cela_putanja" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Tip_putanje" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Lista_Trka" Relationship="Self.FK_Lista_Trka_1_0" FromRole="Putanja" ToRole="Lista_Trka" />
+          <NavigationProperty Name="Tip_putanje" Relationship="Self.FK_Putanja_0_0" FromRole="Putanja" ToRole="Tip_putanje" />
+          <NavigationProperty Name="Trening_Dani" Relationship="Self.FK_Trening_Dani_0_0" FromRole="Putanja" ToRole="Trening_Dani" />
+        </EntityType>
+        <EntityType Name="Sezona">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="Datum_pocetka" Type="DateTime" Nullable="false" />
+          <Property Name="Datum_zavrsetka" Type="DateTime" Nullable="false" />
+          <Property Name="Godina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Sezona_0_0" FromRole="Sezona" ToRole="Biciklista" />
+          <NavigationProperty Name="Trke_U_Sezoni" Relationship="Self.FK_Trke_U_Sezoni_1_0" FromRole="Sezona" ToRole="Trke_U_Sezoni" />
+        </EntityType>
+        <EntityType Name="Sprint_Test">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="DateTime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="Maksimalna_Snaga" Type="Int32" Nullable="false" />
+          <Property Name="Prosecna_Snaga" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Sprint_Test_0_0" FromRole="Sprint_Test" ToRole="Biciklista" />
+        </EntityType>
+        <EntityType Name="Test_Kriticne_Snage">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="DateTime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="CP0" Type="Int32" Nullable="false" />
+          <Property Name="CP1" Type="Int32" Nullable="false" />
+          <Property Name="CP6" Type="Int32" Nullable="false" />
+          <Property Name="CP12" Type="Int32" Nullable="false" />
+          <Property Name="CP30" Type="Int32" Nullable="false" />
+          <Property Name="CP60" Type="Int32" Nullable="false" />
+          <Property Name="CP90" Type="Int32" Nullable="false" />
+          <Property Name="CP180" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Test_Kriticne_Snage_0_0" FromRole="Test_Kriticne_Snage" ToRole="Biciklista" />
+        </EntityType>
+        <EntityType Name="Test_Ocenjivanja">
+          <Key>
+            <PropertyRef Name="Datum_testiranja" />
+            <PropertyRef Name="ID_Bicikliste" />
+            <PropertyRef Name="Napor" />
+          </Key>
+          <Property Name="Datum_testiranja" Type="DateTime" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="Snaga" Type="Int32" Nullable="false" />
+          <Property Name="Otkucaji_srca" Type="Int32" Nullable="false" />
+          <Property Name="Napor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Test_Ocenjivanja_0_0" FromRole="Test_Ocenjivanja" ToRole="Biciklista" />
+        </EntityType>
+        <EntityType Name="Tip_putanje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Putanjas" Relationship="Self.FK_Putanja_0_0" FromRole="Tip_putanje" ToRole="Putanja" />
+        </EntityType>
+        <EntityType Name="Tipovi_Treninga">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Glavni_tipovi_treninga" Type="Int64" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dnevni_Trening_Periodi" Relationship="Self.FK_Dnevni_Trening_Periodi_0_0" FromRole="Tipovi_Treninga" ToRole="Dnevni_Trening_Periodi" />
+          <NavigationProperty Name="Glavni_Tipovi_Treninga" Relationship="Self.FK_Tipovi_Treninga_0_0" FromRole="Tipovi_Treninga" ToRole="Glavni_Tipovi_Treninga" />
+          <NavigationProperty Name="Treninzis" Relationship="Self.FK_Treninzi_0_0" FromRole="Tipovi_Treninga" ToRole="Treninzi" />
+        </EntityType>
+        <EntityType Name="Trening_Dani">
+          <Key>
+            <PropertyRef Name="ID_Bicikliste" />
+            <PropertyRef Name="Datum_treninga" />
+          </Key>
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="Datum_treninga" Type="DateTime" Nullable="false" />
+          <Property Name="ID_Nedelje" Type="Int64" Nullable="false" />
+          <Property Name="ID_Treninga" Type="Int64" Nullable="false" />
+          <Property Name="ID_Putanje" Type="Int64" Nullable="false" />
+          <Property Name="Vreme_treninga" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Prosecna_brzina" Type="Int32" />
+          <Property Name="Maksimalna_brzina" Type="Int32" />
+          <Property Name="Distanca" Type="Int32" />
+          <Property Name="Nadmorska_visina" Type="Int32" />
+          <Property Name="Prosecna_snaga" Type="Int32" />
+          <Property Name="Makimalna_snaga" Type="Int32" />
+          <Property Name="Prosecni_otkucaji_srca" Type="Int32" />
+          <Property Name="Maksimalni_otkucaji_srca" Type="Int32" />
+          <Property Name="Jutarnji_otkucaji_srca" Type="Int32" />
+          <Property Name="Subjektivni_osecaj_pre_treninga" Type="Int32" />
+          <Property Name="Subjektivni_osecaj_posle_treninga" Type="Int32" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Trening_Dani_3_0" FromRole="Trening_Dani" ToRole="Biciklista" />
+          <NavigationProperty Name="Nedelja" Relationship="Self.FK_Trening_Dani_2_0" FromRole="Trening_Dani" ToRole="Nedelja" />
+          <NavigationProperty Name="Putanja" Relationship="Self.FK_Trening_Dani_0_0" FromRole="Trening_Dani" ToRole="Putanja" />
+        </EntityType>
+        <EntityType Name="Trening_Periodi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dnevni_Trening_Periodi" Relationship="Self.FK_Dnevni_Trening_Periodi_2_0" FromRole="Trening_Periodi" ToRole="Dnevni_Trening_Periodi" />
+          <NavigationProperty Name="Nedeljas" Relationship="Self.FK_Nedelja_1_0" FromRole="Trening_Periodi" ToRole="Nedelja" />
+          <NavigationProperty Name="Treninzis" Relationship="Self.FK_Treninzi_2_0" FromRole="Trening_Periodi" ToRole="Treninzi" />
+        </EntityType>
+        <EntityType Name="Treninzi">
+          <Key>
+            <PropertyRef Name="ID_Iskustveni_nivo" />
+            <PropertyRef Name="ID_Tipovi_treninga" />
+            <PropertyRef Name="ID_Trening_perioda" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ID_Iskustveni_nivo" Type="Int64" Nullable="false" />
+          <Property Name="ID_Tipovi_treninga" Type="Int64" Nullable="false" />
+          <Property Name="ID_Trening_perioda" Type="Int64" Nullable="false" />
+          <Property Name="Zona_srcane_frekvencije" Type="Int32" Nullable="false" />
+          <Property Name="Duzina_treninga" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Iskustveni_Nivo" Relationship="Self.FK_Treninzi_1_0" FromRole="Treninzi" ToRole="Iskustveni_Nivo" />
+          <NavigationProperty Name="Tipovi_Treninga" Relationship="Self.FK_Treninzi_0_0" FromRole="Treninzi" ToRole="Tipovi_Treninga" />
+          <NavigationProperty Name="Trening_Periodi" Relationship="Self.FK_Treninzi_2_0" FromRole="Treninzi" ToRole="Trening_Periodi" />
+        </EntityType>
+        <EntityType Name="Treniraj_Ili_Ne">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Glavni_Tipovi_Treninga" Relationship="Self.FK_Glavni_Tipovi_Treninga_0_0" FromRole="Treniraj_Ili_Ne" ToRole="Glavni_Tipovi_Treninga" />
+        </EntityType>
+        <EntityType Name="Trke_U_Sezoni">
+          <Key>
+            <PropertyRef Name="ID_Sezone" />
+            <PropertyRef Name="ID_Bicikliste" />
+            <PropertyRef Name="ID_Trke" />
+            <PropertyRef Name="Datum_trke" />
+          </Key>
+          <Property Name="ID_Sezone" Type="Int64" Nullable="false" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
+          <Property Name="ID_Trke" Type="Int64" Nullable="false" />
+          <Property Name="Datum_trke" Type="DateTime" Nullable="false" />
+          <Property Name="Prioritet" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Osvojeno_mesto" Type="Int32" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Trke_U_Sezoni_0_0" FromRole="Trke_U_Sezoni" ToRole="Biciklista" />
+          <NavigationProperty Name="Lista_Trka" Relationship="Self.FK_Trke_U_Sezoni_2_0" FromRole="Trke_U_Sezoni" ToRole="Lista_Trka" />
+          <NavigationProperty Name="Sezona" Relationship="Self.FK_Trke_U_Sezoni_1_0" FromRole="Trke_U_Sezoni" ToRole="Sezona" />
+        </EntityType>
+        <EntityType Name="Vreme">
+          <Key>
+            <PropertyRef Name="Datum" />
+          </Key>
+          <Property Name="Datum" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="Temperatura" Type="Int32" />
+          <Property Name="Brzina_vetra" Type="Int32" />
+          <Property Name="Smer_vetra" Type="Int32" />
+          <Property Name="Vlaznost_vazduha" Type="Int32" />
+          <Property Name="Oblacnost" Type="Int32" />
+          <Property Name="Slika" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Grada" Type="Int64" />
+        </EntityType>
+        <Association Name="FK_Biciklista_0_0">
+          <End Role="Iskustveni_Nivo" Type="Self.Iskustveni_Nivo" Multiplicity="1" />
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iskustveni_Nivo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Biciklista">
+              <PropertyRef Name="ID_Nivo_Iskustva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lista_Trka_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lista_Trka">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mentalne_Sposobnosti_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Mentalne_Sposobnosti" Type="Self.Mentalne_Sposobnosti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mentalne_Sposobnosti">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prirodne_Sposobnosti_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Prirodne_Sposobnosti" Type="Self.Prirodne_Sposobnosti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Prirodne_Sposobnosti">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profilisanje_Profila_Vozaca_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Profilisanje_Profila_Vozaca" Type="Self.Profilisanje_Profila_Vozaca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Profilisanje_Profila_Vozaca">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sezona_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Sezona" Type="Self.Sezona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sezona">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sprint_Test_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Sprint_Test" Type="Self.Sprint_Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sprint_Test">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Kriticne_Snage_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Test_Kriticne_Snage" Type="Self.Test_Kriticne_Snage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test_Kriticne_Snage">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Ocenjivanja_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Test_Ocenjivanja" Type="Self.Test_Ocenjivanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test_Ocenjivanja">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trening_Dani_3_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trening_Dani">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trke_U_Sezoni_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Trke_U_Sezoni" Type="Self.Trke_U_Sezoni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trke_U_Sezoni">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dnevni_Trening_Periodi_1_0">
+          <End Role="Dani" Type="Self.Dani" Multiplicity="1" />
+          <End Role="Dnevni_Trening_Periodi" Type="Self.Dnevni_Trening_Periodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dani">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dnevni_Trening_Periodi">
+              <PropertyRef Name="ID_Dana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dnevni_Trening_Periodi_0_0">
+          <End Role="Tipovi_Treninga" Type="Self.Tipovi_Treninga" Multiplicity="1" />
+          <End Role="Dnevni_Trening_Periodi" Type="Self.Dnevni_Trening_Periodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipovi_Treninga">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dnevni_Trening_Periodi">
+              <PropertyRef Name="ID_Tipovi_treninga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dnevni_Trening_Periodi_2_0">
+          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="1" />
+          <End Role="Dnevni_Trening_Periodi" Type="Self.Dnevni_Trening_Periodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trening_Periodi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dnevni_Trening_Periodi">
+              <PropertyRef Name="ID_Trening_period" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Glavni_Tipovi_Treninga_0_0">
+          <End Role="Treniraj_Ili_Ne" Type="Self.Treniraj_Ili_Ne" Multiplicity="1" />
+          <End Role="Glavni_Tipovi_Treninga" Type="Self.Glavni_Tipovi_Treninga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Treniraj_Ili_Ne">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Glavni_Tipovi_Treninga">
+              <PropertyRef Name="ID_Treniraj_ili_ne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tipovi_Treninga_0_0">
+          <End Role="Glavni_Tipovi_Treninga" Type="Self.Glavni_Tipovi_Treninga" Multiplicity="1" />
+          <End Role="Tipovi_Treninga" Type="Self.Tipovi_Treninga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Glavni_Tipovi_Treninga">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tipovi_Treninga">
+              <PropertyRef Name="ID_Glavni_tipovi_treninga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treninzi_1_0">
+          <End Role="Iskustveni_Nivo" Type="Self.Iskustveni_Nivo" Multiplicity="1" />
+          <End Role="Treninzi" Type="Self.Treninzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Iskustveni_Nivo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treninzi">
+              <PropertyRef Name="ID_Iskustveni_nivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lista_Trka_1_0">
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
+          <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putanja">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lista_Trka">
+              <PropertyRef Name="ID_Putanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trke_U_Sezoni_2_0">
+          <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="1" />
+          <End Role="Trke_U_Sezoni" Type="Self.Trke_U_Sezoni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lista_Trka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trke_U_Sezoni">
+              <PropertyRef Name="ID_Trke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nedelja_1_0">
+          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="1" />
+          <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trening_Periodi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Nedelja">
+              <PropertyRef Name="ID_Trening_perioda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trening_Dani_2_0">
+          <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="1" />
+          <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nedelja">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trening_Dani">
+              <PropertyRef Name="ID_Nedelje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Putanja_0_0">
+          <End Role="Tip_putanje" Type="Self.Tip_putanje" Multiplicity="1" />
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_putanje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Putanja">
+              <PropertyRef Name="ID_Tip_putanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trening_Dani_0_0">
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
+          <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putanja">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trening_Dani">
+              <PropertyRef Name="ID_Putanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trke_U_Sezoni_1_0">
+          <End Role="Sezona" Type="Self.Sezona" Multiplicity="1" />
+          <End Role="Trke_U_Sezoni" Type="Self.Trke_U_Sezoni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sezona">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Trke_U_Sezoni">
+              <PropertyRef Name="ID_Sezone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treninzi_0_0">
+          <End Role="Tipovi_Treninga" Type="Self.Tipovi_Treninga" Multiplicity="1" />
+          <End Role="Treninzi" Type="Self.Treninzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipovi_Treninga">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treninzi">
+              <PropertyRef Name="ID_Tipovi_treninga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treninzi_2_0">
+          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="1" />
+          <End Role="Treninzi" Type="Self.Treninzi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trening_Periodi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treninzi">
+              <PropertyRef Name="ID_Trening_perioda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Biciklistas" EntityType="Self.Biciklista" />
+          <EntitySet Name="Danis" EntityType="Self.Dani" />
+          <EntitySet Name="Dnevni_Trening_Periodi" EntityType="Self.Dnevni_Trening_Periodi" />
+          <EntitySet Name="Glavni_Tipovi_Treninga" EntityType="Self.Glavni_Tipovi_Treninga" />
+          <EntitySet Name="Iskustveni_Nivo" EntityType="Self.Iskustveni_Nivo" />
+          <EntitySet Name="Lista_Trka" EntityType="Self.Lista_Trka" />
+          <EntitySet Name="Mentalne_Sposobnosti" EntityType="Self.Mentalne_Sposobnosti" />
+          <EntitySet Name="Nedeljas" EntityType="Self.Nedelja" />
+          <EntitySet Name="Prirodne_Sposobnosti" EntityType="Self.Prirodne_Sposobnosti" />
+          <EntitySet Name="Profilisanje_Profila_Vozaca" EntityType="Self.Profilisanje_Profila_Vozaca" />
+          <EntitySet Name="Putanjas" EntityType="Self.Putanja" />
+          <EntitySet Name="Sezonas" EntityType="Self.Sezona" />
+          <EntitySet Name="Sprint_Test" EntityType="Self.Sprint_Test" />
+          <EntitySet Name="Test_Kriticne_Snage" EntityType="Self.Test_Kriticne_Snage" />
+          <EntitySet Name="Test_Ocenjivanja" EntityType="Self.Test_Ocenjivanja" />
+          <EntitySet Name="Tip_putanje" EntityType="Self.Tip_putanje" />
+          <EntitySet Name="Tipovi_Treninga" EntityType="Self.Tipovi_Treninga" />
+          <EntitySet Name="Trening_Dani" EntityType="Self.Trening_Dani" />
+          <EntitySet Name="Trening_Periodi" EntityType="Self.Trening_Periodi" />
+          <EntitySet Name="Treninzis" EntityType="Self.Treninzi" />
+          <EntitySet Name="Treniraj_Ili_Ne" EntityType="Self.Treniraj_Ili_Ne" />
+          <EntitySet Name="Trke_U_Sezoni" EntityType="Self.Trke_U_Sezoni" />
+          <EntitySet Name="Vremes" EntityType="Self.Vreme" />
+          <AssociationSet Name="FK_Biciklista_0_0" Association="Self.FK_Biciklista_0_0">
+            <End Role="Iskustveni_Nivo" EntitySet="Iskustveni_Nivo" />
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lista_Trka_0_0" Association="Self.FK_Lista_Trka_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Lista_Trka" EntitySet="Lista_Trka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mentalne_Sposobnosti_0_0" Association="Self.FK_Mentalne_Sposobnosti_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Mentalne_Sposobnosti" EntitySet="Mentalne_Sposobnosti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prirodne_Sposobnosti_0_0" Association="Self.FK_Prirodne_Sposobnosti_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Prirodne_Sposobnosti" EntitySet="Prirodne_Sposobnosti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profilisanje_Profila_Vozaca_0_0" Association="Self.FK_Profilisanje_Profila_Vozaca_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Profilisanje_Profila_Vozaca" EntitySet="Profilisanje_Profila_Vozaca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sezona_0_0" Association="Self.FK_Sezona_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Sezona" EntitySet="Sezonas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sprint_Test_0_0" Association="Self.FK_Sprint_Test_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Sprint_Test" EntitySet="Sprint_Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Kriticne_Snage_0_0" Association="Self.FK_Test_Kriticne_Snage_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Test_Kriticne_Snage" EntitySet="Test_Kriticne_Snage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Ocenjivanja_0_0" Association="Self.FK_Test_Ocenjivanja_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Test_Ocenjivanja" EntitySet="Test_Ocenjivanja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trening_Dani_3_0" Association="Self.FK_Trening_Dani_3_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Trening_Dani" EntitySet="Trening_Dani" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trke_U_Sezoni_0_0" Association="Self.FK_Trke_U_Sezoni_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Trke_U_Sezoni" EntitySet="Trke_U_Sezoni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dnevni_Trening_Periodi_1_0" Association="Self.FK_Dnevni_Trening_Periodi_1_0">
+            <End Role="Dani" EntitySet="Danis" />
+            <End Role="Dnevni_Trening_Periodi" EntitySet="Dnevni_Trening_Periodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dnevni_Trening_Periodi_0_0" Association="Self.FK_Dnevni_Trening_Periodi_0_0">
+            <End Role="Tipovi_Treninga" EntitySet="Tipovi_Treninga" />
+            <End Role="Dnevni_Trening_Periodi" EntitySet="Dnevni_Trening_Periodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dnevni_Trening_Periodi_2_0" Association="Self.FK_Dnevni_Trening_Periodi_2_0">
+            <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
+            <End Role="Dnevni_Trening_Periodi" EntitySet="Dnevni_Trening_Periodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Glavni_Tipovi_Treninga_0_0" Association="Self.FK_Glavni_Tipovi_Treninga_0_0">
+            <End Role="Treniraj_Ili_Ne" EntitySet="Treniraj_Ili_Ne" />
+            <End Role="Glavni_Tipovi_Treninga" EntitySet="Glavni_Tipovi_Treninga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tipovi_Treninga_0_0" Association="Self.FK_Tipovi_Treninga_0_0">
+            <End Role="Glavni_Tipovi_Treninga" EntitySet="Glavni_Tipovi_Treninga" />
+            <End Role="Tipovi_Treninga" EntitySet="Tipovi_Treninga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treninzi_1_0" Association="Self.FK_Treninzi_1_0">
+            <End Role="Iskustveni_Nivo" EntitySet="Iskustveni_Nivo" />
+            <End Role="Treninzi" EntitySet="Treninzis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lista_Trka_1_0" Association="Self.FK_Lista_Trka_1_0">
+            <End Role="Putanja" EntitySet="Putanjas" />
+            <End Role="Lista_Trka" EntitySet="Lista_Trka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trke_U_Sezoni_2_0" Association="Self.FK_Trke_U_Sezoni_2_0">
+            <End Role="Lista_Trka" EntitySet="Lista_Trka" />
+            <End Role="Trke_U_Sezoni" EntitySet="Trke_U_Sezoni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nedelja_1_0" Association="Self.FK_Nedelja_1_0">
+            <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
+            <End Role="Nedelja" EntitySet="Nedeljas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trening_Dani_2_0" Association="Self.FK_Trening_Dani_2_0">
+            <End Role="Nedelja" EntitySet="Nedeljas" />
+            <End Role="Trening_Dani" EntitySet="Trening_Dani" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Putanja_0_0" Association="Self.FK_Putanja_0_0">
+            <End Role="Tip_putanje" EntitySet="Tip_putanje" />
+            <End Role="Putanja" EntitySet="Putanjas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trening_Dani_0_0" Association="Self.FK_Trening_Dani_0_0">
+            <End Role="Putanja" EntitySet="Putanjas" />
+            <End Role="Trening_Dani" EntitySet="Trening_Dani" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trke_U_Sezoni_1_0" Association="Self.FK_Trke_U_Sezoni_1_0">
+            <End Role="Sezona" EntitySet="Sezonas" />
+            <End Role="Trke_U_Sezoni" EntitySet="Trke_U_Sezoni" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treninzi_0_0" Association="Self.FK_Treninzi_0_0">
+            <End Role="Tipovi_Treninga" EntitySet="Tipovi_Treninga" />
+            <End Role="Treninzi" EntitySet="Treninzis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treninzi_2_0" Association="Self.FK_Treninzi_2_0">
+            <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
+            <End Role="Treninzi" EntitySet="Treninzis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectDBModelStoreContainer" CdmEntityContainer="ProjectDBEntities">
+          <EntitySetMapping Name="Biciklistas">
+            <EntityTypeMapping TypeName="ProjectDBModel.Biciklista">
+              <MappingFragment StoreEntitySet="Biciklista">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Datum_Rodjenja" ColumnName="Datum_Rodjenja" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Drzava" ColumnName="Drzava" />
+                <ScalarProperty Name="Tezina" ColumnName="Tezina" />
+                <ScalarProperty Name="Visina" ColumnName="Visina" />
+                <ScalarProperty Name="Omiljena_Trka_A" ColumnName="Omiljena_Trka_A" />
+                <ScalarProperty Name="Omiljena_Trka_B" ColumnName="Omiljena_Trka_B" />
+                <ScalarProperty Name="Omiljena_Trka_C" ColumnName="Omiljena_Trka_C" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="Zaposlenje" ColumnName="Zaposlenje" />
+                <ScalarProperty Name="ID_Nivo_Iskustva" ColumnName="ID_Nivo_Iskustva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Danis">
+            <EntityTypeMapping TypeName="ProjectDBModel.Dani">
+              <MappingFragment StoreEntitySet="Dani">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dnevni_Trening_Periodi">
+            <EntityTypeMapping TypeName="ProjectDBModel.Dnevni_Trening_Periodi">
+              <MappingFragment StoreEntitySet="Dnevni_Trening_Periodi">
+                <ScalarProperty Name="ID_Trening_period" ColumnName="ID_Trening_period" />
+                <ScalarProperty Name="ID_Dana" ColumnName="ID_Dana" />
+                <ScalarProperty Name="ID_Tipovi_treninga" ColumnName="ID_Tipovi_treninga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Glavni_Tipovi_Treninga">
+            <EntityTypeMapping TypeName="ProjectDBModel.Glavni_Tipovi_Treninga">
+              <MappingFragment StoreEntitySet="Glavni_Tipovi_Treninga">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="ID_Treniraj_ili_ne" ColumnName="ID_Treniraj_ili_ne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iskustveni_Nivo">
+            <EntityTypeMapping TypeName="ProjectDBModel.Iskustveni_Nivo">
+              <MappingFragment StoreEntitySet="Iskustveni_Nivo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lista_Trka">
+            <EntityTypeMapping TypeName="ProjectDBModel.Lista_Trka">
+              <MappingFragment StoreEntitySet="Lista_Trka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Naziv_trke" ColumnName="Naziv_trke" />
+                <ScalarProperty Name="ID_Putanje" ColumnName="ID_Putanje" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mentalne_Sposobnosti">
+            <EntityTypeMapping TypeName="ProjectDBModel.Mentalne_Sposobnosti">
+              <MappingFragment StoreEntitySet="Mentalne_Sposobnosti">
+                <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="Motivacija" ColumnName="Motivacija" />
+                <ScalarProperty Name="Samopouzdanje" ColumnName="Samopouzdanje" />
+                <ScalarProperty Name="Navika" ColumnName="Navika" />
+                <ScalarProperty Name="Fokus" ColumnName="Fokus" />
+                <ScalarProperty Name="Vizualizacija" ColumnName="Vizualizacija" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nedeljas">
+            <EntityTypeMapping TypeName="ProjectDBModel.Nedelja">
+              <MappingFragment StoreEntitySet="Nedelja">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Broj_nedelje" ColumnName="Broj_nedelje" />
+                <ScalarProperty Name="Datum_pocetka" ColumnName="Datum_pocetka" />
+                <ScalarProperty Name="Datum_zavrsetka" ColumnName="Datum_zavrsetka" />
+                <ScalarProperty Name="ID_Sezone" ColumnName="ID_Sezone" />
+                <ScalarProperty Name="ID_Trening_perioda" ColumnName="ID_Trening_perioda" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prirodne_Sposobnosti">
+            <EntityTypeMapping TypeName="ProjectDBModel.Prirodne_Sposobnosti">
+              <MappingFragment StoreEntitySet="Prirodne_Sposobnosti">
+                <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="Snaga" ColumnName="Snaga" />
+                <ScalarProperty Name="Brzina" ColumnName="Brzina" />
+                <ScalarProperty Name="Izdrzljivost" ColumnName="Izdrzljivost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profilisanje_Profila_Vozaca">
+            <EntityTypeMapping TypeName="ProjectDBModel.Profilisanje_Profila_Vozaca">
+              <MappingFragment StoreEntitySet="Profilisanje_Profila_Vozaca">
+                <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="Brdo" ColumnName="Brdo" />
+                <ScalarProperty Name="Sprint" ColumnName="Sprint" />
+                <ScalarProperty Name="Hronometar" ColumnName="Hronometar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Putanjas">
+            <EntityTypeMapping TypeName="ProjectDBModel.Putanja">
+              <MappingFragment StoreEntitySet="Putanja">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Pocetno_odrediste" ColumnName="Pocetno_odrediste" />
+                <ScalarProperty Name="Odrediste_izmedju" ColumnName="Odrediste_izmedju" />
+                <ScalarProperty Name="Krajnje_odrediste" ColumnName="Krajnje_odrediste" />
+                <ScalarProperty Name="Cela_putanja" ColumnName="Cela_putanja" />
+                <ScalarProperty Name="ID_Tip_putanje" ColumnName="ID_Tip_putanje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sezonas">
+            <EntityTypeMapping TypeName="ProjectDBModel.Sezona">
+              <MappingFragment StoreEntitySet="Sezona">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="Datum_pocetka" ColumnName="Datum_pocetka" />
+                <ScalarProperty Name="Datum_zavrsetka" ColumnName="Datum_zavrsetka" />
+                <ScalarProperty Name="Godina" ColumnName="Godina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sprint_Test">
+            <EntityTypeMapping TypeName="ProjectDBModel.Sprint_Test">
+              <MappingFragment StoreEntitySet="Sprint_Test">
+                <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="Maksimalna_Snaga" ColumnName="Maksimalna_Snaga" />
+                <ScalarProperty Name="Prosecna_Snaga" ColumnName="Prosecna_Snaga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test_Kriticne_Snage">
+            <EntityTypeMapping TypeName="ProjectDBModel.Test_Kriticne_Snage">
+              <MappingFragment StoreEntitySet="Test_Kriticne_Snage">
+                <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="CP0" ColumnName="CP0" />
+                <ScalarProperty Name="CP1" ColumnName="CP1" />
+                <ScalarProperty Name="CP6" ColumnName="CP6" />
+                <ScalarProperty Name="CP12" ColumnName="CP12" />
+                <ScalarProperty Name="CP30" ColumnName="CP30" />
+                <ScalarProperty Name="CP60" ColumnName="CP60" />
+                <ScalarProperty Name="CP90" ColumnName="CP90" />
+                <ScalarProperty Name="CP180" ColumnName="CP180" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test_Ocenjivanja">
+            <EntityTypeMapping TypeName="ProjectDBModel.Test_Ocenjivanja">
+              <MappingFragment StoreEntitySet="Test_Ocenjivanja">
+                <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="Snaga" ColumnName="Snaga" />
+                <ScalarProperty Name="Otkucaji_srca" ColumnName="Otkucaji_srca" />
+                <ScalarProperty Name="Napor" ColumnName="Napor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_putanje">
+            <EntityTypeMapping TypeName="ProjectDBModel.Tip_putanje">
+              <MappingFragment StoreEntitySet="Tip_putanje">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipovi_Treninga">
+            <EntityTypeMapping TypeName="ProjectDBModel.Tipovi_Treninga">
+              <MappingFragment StoreEntitySet="Tipovi_Treninga">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="ID_Glavni_tipovi_treninga" ColumnName="ID_Glavni_tipovi_treninga" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trening_Dani">
+            <EntityTypeMapping TypeName="ProjectDBModel.Trening_Dani">
+              <MappingFragment StoreEntitySet="Trening_Dani">
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="Datum_treninga" ColumnName="Datum_treninga" />
+                <ScalarProperty Name="ID_Nedelje" ColumnName="ID_Nedelje" />
+                <ScalarProperty Name="ID_Treninga" ColumnName="ID_Treninga" />
+                <ScalarProperty Name="ID_Putanje" ColumnName="ID_Putanje" />
+                <ScalarProperty Name="Vreme_treninga" ColumnName="Vreme_treninga" />
+                <ScalarProperty Name="Prosecna_brzina" ColumnName="Prosecna_brzina" />
+                <ScalarProperty Name="Maksimalna_brzina" ColumnName="Maksimalna_brzina" />
+                <ScalarProperty Name="Distanca" ColumnName="Distanca" />
+                <ScalarProperty Name="Nadmorska_visina" ColumnName="Nadmorska_visina" />
+                <ScalarProperty Name="Prosecna_snaga" ColumnName="Prosecna_snaga" />
+                <ScalarProperty Name="Makimalna_snaga" ColumnName="Makimalna_snaga" />
+                <ScalarProperty Name="Prosecni_otkucaji_srca" ColumnName="Prosecni_otkucaji_srca" />
+                <ScalarProperty Name="Maksimalni_otkucaji_srca" ColumnName="Maksimalni_otkucaji_srca" />
+                <ScalarProperty Name="Jutarnji_otkucaji_srca" ColumnName="Jutarnji_otkucaji_srca" />
+                <ScalarProperty Name="Subjektivni_osecaj_pre_treninga" ColumnName="Subjektivni_osecaj_pre_treninga" />
+                <ScalarProperty Name="Subjektivni_osecaj_posle_treninga" ColumnName="Subjektivni_osecaj_posle_treninga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trening_Periodi">
+            <EntityTypeMapping TypeName="ProjectDBModel.Trening_Periodi">
+              <MappingFragment StoreEntitySet="Trening_Periodi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treninzis">
+            <EntityTypeMapping TypeName="ProjectDBModel.Treninzi">
+              <MappingFragment StoreEntitySet="Treninzi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Iskustveni_nivo" ColumnName="ID_Iskustveni_nivo" />
+                <ScalarProperty Name="ID_Tipovi_treninga" ColumnName="ID_Tipovi_treninga" />
+                <ScalarProperty Name="ID_Trening_perioda" ColumnName="ID_Trening_perioda" />
+                <ScalarProperty Name="Zona_srcane_frekvencije" ColumnName="Zona_srcane_frekvencije" />
+                <ScalarProperty Name="Duzina_treninga" ColumnName="Duzina_treninga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treniraj_Ili_Ne">
+            <EntityTypeMapping TypeName="ProjectDBModel.Treniraj_Ili_Ne">
+              <MappingFragment StoreEntitySet="Treniraj_Ili_Ne">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trke_U_Sezoni">
+            <EntityTypeMapping TypeName="ProjectDBModel.Trke_U_Sezoni">
+              <MappingFragment StoreEntitySet="Trke_U_Sezoni">
+                <ScalarProperty Name="ID_Sezone" ColumnName="ID_Sezone" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
+                <ScalarProperty Name="ID_Trke" ColumnName="ID_Trke" />
+                <ScalarProperty Name="Datum_trke" ColumnName="Datum_trke" />
+                <ScalarProperty Name="Prioritet" ColumnName="Prioritet" />
+                <ScalarProperty Name="Osvojeno_mesto" ColumnName="Osvojeno_mesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vremes">
+            <EntityTypeMapping TypeName="ProjectDBModel.Vreme">
+              <MappingFragment StoreEntitySet="Vreme">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
+                <ScalarProperty Name="Brzina_vetra" ColumnName="Brzina_vetra" />
+                <ScalarProperty Name="Smer_vetra" ColumnName="Smer_vetra" />
+                <ScalarProperty Name="Vlaznost_vazduha" ColumnName="Vlaznost_vazduha" />
+                <ScalarProperty Name="Oblacnost" ColumnName="Oblacnost" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="ID_Grada" ColumnName="ID_Grada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
