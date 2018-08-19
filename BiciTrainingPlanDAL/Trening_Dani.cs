@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Trening_Dani
+    public partial class Trening_Dani : ITable
     {
         public long ID_Bicikliste { get; set; }
         public System.DateTime Datum_treninga { get; set; }

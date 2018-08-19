@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Profilisanje_Profila_Vozaca
+    public partial class Profilisanje_Profila_Vozaca : ITable
     {
         public System.DateTime Datum_testiranja { get; set; }
         public long ID_Bicikliste { get; set; }

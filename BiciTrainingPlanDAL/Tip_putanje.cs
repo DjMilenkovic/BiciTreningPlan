@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Tip_putanje
+    public partial class Tip_putanje : ITable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tip_putanje()

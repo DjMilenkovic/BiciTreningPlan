@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Glavni_Tipovi_Treninga
+    public partial class Glavni_Tipovi_Treninga : ITable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Glavni_Tipovi_Treninga()

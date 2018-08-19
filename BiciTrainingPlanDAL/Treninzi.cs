@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Treninzi
+    public partial class Treninzi : ITable
     {
         public long ID { get; set; }
         public long ID_Iskustveni_nivo { get; set; }

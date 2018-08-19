@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Dnevni_Trening_Periodi
+    public partial class Dnevni_Trening_Periodi : ITable
     {
         public long ID_Trening_period { get; set; }
         public long ID_Dana { get; set; }

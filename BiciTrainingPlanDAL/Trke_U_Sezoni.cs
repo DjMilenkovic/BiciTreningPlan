@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Trke_U_Sezoni
+    public partial class Trke_U_Sezoni : ITable
     {
         public long ID_Sezone { get; set; }
         public long ID_Bicikliste { get; set; }

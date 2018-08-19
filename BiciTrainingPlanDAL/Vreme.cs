@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Vreme
+    public partial class Vreme : ITable
     {
         public decimal Datum { get; set; }
         public Nullable<int> Temperatura { get; set; }

@@ -12,7 +12,7 @@ namespace BiciTrainingPlanDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Prirodne_Sposobnosti
+    public partial class Prirodne_Sposobnosti : ITable
     {
         public System.DateTime Datum_testiranja { get; set; }
         public long ID_Bicikliste { get; set; }

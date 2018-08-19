@@ -74,13 +74,15 @@
     <Compile Include="Dnevni_Trening_Periodi.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GetData.cs" />
+    <Compile Include="BiciklistaManipulator.cs" />
     <Compile Include="Glavni_Tipovi_Treninga.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="IDataManipulator.cs" />
     <Compile Include="Iskustveni_Nivo.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ITable.cs" />
     <Compile Include="Lista_Trka.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>

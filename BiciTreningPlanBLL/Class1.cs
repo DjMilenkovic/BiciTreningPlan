@@ -11,8 +11,9 @@ namespace BiciTreningPlanBLL
     {
         public void getDataFromDAL()
         {
-            GetData data = new GetData();
-            data.GetDataFromDB();
+            Biciklista biciklista = new Biciklista();
+            IDataManipulator<Biciklista> biciklistaManipulator = new BiciklistaManipulator(biciklista);
+               
         }
     }
 }
