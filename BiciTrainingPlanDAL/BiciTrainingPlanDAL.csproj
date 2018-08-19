@@ -79,6 +79,7 @@
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="IDataManipulator.cs" />
+    <Compile Include="IskustveniNivoManipulator.cs" />
     <Compile Include="Iskustveni_Nivo.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
@@ -123,6 +124,12 @@
     <Compile Include="Sprint_Test.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TestManipulator\ProfilisanjeProfilaVozaca.cs" />
+    <Compile Include="TestManipulator\TestKriticneSnageManipulator.cs" />
+    <Compile Include="TestManipulator\TestMentalnihSposobnosti.cs" />
+    <Compile Include="TestManipulator\TestOcenjivanja.cs" />
+    <Compile Include="TestManipulator\TestPrirodnihSposobnostiVozaca.cs" />
+    <Compile Include="TestManipulator\TestSprinta.cs" />
     <Compile Include="Test_Kriticne_Snage.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
