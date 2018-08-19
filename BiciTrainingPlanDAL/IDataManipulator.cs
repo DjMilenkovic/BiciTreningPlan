@@ -8,9 +8,9 @@ namespace BiciTrainingPlanDAL
 {
     public interface IDataManipulator<T>
     {
-        void Create();
-        void Update();
-        void Delete();
+        void Create(ITable table);
+        void Update(ITable table);
+        void Delete(long ID);
         List<T> GetData();
     }
 }
