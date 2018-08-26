@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL
+namespace BiciTrainingPlanDAL.DBModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Biciklista : ITable
+    public partial class Biciklista
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Biciklista()
@@ -27,6 +27,7 @@ namespace BiciTrainingPlanDAL
             this.Test_Ocenjivanja = new HashSet<Test_Ocenjivanja>();
             this.Trening_Dani = new HashSet<Trening_Dani>();
             this.Trke_U_Sezoni = new HashSet<Trke_U_Sezoni>();
+            this.Putanjas = new HashSet<Putanja>();
         }
     
         public long ID { get; set; }
@@ -66,5 +67,7 @@ namespace BiciTrainingPlanDAL
         public virtual ICollection<Trening_Dani> Trening_Dani { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Trke_U_Sezoni> Trke_U_Sezoni { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Putanja> Putanjas { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL
+namespace BiciTrainingPlanDAL.DBModel
 {
     using System;
     using System.Data.Entity;

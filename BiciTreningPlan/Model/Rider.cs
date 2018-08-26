@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BiciTrainingPlanDAL
+namespace BiciTreningPlan.Model
 {
-    public interface ITable
+    class Rider
     {
     }
 }

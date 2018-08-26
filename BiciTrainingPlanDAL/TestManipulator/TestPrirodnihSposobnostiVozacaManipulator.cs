@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiciTrainingPlanDAL.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL.TestManipulator
 {
-    class TestPrirodnihSposobnostiVozacaManipulator : IDataManipulator<Prirodne_Sposobnosti>
+    class TestPrirodnihSposobnostiVozacaManipulator : IRepository<Prirodne_Sposobnosti>
     {
         long IDBicikliste;
 
@@ -16,24 +17,6 @@ namespace BiciTrainingPlanDAL.TestManipulator
         }
 
         public TestPrirodnihSposobnostiVozacaManipulator() { }
-
-        public void Create(ITable tableTestPrirodnihSposobnostiVozacaManipulator)
-        {
-            var testPrirodnihSposobnostiVozaca = tableTestPrirodnihSposobnostiVozacaManipulator as Prirodne_Sposobnosti;
-            if (testPrirodnihSposobnostiVozaca != null)
-            {
-                using (var db = new ProjectDBEntities())
-                {
-                    var customers = db.Set<Prirodne_Sposobnosti>();
-                    customers.Add(testPrirodnihSposobnostiVozaca);
-                    db.SaveChanges();
-                }
-            }
-            else
-            {
-                throw new NullReferenceException();
-            }
-        }
 
         public void Delete(long ID)
         {
@@ -52,7 +35,25 @@ namespace BiciTrainingPlanDAL.TestManipulator
             }
         }
 
-        public void Update(ITable table)
+        public void Insert(Prirodne_Sposobnosti entity)
+        {
+            var testPrirodnihSposobnostiVozaca = entity as Prirodne_Sposobnosti;
+            if (testPrirodnihSposobnostiVozaca != null)
+            {
+                using (var db = new ProjectDBEntities())
+                {
+                    var customers = db.Set<Prirodne_Sposobnosti>();
+                    customers.Add(testPrirodnihSposobnostiVozaca);
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
+        public void Update(Prirodne_Sposobnosti entity)
         {
             throw new NotImplementedException();
         }

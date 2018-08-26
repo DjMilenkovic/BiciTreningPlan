@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL
+namespace BiciTrainingPlanDAL.DBModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Trening_Dani : ITable
+    public partial class Trening_Dani
     {
         public long ID_Bicikliste { get; set; }
         public System.DateTime Datum_treninga { get; set; }

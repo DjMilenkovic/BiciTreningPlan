@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiciTrainingPlanDAL.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL
 {
-    public class TestKriticneSnageManipulator : IDataManipulator<Test_Kriticne_Snage>
+    public class TestKriticneSnageManipulator : IRepository<Test_Kriticne_Snage>
     {
         long IDBicikliste;
 
@@ -16,24 +17,6 @@ namespace BiciTrainingPlanDAL
         }
 
         public TestKriticneSnageManipulator(){}
-
-        public void Create(ITable tableTestKriticneSnageManipulator)
-        {
-            var testKriticneSnageManipulator = tableTestKriticneSnageManipulator as Test_Kriticne_Snage;
-            if (testKriticneSnageManipulator != null)
-            {
-                using (var db = new ProjectDBEntities())
-                {
-                    var customers = db.Set<Test_Kriticne_Snage>();
-                    customers.Add(testKriticneSnageManipulator);
-                    db.SaveChanges();
-                }
-            }
-            else
-            {
-                throw new NullReferenceException();
-            }
-        }
 
         public void Delete(long ID)
         {
@@ -50,9 +33,27 @@ namespace BiciTrainingPlanDAL
 
                 return query.ToList();
             }
+        }               
+
+        public void Insert(Test_Kriticne_Snage entity)
+        {
+            var testKriticneSnageManipulator = entity as Test_Kriticne_Snage;
+            if (testKriticneSnageManipulator != null)
+            {
+                using (var db = new ProjectDBEntities())
+                {
+                    var customers = db.Set<Test_Kriticne_Snage>();
+                    customers.Add(testKriticneSnageManipulator);
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
-        
-        public void Update(ITable table)
+
+        public void Update(Test_Kriticne_Snage entity)
         {
             throw new NotImplementedException();
         }

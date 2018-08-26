@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiciTrainingPlanDAL.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL.RaceManipulator
 {
-    public class PutanjaManipulator : IDataManipulator<Putanja>
+    public class PutanjaManipulator : IRepository<Putanja>
     {
         long IDBicikliste;
 
@@ -15,38 +16,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
             this.IDBicikliste = IDBicikliste;
         }
 
-        public PutanjaManipulator() { }
-
-        public void Create(ITable tablePutanjaManipulator)
-        {
-            var testPutanjaManipulator = tablePutanjaManipulator as Putanja;
-            if (testPutanjaManipulator != null)
-            {
-                using (var db = new ProjectDBEntities())
-                {
-                    var customers = db.Set<Putanja>();
-                    customers.Add(testPutanjaManipulator);
-                    db.SaveChanges();
-                }
-            }
-            else
-            {
-                throw new NullReferenceException();
-            }
-        }
-
-        public void Delete(long ID)
-        {
-            using (var db = new ProjectDBEntities())
-            {
-                var result = db.Putanjas.SingleOrDefault(b => b.ID == ID);
-                if (result != null)
-                {
-                    db.Putanjas.Remove(result);
-                    db.SaveChanges();
-                }
-            }
-        }
+        public PutanjaManipulator() { }              
 
         public List<dynamic> GetDataWithJoin()
         {
@@ -80,9 +50,27 @@ namespace BiciTrainingPlanDAL.RaceManipulator
             }
         }
 
-        public void Update(ITable tablePutanjaManipulator)
+        public void Insert(Putanja entity)
         {
-            var putanja = tablePutanjaManipulator as Putanja;
+            var testPutanjaManipulator = entity as Putanja;
+            if (testPutanjaManipulator != null)
+            {
+                using (var db = new ProjectDBEntities())
+                {
+                    var customers = db.Set<Putanja>();
+                    customers.Add(testPutanjaManipulator);
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
+        public void Update(Putanja entity)
+        {
+            var putanja = entity as Putanja;
             if (putanja != null)
             {
                 using (var db = new ProjectDBEntities())
@@ -101,6 +89,19 @@ namespace BiciTrainingPlanDAL.RaceManipulator
                     {
                         throw new NullReferenceException();
                     }
+                }
+            }
+        }
+
+        public void Delete(long ID)
+        {
+            using (var db = new ProjectDBEntities())
+            {
+                var result = db.Putanjas.SingleOrDefault(b => b.ID == ID);
+                if (result != null)
+                {
+                    db.Putanjas.Remove(result);
+                    db.SaveChanges();
                 }
             }
         }

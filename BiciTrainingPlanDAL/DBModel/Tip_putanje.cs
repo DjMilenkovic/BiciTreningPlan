@@ -7,27 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL
+namespace BiciTrainingPlanDAL.DBModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Sezona : ITable
+    public partial class Tip_putanje
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sezona()
+        public Tip_putanje()
         {
-            this.Trke_U_Sezoni = new HashSet<Trke_U_Sezoni>();
+            this.Putanjas = new HashSet<Putanja>();
         }
     
         public long ID { get; set; }
-        public long ID_Bicikliste { get; set; }
-        public System.DateTime Datum_pocetka { get; set; }
-        public System.DateTime Datum_zavrsetka { get; set; }
-        public int Godina { get; set; }
+        public string Naziv { get; set; }
     
-        public virtual Biciklista Biciklista { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Trke_U_Sezoni> Trke_U_Sezoni { get; set; }
+        public virtual ICollection<Putanja> Putanjas { get; set; }
     }
 }

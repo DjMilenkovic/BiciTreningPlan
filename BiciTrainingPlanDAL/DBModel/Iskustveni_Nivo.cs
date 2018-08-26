@@ -7,23 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL
+namespace BiciTrainingPlanDAL.DBModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Treniraj_Ili_Ne : ITable
+    public partial class Iskustveni_Nivo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Treniraj_Ili_Ne()
+        public Iskustveni_Nivo()
         {
-            this.Glavni_Tipovi_Treninga = new HashSet<Glavni_Tipovi_Treninga>();
+            this.Biciklistas = new HashSet<Biciklista>();
+            this.Treninzis = new HashSet<Treninzi>();
         }
     
         public long ID { get; set; }
         public string Naziv { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Glavni_Tipovi_Treninga> Glavni_Tipovi_Treninga { get; set; }
+        public virtual ICollection<Biciklista> Biciklistas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Treninzi> Treninzis { get; set; }
     }
 }

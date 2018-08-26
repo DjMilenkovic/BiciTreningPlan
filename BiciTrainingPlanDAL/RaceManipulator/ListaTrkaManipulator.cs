@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiciTrainingPlanDAL.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL.RaceManipulator
 {
-    public class ListaTrkaManipulator : IDataManipulator<Lista_Trka>
+    public class ListaTrkaManipulator : IRepository<Lista_Trka>
     {
         long IDBicikliste;
 
@@ -16,24 +17,6 @@ namespace BiciTrainingPlanDAL.RaceManipulator
         }
 
         public ListaTrkaManipulator() { }
-
-        public void Create(ITable tableListaTrkaManipulator)
-        {
-            var testListaTrkaManipulator = tableListaTrkaManipulator as Lista_Trka;
-            if (testListaTrkaManipulator != null)
-            {
-                using (var db = new ProjectDBEntities())
-                {
-                    var customers = db.Set<Lista_Trka>();
-                    customers.Add(testListaTrkaManipulator);
-                    db.SaveChanges();
-                }
-            }
-            else
-            {
-                throw new NullReferenceException();
-            }
-        }
 
         public void Delete(long ID)
         {
@@ -77,10 +60,28 @@ namespace BiciTrainingPlanDAL.RaceManipulator
                 return query.ToList();
             }
         }
-
-        public void Update(ITable tableListaTrka)
+        
+        public void Insert(Lista_Trka entity)
         {
-            var trka = tableListaTrka as Lista_Trka;
+            var testListaTrkaManipulator = entity as Lista_Trka;
+            if (testListaTrkaManipulator != null)
+            {
+                using (var db = new ProjectDBEntities())
+                {
+                    var customers = db.Set<Lista_Trka>();
+                    customers.Add(testListaTrkaManipulator);
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
+        public void Update(Lista_Trka entity)
+        {
+            var trka = entity as Lista_Trka;
             if (trka != null)
             {
                 using (var db = new ProjectDBEntities())
@@ -98,6 +99,6 @@ namespace BiciTrainingPlanDAL.RaceManipulator
                     }
                 }
             }
-        }      
+        }
     }
 }

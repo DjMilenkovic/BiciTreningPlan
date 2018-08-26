@@ -7,33 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL
+namespace BiciTrainingPlanDAL.DBModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Putanja : ITable
+    public partial class Lista_Trka
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Putanja()
+        public Lista_Trka()
         {
-            this.Lista_Trka = new HashSet<Lista_Trka>();
-            this.Trening_Dani = new HashSet<Trening_Dani>();
+            this.Trke_U_Sezoni = new HashSet<Trke_U_Sezoni>();
         }
     
         public long ID { get; set; }
-        public string Pocetno_odrediste { get; set; }
-        public string Odrediste_izmedju { get; set; }
-        public string Krajnje_odrediste { get; set; }
-        public string Cela_putanja { get; set; }
-        public long ID_Tip_putanje { get; set; }
+        public string Naziv_trke { get; set; }
+        public long ID_Putanje { get; set; }
         public long ID_Bicikliste { get; set; }
+    
         public virtual Biciklista Biciklista { get; set; }
-
+        public virtual Putanja Putanja { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lista_Trka> Lista_Trka { get; set; }
-        public virtual Tip_putanje Tip_putanje { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Trening_Dani> Trening_Dani { get; set; }
+        public virtual ICollection<Trke_U_Sezoni> Trke_U_Sezoni { get; set; }
     }
 }

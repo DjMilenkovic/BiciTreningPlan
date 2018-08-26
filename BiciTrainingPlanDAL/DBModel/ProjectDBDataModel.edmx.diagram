@@ -54,6 +54,7 @@
         <AssociationConnector Association="ProjectDBModel.FK_Trke_U_Sezoni_1_0" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectDBModel.FK_Treninzi_0_0" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectDBModel.FK_Treninzi_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_Putanja_1_0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

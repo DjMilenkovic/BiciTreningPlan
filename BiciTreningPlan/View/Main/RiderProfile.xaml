@@ -9,6 +9,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="569" d:DesignWidth="942"
              >
+    <UserControl.DataContext>
+        <vm:RiderProfileViewModel/>
+    </UserControl.DataContext>
+    
     <!--Loaded="UserControl_Loaded"-->
     <DockPanel LastChildFill="True">
         <Grid Margin="20 10" DockPanel.Dock="Left">

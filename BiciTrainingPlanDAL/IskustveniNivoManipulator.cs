@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiciTrainingPlanDAL.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL
 {
-    class IskustveniNivoManipulator : IDataManipulator<Iskustveni_Nivo>
-    {
-      
-        public void Create(ITable table)
-        {
-            throw new NotImplementedException();
-        }
+    class IskustveniNivoManipulator : IRepository<Iskustveni_Nivo>
+    {          
         
         public void Delete(long ID)
         {
@@ -30,10 +26,15 @@ namespace BiciTrainingPlanDAL
                 return query.ToList();
             }
         }
-        
-        public void Update(ITable table)
+
+        public void Insert(Iskustveni_Nivo entity)
         {
             throw new NotImplementedException();
         }
+
+        public void Update(Iskustveni_Nivo entity)
+        {
+            throw new NotImplementedException();
+        }        
     }
 }

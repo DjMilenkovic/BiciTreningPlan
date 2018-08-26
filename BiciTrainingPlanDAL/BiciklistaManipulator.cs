@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiciTrainingPlanDAL.DBModel;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL
 {
-    public class BiciklistaManipulator : IDataManipulator<Biciklista>
+    public class BiciklistaManipulator : IRepository<Biciklista>
     {             
         public List<Biciklista> GetData()
         {
@@ -21,9 +22,34 @@ namespace BiciTrainingPlanDAL
             }
         }
 
-        public void Create(ITable tabelaBiciklista)
+        public object GetOneData(long IDBiciklista)
         {
-            var biciklista = tabelaBiciklista as Biciklista;
+            using (var db = new ProjectDBEntities())
+            {
+                var query = from b in db.Biciklistas
+                            where b.ID == IDBiciklista                        
+                            select b;
+
+                return query;
+            }
+        }
+        
+        public void Delete(long ID)
+        {
+            using (var db = new ProjectDBEntities())
+            {
+                var result = db.Biciklistas.SingleOrDefault(b => b.ID == ID);
+                if (result != null)
+                {
+                    db.Biciklistas.Remove(result);
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public void Insert(Biciklista entity)
+        {
+            var biciklista = entity as Biciklista;
             if (biciklista != null)
             {
                 using (var db = new ProjectDBEntities())
@@ -39,10 +65,11 @@ namespace BiciTrainingPlanDAL
             }
         }
 
-        public void Update(ITable tableBiciklista)
+        public void Update(Biciklista entity)
         {
-            var biciklista = tableBiciklista as Biciklista;
-            if (biciklista != null) {
+            var biciklista = entity as Biciklista;
+            if (biciklista != null)
+            {
                 using (var db = new ProjectDBEntities())
                 {
                     var result = db.Biciklistas.SingleOrDefault(b => b.ID == biciklista.ID);
@@ -68,19 +95,6 @@ namespace BiciTrainingPlanDAL
                     {
                         throw new NullReferenceException();
                     }
-                }
-            }
-        }
-
-        public void Delete(long ID)
-        {
-            using (var db = new ProjectDBEntities())
-            {
-                var result = db.Biciklistas.SingleOrDefault(b => b.ID == ID);
-                if (result != null)
-                {
-                    db.Biciklistas.Remove(result);
-                    db.SaveChanges();
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiciTrainingPlanDAL.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL.TestManipulator
 {
-    class TestOcenjivanjaManipulator : IDataManipulator<Test_Ocenjivanja>
+    class TestOcenjivanjaManipulator : IRepository<Test_Ocenjivanja>
     {
         long IDBicikliste;
 
@@ -16,24 +17,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
         }
 
         public TestOcenjivanjaManipulator() { }
-
-        public void Create(ITable tableTestOcenjivanjaManipulator)
-        {
-            var testOcenjivanja = tableTestOcenjivanjaManipulator as Test_Ocenjivanja;
-            if (testOcenjivanja != null)
-            {
-                using (var db = new ProjectDBEntities())
-                {
-                    var customers = db.Set<Test_Ocenjivanja>();
-                    customers.Add(testOcenjivanja);
-                    db.SaveChanges();
-                }
-            }
-            else
-            {
-                throw new NullReferenceException();
-            }
-        }
+        
 
         public void Delete(long ID)
         {
@@ -52,7 +36,25 @@ namespace BiciTrainingPlanDAL.TestManipulator
             }
         }
 
-        public void Update(ITable table)
+        public void Insert(Test_Ocenjivanja entity)
+        {
+            var testOcenjivanja = entity as Test_Ocenjivanja;
+            if (testOcenjivanja != null)
+            {
+                using (var db = new ProjectDBEntities())
+                {
+                    var customers = db.Set<Test_Ocenjivanja>();
+                    customers.Add(testOcenjivanja);
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
+        public void Update(Test_Ocenjivanja entity)
         {
             throw new NotImplementedException();
         }

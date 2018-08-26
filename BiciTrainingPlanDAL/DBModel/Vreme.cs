@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL
+namespace BiciTrainingPlanDAL.DBModel
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Vreme : ITable
+    public partial class Vreme
     {
         public decimal Datum { get; set; }
         public Nullable<int> Temperatura { get; set; }

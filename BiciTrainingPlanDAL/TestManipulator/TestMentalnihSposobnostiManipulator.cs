@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiciTrainingPlanDAL.DBModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL.TestManipulator
 {
-    class TestMentalnihSposobnostiManipulator : IDataManipulator<Mentalne_Sposobnosti>
+    class TestMentalnihSposobnostiManipulator : IRepository<Mentalne_Sposobnosti>
     {
         long IDBicikliste;
 
@@ -16,25 +17,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
         }
 
         public TestMentalnihSposobnostiManipulator() { }
-
-        public void Create(ITable tableTestMentalnihSposobnostiManipulator)
-        {
-            var testMentalnihSposobnosti = tableTestMentalnihSposobnostiManipulator as Mentalne_Sposobnosti;
-            if (testMentalnihSposobnosti != null)
-            {
-                using (var db = new ProjectDBEntities())
-                {
-                    var customers = db.Set<Mentalne_Sposobnosti>();
-                    customers.Add(testMentalnihSposobnosti);
-                    db.SaveChanges();
-                }
-            }
-            else
-            {
-                throw new NullReferenceException();
-            }
-        }
-
+    
         public void Delete(long ID)
         {
             throw new NotImplementedException();
@@ -52,7 +35,25 @@ namespace BiciTrainingPlanDAL.TestManipulator
             }
         }
 
-        public void Update(ITable table)
+        public void Insert(Mentalne_Sposobnosti entity)
+        {
+            var testMentalnihSposobnosti = entity as Mentalne_Sposobnosti;
+            if (testMentalnihSposobnosti != null)
+            {
+                using (var db = new ProjectDBEntities())
+                {
+                    var customers = db.Set<Mentalne_Sposobnosti>();
+                    customers.Add(testMentalnihSposobnosti);
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
+        public void Update(Mentalne_Sposobnosti entity)
         {
             throw new NotImplementedException();
         }
