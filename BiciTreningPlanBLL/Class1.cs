@@ -12,7 +12,7 @@ namespace BiciTreningPlanBLL
         public void getDataFromDAL()
         {
             Biciklista biciklista = new Biciklista();
-            IDataManipulator<Biciklista> biciklistaManipulator = new BiciklistaManipulator(biciklista);
+            IDataManipulator<Biciklista> biciklistaManipulator = new BiciklistaManipulator();
                
         }
     }

@@ -27,7 +27,9 @@ namespace BiciTrainingPlanDAL
         public string Krajnje_odrediste { get; set; }
         public string Cela_putanja { get; set; }
         public long ID_Tip_putanje { get; set; }
-    
+        public long ID_Bicikliste { get; set; }
+        public virtual Biciklista Biciklista { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lista_Trka> Lista_Trka { get; set; }
         public virtual Tip_putanje Tip_putanje { get; set; }
