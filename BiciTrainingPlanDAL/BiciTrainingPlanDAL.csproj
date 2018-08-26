@@ -119,6 +119,7 @@
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RaceManipulator\ListaTrkaManipulator.cs" />
+    <Compile Include="RaceManipulator\PutanjaManipulator.cs" />
     <Compile Include="Sezona.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>

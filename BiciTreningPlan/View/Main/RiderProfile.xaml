@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
+             xmlns:vm="clr-namespace:BiciTreningPlan.ViewModel.Main"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="569" d:DesignWidth="942"
@@ -36,9 +37,9 @@
             </Ellipse>
 
             <Label Grid.Row="1" Grid.Column="0">Ime:</Label>
-            <Label Name="lblName" Grid.Row="1" Grid.Column="1"/>
+            <Label Name="lblName" Content="{Binding Name}" Grid.Row="1" Grid.Column="1"/>
             <Label Grid.Row="2" Grid.Column="0">Prezime:</Label>
-            <Label Name="lblSurname" Grid.Row="2" Grid.Column="1"/>
+            <Label Name="lblSurname" Content="{Binding Surname}" Grid.Row="2" Grid.Column="1"/>
             <Label Grid.Row="3" Grid.Column="0">Datum rođenja:</Label>
             <Label Name="lblBirth" Grid.Row="3" Grid.Column="1"/>
 

@@ -2,23 +2,76 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BiciTreningPlan"
-             xmlns:vm="clr-namespace:BiciTreningPlan.ViewModel.TrainingPlan"
-             xmlns:vw="clr-namespace:BiciTreningPlan.View.TrainingPlan"
+             xmlns:vmTrainingPlan="clr-namespace:BiciTreningPlan.ViewModel.TrainingPlan"
+             xmlns:vwTrainingPlan="clr-namespace:BiciTreningPlan.View.TrainingPlan"             
+             xmlns:vmTests="clr-namespace:BiciTreningPlan.ViewModel.Tests"
+             xmlns:vwTests="clr-namespace:BiciTreningPlan.View.Tests"             
+             xmlns:vmMain="clr-namespace:BiciTreningPlan.ViewModel.Main"
+             xmlns:vwMain="clr-namespace:BiciTreningPlan.View.Main"             
+             xmlns:vmChangeRider="clr-namespace:BiciTreningPlan.ViewModel.ChangeRider"
+             xmlns:vwChangeRider="clr-namespace:BiciTreningPlan.View.ChangeRider"
+             
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type vm:NewTrainingPlanViewModel}">
-                <vw:NewTrainingPlan/>
+            <DataTemplate DataType="{x:Type vmTrainingPlan:DescriptionViewModel}">
+                <vwTrainingPlan:Description/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:RacesInSeasonViewModel}">
-                <vw:RacesInSeason/>
+            <DataTemplate DataType="{x:Type vmTrainingPlan:NewTrainingPlanViewModel}">
+                <vwTrainingPlan:NewTrainingPlan/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:RacesViewModel}">
-                <vw:Races/>
+            <DataTemplate DataType="{x:Type vmTrainingPlan:RacesInSeasonViewModel}">
+                <vwTrainingPlan:RacesInSeason/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm:RoutesViewModel}">
-                <vw:Routes/>
+            <DataTemplate DataType="{x:Type vmTrainingPlan:RacesViewModel}">
+                <vwTrainingPlan:Races/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vmTrainingPlan:RoutesViewModel}">
+                <vwTrainingPlan:Routes/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vmTests:CriticalPowerTestViewModel}">
+                <vwTests:CriticalPowerTest/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmTests:GradedExerciseTestViewModel}">
+                <vwTests:GradedExerciseTest/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmTests:MentalSkillsProfileViewModel}">
+                <vwTests:MentalSkillsProfile/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmTests:NaturalAbilitiesProfileViewModel}">
+                <vwTests:NaturalAbilitiesProfile/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmTests:ProficienciesProfileViewModel}">
+                <vwTests:ProficienciesProfile/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmTests:SprintTestViewModel}">
+                <vwTests:SprintTest/>
+            </DataTemplate>
+            
+
+            <DataTemplate DataType="{x:Type vmMain:ChangeUserViewModel}">
+                <vwMain:ChangeUser/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmMain:DashboardViewModel}">
+                <vwMain:Dashboard/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmMain:RiderProfileViewModel}">
+                <vwMain:RiderProfile/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmMain:TestsViewModel}">
+                <vwMain:Tests/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmMain:TrainingPlanViewModel}">
+                <vwMain:TrainingPlan/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vmChangeRider:LoginViewModel}">
+                <vwChangeRider:Login/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmChangeRider:NewRiderViewModel}">
+                <vwChangeRider:NewRider/>
+            </DataTemplate> 
             
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles.xaml" />
