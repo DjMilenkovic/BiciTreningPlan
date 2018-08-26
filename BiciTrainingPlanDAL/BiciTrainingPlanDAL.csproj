@@ -124,12 +124,12 @@
     <Compile Include="Sprint_Test.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TestManipulator\ProfilisanjeProfilaVozaca.cs" />
+    <Compile Include="TestManipulator\ProfilisanjeProfilaVozacaManipulator.cs" />
     <Compile Include="TestManipulator\TestKriticneSnageManipulator.cs" />
-    <Compile Include="TestManipulator\TestMentalnihSposobnosti.cs" />
-    <Compile Include="TestManipulator\TestOcenjivanja.cs" />
-    <Compile Include="TestManipulator\TestPrirodnihSposobnostiVozaca.cs" />
-    <Compile Include="TestManipulator\TestSprinta.cs" />
+    <Compile Include="TestManipulator\TestMentalnihSposobnostiManipulator.cs" />
+    <Compile Include="TestManipulator\TestOcenjivanjaManipulator.cs" />
+    <Compile Include="TestManipulator\TestPrirodnihSposobnostiVozacaManipulator.cs" />
+    <Compile Include="TestManipulator\TestSprintaManipulator.cs" />
     <Compile Include="Test_Kriticne_Snage.cs">
       <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>

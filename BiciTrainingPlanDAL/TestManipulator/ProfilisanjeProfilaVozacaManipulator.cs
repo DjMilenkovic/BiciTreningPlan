@@ -42,7 +42,14 @@ namespace BiciTrainingPlanDAL.TestManipulator
 
         public List<Profilisanje_Profila_Vozaca> GetData()
         {
-            throw new NotImplementedException();
+            using (var db = new ProjectDBEntities())
+            {
+                var query = from b in db.Profilisanje_Profila_Vozaca
+                            where b.ID_Bicikliste == IDBicikliste
+                            select b;
+
+                return query.ToList();
+            }
         }
 
         public void Update(ITable table)
