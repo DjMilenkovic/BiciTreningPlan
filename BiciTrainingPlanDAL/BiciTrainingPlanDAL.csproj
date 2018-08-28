@@ -65,48 +65,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBModel\Biciklista.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Dani.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Dnevni_Trening_Periodi.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BiciklistaManipulator.cs" />
-    <Compile Include="DBModel\Glavni_Tipovi_Treninga.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="BiciklistaRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IskustveniNivoManipulator.cs" />
-    <Compile Include="DBModel\Iskustveni_Nivo.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Lista_Trka.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Mentalne_Sposobnosti.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Nedelja.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Prirodne_Sposobnosti.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Profilisanje_Profila_Vozaca.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DBModel\ProjectDBDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProjectDBDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\ProjectDBDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DBModel\ProjectDBDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -114,53 +79,14 @@
       <DependentUpon>ProjectDBDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DBModel\Putanja.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="RaceManipulator\ListaTrkaManipulator.cs" />
     <Compile Include="RaceManipulator\PutanjaManipulator.cs" />
-    <Compile Include="DBModel\Sezona.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Sprint_Test.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TestManipulator\ProfilisanjeProfilaVozacaManipulator.cs" />
     <Compile Include="TestManipulator\TestKriticneSnageManipulator.cs" />
     <Compile Include="TestManipulator\TestMentalnihSposobnostiManipulator.cs" />
     <Compile Include="TestManipulator\TestOcenjivanjaManipulator.cs" />
     <Compile Include="TestManipulator\TestPrirodnihSposobnostiVozacaManipulator.cs" />
     <Compile Include="TestManipulator\TestSprintaManipulator.cs" />
-    <Compile Include="DBModel\Test_Kriticne_Snage.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Test_Ocenjivanja.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Tipovi_Treninga.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Tip_putanje.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Trening_Dani.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Trening_Periodi.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Treninzi.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Treniraj_Ili_Ne.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Trke_U_Sezoni.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBModel\Vreme.cs">
-      <DependentUpon>ProjectDBDataModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -180,16 +106,16 @@
       <DependentUpon>ProjectDBDataModel.edmx</DependentUpon>
       <LastGenOutput>ProjectDBDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DBModel\ProjectDBDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ProjectDBDataModel.edmx</DependentUpon>
-      <LastGenOutput>ProjectDBDataModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectDBDataModel.Entity\ProjectDBDataModel.Entity.csproj">
+      <Project>{c8ac5d8f-9298-4821-ac46-397200ea4a75}</Project>
+      <Name>ProjectDBDataModel.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net451\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

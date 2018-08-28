@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL.DBModel
+namespace ProjectDBDataModel.Entity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Prirodne_Sposobnosti
+    public partial class Profilisanje_Profila_Vozaca
     {
         public System.DateTime Datum_testiranja { get; set; }
         public long ID_Bicikliste { get; set; }
-        public int Snaga { get; set; }
-        public int Brzina { get; set; }
-        public int Izdrzljivost { get; set; }
+        public int Brdo { get; set; }
+        public int Sprint { get; set; }
+        public int Hronometar { get; set; }
     
         public virtual Biciklista Biciklista { get; set; }
     }

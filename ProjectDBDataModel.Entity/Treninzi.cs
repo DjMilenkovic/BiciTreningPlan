@@ -7,23 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL.DBModel
+namespace ProjectDBDataModel.Entity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Tip_putanje
+    public partial class Treninzi
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tip_putanje()
-        {
-            this.Putanjas = new HashSet<Putanja>();
-        }
-    
         public long ID { get; set; }
-        public string Naziv { get; set; }
+        public long ID_Iskustveni_nivo { get; set; }
+        public long ID_Tipovi_treninga { get; set; }
+        public long ID_Trening_perioda { get; set; }
+        public int Zona_srcane_frekvencije { get; set; }
+        public int Duzina_treninga { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Putanja> Putanjas { get; set; }
+        public virtual Iskustveni_Nivo Iskustveni_Nivo { get; set; }
+        public virtual Tipovi_Treninga Tipovi_Treninga { get; set; }
+        public virtual Trening_Periodi Trening_Periodi { get; set; }
     }
 }

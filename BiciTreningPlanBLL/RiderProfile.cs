@@ -12,10 +12,10 @@ namespace BiciTreningPlanBLL
     {
         public void getDataFromDAL()
         {
-            BiciklistaManipulator biciklistaManipulator = new BiciklistaManipulator();
+            BiciklistaRepository biciklistaManipulator = new BiciklistaRepository();
             //List<Biciklista> myList = biciklistaManipulator.GetOneData(1);
             //ObservableCollection<Biciklista> myCollection = new ObservableCollection<Biciklista>(myList as List<Biciklista>);
-            var m = biciklistaManipulator.GetOneData(1); 
+         //   var m = biciklistaManipulator.GetOneData(1); 
         }
     }
 }

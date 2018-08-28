@@ -7,13 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL.DBModel
+namespace ProjectDBDataModel.Entity
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using ProjectDBDataModel.Entity;
-
+    
     public partial class ProjectDBEntities : DbContext
     {
         public ProjectDBEntities()

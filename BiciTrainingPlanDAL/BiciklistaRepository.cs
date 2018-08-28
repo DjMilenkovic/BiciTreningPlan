@@ -1,14 +1,11 @@
-﻿using BiciTrainingPlanDAL.DBModel;
+﻿using ProjectDBDataModel.Entity;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BiciTrainingPlanDAL
 {
-    public class BiciklistaManipulator : IRepository<Biciklista>
+    public class BiciklistaRepository : IRepository<Biciklista>
     {             
         public List<Biciklista> GetData()
         {
@@ -22,7 +19,7 @@ namespace BiciTrainingPlanDAL
             }
         }
 
-        public object GetOneData(long IDBiciklista)
+        public List<Biciklista> GetOneData<T>(long IDBiciklista) where T : new()
         {
             using (var db = new ProjectDBEntities())
             {
@@ -30,7 +27,7 @@ namespace BiciTrainingPlanDAL
                             where b.ID == IDBiciklista                        
                             select b;
 
-                return query;
+                return query.ToList();
             }
         }
         

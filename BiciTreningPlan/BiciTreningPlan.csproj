@@ -281,6 +281,10 @@
       <Project>{8c4e640f-6bb6-4466-a75d-9fe07e2f6d56}</Project>
       <Name>BiciTreningPlanBLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProjectDBDataModel.Entity\ProjectDBDataModel.Entity.csproj">
+      <Project>{c8ac5d8f-9298-4821-ac46-397200ea4a75}</Project>
+      <Name>ProjectDBDataModel.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

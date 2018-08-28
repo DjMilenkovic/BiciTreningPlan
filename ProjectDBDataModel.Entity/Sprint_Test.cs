@@ -7,22 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BiciTrainingPlanDAL.DBModel
+namespace ProjectDBDataModel.Entity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Trke_U_Sezoni
+    public partial class Sprint_Test
     {
-        public long ID_Sezone { get; set; }
+        public System.DateTime Datum_testiranja { get; set; }
         public long ID_Bicikliste { get; set; }
-        public long ID_Trke { get; set; }
-        public System.DateTime Datum_trke { get; set; }
-        public string Prioritet { get; set; }
-        public Nullable<int> Osvojeno_mesto { get; set; }
+        public int Maksimalna_Snaga { get; set; }
+        public int Prosecna_Snaga { get; set; }
     
         public virtual Biciklista Biciklista { get; set; }
-        public virtual Lista_Trka Lista_Trka { get; set; }
-        public virtual Sezona Sezona { get; set; }
     }
 }
