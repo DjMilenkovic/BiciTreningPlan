@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BiciTrainingPlanDAL.TestManipulator
 {
-    class TestOcenjivanjaManipulator : IRepository<Test_Ocenjivanja>
+    public class TestOcenjivanjaManipulator : IRepository<Test_Ocenjivanja>
     {
         long IDBicikliste;
 

@@ -19,7 +19,7 @@ namespace BiciTrainingPlanDAL
             }
         }
 
-        public List<Biciklista> GetOneData<T>(long IDBiciklista) where T : new()
+        public Biciklista GetOneData(long IDBiciklista)
         {
             using (var db = new ProjectDBEntities())
             {
@@ -27,7 +27,8 @@ namespace BiciTrainingPlanDAL
                             where b.ID == IDBiciklista                        
                             select b;
 
-                return query.ToList();
+                var biciklista = query.FirstOrDefault();
+                return biciklista;
             }
         }
         

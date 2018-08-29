@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BiciTrainingPlanDAL.TestManipulator
 {
-    class TestMentalnihSposobnostiManipulator : IRepository<Mentalne_Sposobnosti>
+    public class TestMentalnihSposobnostiManipulator : IRepository<Mentalne_Sposobnosti>
     {
         long IDBicikliste;
 
@@ -19,6 +19,19 @@ namespace BiciTrainingPlanDAL.TestManipulator
         public void Delete(long ID)
         {
             throw new NotImplementedException();
+        }
+
+        public Mentalne_Sposobnosti GetOneData(long iD)
+        {
+            using (var db = new ProjectDBEntities())
+            {
+                var query = (from b in db.Mentalne_Sposobnosti
+                            where b.ID_Bicikliste == IDBicikliste
+                            orderby b.Datum_testiranja descending
+                            select b).FirstOrDefault();
+                
+                return query;
+            }        
         }
 
         public List<Mentalne_Sposobnosti> GetData()

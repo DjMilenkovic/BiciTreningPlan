@@ -1,4 +1,6 @@
 ﻿using BiciTrainingPlanDAL;
+using BiciTrainingPlanDAL.TestManipulator;
+using ProjectDBDataModel.Entity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,13 +11,11 @@ using System.Threading.Tasks;
 namespace BiciTreningPlanBLL
 {
     public class RiderProfile
-    {
-        public void getDataFromDAL()
+    {        
+        public Biciklista getDataFromDAL(long ID)
         {
-            BiciklistaRepository biciklistaManipulator = new BiciklistaRepository();
-            //List<Biciklista> myList = biciklistaManipulator.GetOneData(1);
-            //ObservableCollection<Biciklista> myCollection = new ObservableCollection<Biciklista>(myList as List<Biciklista>);
-         //   var m = biciklistaManipulator.GetOneData(1); 
+            BiciklistaRepository biciklista = new BiciklistaRepository();
+            return biciklista.GetOneData(ID);            
         }
     }
 }

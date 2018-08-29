@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BiciTrainingPlanDAL.TestManipulator
 {
-    class ProfilisanjeProfilaVozacaManipulator : IRepository<Profilisanje_Profila_Vozaca>
+    public class ProfilisanjeProfilaVozacaManipulator : IRepository<Profilisanje_Profila_Vozaca>
     {
         long IDBicikliste;
 
@@ -19,6 +19,19 @@ namespace BiciTrainingPlanDAL.TestManipulator
         public void Delete(long ID)
         {
             throw new NotImplementedException();
+        }
+
+        public Profilisanje_Profila_Vozaca GetOneData(long iD)
+        {
+            using (var db = new ProjectDBEntities())
+            {
+                var query = from b in db.Profilisanje_Profila_Vozaca
+                            where b.ID_Bicikliste == IDBicikliste
+                            select b;
+
+                var profilVozaca = query.FirstOrDefault();
+                return profilVozaca;
+            }
         }
 
         public List<Profilisanje_Profila_Vozaca> GetData()

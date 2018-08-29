@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BiciTreningPlanBLL;
+using LiveCharts;
+using ProjectDBDataModel.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,15 @@ namespace BiciTreningPlan.View.Main
         public RiderProfile()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            ProficienciesProfile profProfile = new ProficienciesProfile();
+            Profilisanje_Profila_Vozaca profilisanjeVozaca = profProfile.getDataFromDAL(1);
+            pieClimb.Values = new ChartValues<double> { profilisanjeVozaca.Brdo };
+            pieSprint.Values = new ChartValues<double> { profilisanjeVozaca.Sprint };
+            pieTT.Values = new ChartValues<double> { profilisanjeVozaca.Hronometar };
         }
     }
 }
