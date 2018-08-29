@@ -23,6 +23,6 @@ namespace BiciTreningPlan.View.Main
         public TrainingPlan()
         {
             InitializeComponent();
-        }
+        }     
     }
 }

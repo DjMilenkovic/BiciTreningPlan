@@ -16,7 +16,7 @@
         <StackPanel DockPanel.Dock="Right" Margin="10">
             <Button Name="btnGenerate" IsEnabled="True" Style="{StaticResource buttonStyle}" Command="{Binding OpenNewTrainingPlan}" Height="30" MinWidth="160">Generiši novi trening plan</Button>
         </StackPanel>
-        <DataGrid Name="dgTrainingPlan"  Margin="10" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
+        <DataGrid Name="dgTrainingPlan" ItemsSource="{Binding TrainingPlanList}" MouseDoubleClick="{Binding TrainingInformation}" Margin="10" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
       VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Single"/>
         <!--MouseDoubleClick="dgTrainingPlan_MouseDoubleClick"-->
     </DockPanel>

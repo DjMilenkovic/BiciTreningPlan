@@ -9,10 +9,10 @@
 
 namespace BiciTrainingPlanDAL.DBModel
 {
+    using ProjectDBDataModel.Entity;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using ProjectDBDataModel.Entity;
 
     public partial class ProjectDBEntities : DbContext
     {

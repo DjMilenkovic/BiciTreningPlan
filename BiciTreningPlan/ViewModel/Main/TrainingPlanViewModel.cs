@@ -7,31 +7,30 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using BiciTreningPlan.Services;
 using BiciTreningPlan.Command;
+using ProjectDBDataModel.Entity;
+using System.Collections.ObjectModel;
 
 namespace BiciTreningPlan.ViewModel.Main
 {
     class TrainingPlanViewModel
     {
         WindowService service = new WindowService();
-        ICommand openNewTrainingPlan;
+
+        ObservableCollection<Trening_Dani> TrainingPlanList { get; set; }
+        public ICommand TrainingInformation { get; set; }
+        public ICommand OpenNewTrainingPlan { get; set; }
 
         public TrainingPlanViewModel(){
             OpenNewTrainingPlan = new RelayCommand(ShowWindow);
+            TrainingInformation = new RelayCommand(ShowInformation);
+        //    TrainingPlanList = 
         }
 
-        public ICommand OpenNewTrainingPlan
+        private void ShowInformation(object obj)
         {
-            get
-            {
-                return openNewTrainingPlan;
-            }
-            set
-            {
-                openNewTrainingPlan = value; 
-            }
+            service.showWindow(new DescriptionViewModel(), "Informacije o treningu");
         }
-
-        public void ShowWindow(Object obj)
+        public void ShowWindow(object obj)
         {
             service.showWindow(new NewTrainingPlanViewModel(), "Novi Trening Plan");
         }

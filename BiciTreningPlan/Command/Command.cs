@@ -18,6 +18,7 @@ namespace BiciTreningPlan.ViewModel
             : this(method, null)
         {
         }
+
         public Command(Action<object> method, Predicate<object> canExecute)
         {
             _method = method;

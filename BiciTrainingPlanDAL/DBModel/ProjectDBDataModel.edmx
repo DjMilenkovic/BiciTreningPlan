@@ -485,21 +485,18 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Trening_Dani_0_0">
-          <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
           <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Putanja">
+            <Principal Role="Biciklista">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Trening_Dani">
-              <PropertyRef Name="ID_Putanje" />
+              <PropertyRef Name="ID_Bicikliste" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_Trening_Dani_1_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_Trening_Dani_1_0" />-->
-        <Association Name="FK_Trening_Dani_2_0">
+        <Association Name="FK_Trening_Dani_1_0">
           <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="1" />
           <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
           <ReferentialConstraint>
@@ -511,15 +508,18 @@ warning 6035: The relationship 'FK_Trening_Dani_1_0' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_Trening_Dani_2_0" />-->
         <Association Name="FK_Trening_Dani_3_0">
-          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
           <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Biciklista">
+            <Principal Role="Putanja">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Trening_Dani">
-              <PropertyRef Name="ID_Bicikliste" />
+              <PropertyRef Name="ID_Putanje" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -692,15 +692,15 @@ warning 6035: The relationship 'FK_Trening_Dani_1_0' has columns that are not pa
             <End Role="Tipovi_Treninga" EntitySet="Tipovi_Treninga" />
           </AssociationSet>
           <AssociationSet Name="FK_Trening_Dani_0_0" Association="Self.FK_Trening_Dani_0_0">
-            <End Role="Putanja" EntitySet="Putanja" />
+            <End Role="Biciklista" EntitySet="Biciklista" />
             <End Role="Trening_Dani" EntitySet="Trening_Dani" />
           </AssociationSet>
-          <AssociationSet Name="FK_Trening_Dani_2_0" Association="Self.FK_Trening_Dani_2_0">
+          <AssociationSet Name="FK_Trening_Dani_1_0" Association="Self.FK_Trening_Dani_1_0">
             <End Role="Nedelja" EntitySet="Nedelja" />
             <End Role="Trening_Dani" EntitySet="Trening_Dani" />
           </AssociationSet>
           <AssociationSet Name="FK_Trening_Dani_3_0" Association="Self.FK_Trening_Dani_3_0">
-            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Putanja" EntitySet="Putanja" />
             <End Role="Trening_Dani" EntitySet="Trening_Dani" />
           </AssociationSet>
           <AssociationSet Name="FK_Treninzi_0_0" Association="Self.FK_Treninzi_0_0">
