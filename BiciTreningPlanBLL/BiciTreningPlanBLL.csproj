@@ -40,12 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CriticalPowerTest.cs" />
     <Compile Include="MentalSkill.cs" />
     <Compile Include="NaturalAbilities.cs" />
     <Compile Include="ProficienciesProfile.cs" />
     <Compile Include="RiderProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SprintTest.cs" />
+    <Compile Include="TrainingPeriods.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BiciTrainingPlanDAL\BiciTrainingPlanDAL.csproj">

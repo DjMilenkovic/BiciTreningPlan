@@ -21,12 +21,12 @@ namespace BiciTrainingPlanDAL.TestManipulator
             throw new NotImplementedException();
         }
 
-        public Prirodne_Sposobnosti GetOneData(long iD)
+        public Prirodne_Sposobnosti GetOneData(long ID)
         {
             using (var db = new ProjectDBEntities())
             {
                 var query = (from b in db.Prirodne_Sposobnosti
-                            where b.ID_Bicikliste == IDBicikliste
+                            where b.ID_Bicikliste == ID
                             orderby b.Datum_testiranja descending
                             select b).FirstOrDefault();
 

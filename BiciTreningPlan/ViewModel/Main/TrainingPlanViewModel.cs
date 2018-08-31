@@ -15,7 +15,7 @@ namespace BiciTreningPlan.ViewModel.Main
     class TrainingPlanViewModel
     {
         WindowService service = new WindowService();
-
+        public Trening_Dani TreningDan { get; set; }
         ObservableCollection<Trening_Dani> TrainingPlanList { get; set; }
         public ICommand TrainingInformation { get; set; }
         public ICommand OpenNewTrainingPlan { get; set; }
@@ -28,8 +28,10 @@ namespace BiciTreningPlan.ViewModel.Main
 
         private void ShowInformation(object obj)
         {
-            service.showWindow(new DescriptionViewModel(), "Informacije o treningu");
+            if(TreningDan!=null)
+                service.showWindow(new DescriptionViewModel(TreningDan), "Informacije o treningu");
         }
+
         public void ShowWindow(object obj)
         {
             service.showWindow(new NewTrainingPlanViewModel(), "Novi Trening Plan");

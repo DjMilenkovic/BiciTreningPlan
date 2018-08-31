@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RaceManipulator\ListaTrkaManipulator.cs" />
     <Compile Include="RaceManipulator\PutanjaManipulator.cs" />
+    <Compile Include="RaceManipulator\TreningPeriodManipulator.cs" />
     <Compile Include="TestManipulator\ProfilisanjeProfilaVozacaManipulator.cs" />
     <Compile Include="TestManipulator\TestKriticneSnageManipulator.cs" />
     <Compile Include="TestManipulator\TestMentalnihSposobnostiManipulator.cs" />
@@ -98,7 +99,9 @@
     <None Include="DBModel\ProjectDBDataModel.edmx.diagram">
       <DependentUpon>ProjectDBDataModel.edmx</DependentUpon>
     </None>
-    <None Include="Resources\BiciTreningPlanDB.db" />
+    <None Include="Resources\BiciTreningPlanDB.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DBModel\ProjectDBDataModel.Context.tt">

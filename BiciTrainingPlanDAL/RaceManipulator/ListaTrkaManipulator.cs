@@ -29,11 +29,11 @@ namespace BiciTrainingPlanDAL.RaceManipulator
             }
         }
 
-        public List<dynamic> GetDataWithJoin()
+        public List<dynamic> GetDataWithJoin(long ID)
         {
             using (var db = new ProjectDBEntities())
             {
-                var query = from listaTrka in db.Lista_Trka.Where(o => o.ID_Bicikliste == IDBicikliste)
+                var query = from listaTrka in db.Lista_Trka.Where(o => o.ID_Bicikliste == ID)
                             join putanja in db.Putanjas on listaTrka.ID_Putanje equals putanja.ID into newListaTrka
                             from trke in newListaTrka.DefaultIfEmpty()
                             select new

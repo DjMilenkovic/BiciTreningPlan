@@ -26,7 +26,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
             using (var db = new ProjectDBEntities())
             {
                 var query = (from b in db.Sprint_Test
-                            where b.ID_Bicikliste == IDBicikliste
+                            where b.ID_Bicikliste == ID
                             orderby b.Datum_testiranja descending
                             select b).FirstOrDefault();
                 

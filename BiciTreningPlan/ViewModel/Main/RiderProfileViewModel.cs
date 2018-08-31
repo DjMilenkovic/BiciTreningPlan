@@ -1,5 +1,4 @@
-﻿using BiciTreningPlan.Model;
-using BiciTreningPlanBLL;
+﻿using BiciTreningPlanBLL;
 using ProjectDBDataModel.Entity;
 using System;
 using System.Collections.Generic;
@@ -80,7 +79,7 @@ namespace BiciTreningPlan.ViewModel.Main
             TimeTrial = profilisanjeVozaca.Hronometar;
             ProficienciesRiderProfile = profProfile.returnProficiencies(profilisanjeVozaca);
 
-            SprintTest sprintTest = new BiciTreningPlanBLL.SprintTest();
+            SprintTest sprintTest = new SprintTest();
             MaxPower = sprintTest.getDataFromDAL(1).Maksimalna_Snaga;
 
             MentalSkill mentalSkill = new MentalSkill();

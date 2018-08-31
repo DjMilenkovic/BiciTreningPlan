@@ -20,13 +20,15 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Name="lblDate"  Margin="10 20" FontWeight="Bold" FontSize="26" Content="Tekst 1"/>
-            <Label Grid.Row="1" Name="lblTrainingType"  FontWeight="Bold" FontSize="18" Content="Tekst 1"/>
-            <TextBlock Grid.Row="2" Name="lblTrainingTypeDescription" Grid.ColumnSpan="7" TextWrapping="WrapWithOverflow" Margin="10" FontSize="14"/>
-            <Label Grid.Row="3" Name="lblTrainingDuration"  FontSize="18" Content="Dužina treninga: "/>
-            <Label Grid.Row="4" Name="lblTrainingPeriods"  FontWeight="Bold" FontSize="18" Content="Tekst 1"/>
-            <TextBlock Grid.Row="5" Name="lblTrainingPeriodsDescription" Grid.ColumnSpan="7" TextWrapping="WrapWithOverflow" Margin="10" FontSize="14"/>
+            <Label Grid.Row="0" Name="lblDate"  Margin="10 20" FontWeight="Bold" FontSize="26" Content="{Binding Date}"/>
+            <Label Grid.Row="1" Name="lblTrainingType"  FontWeight="Bold" FontSize="18" Content="{Binding TrainingType}"/>
+            <TextBlock Grid.Row="2" Name="lblTrainingTypeDescription" Text="{Binding Description}" Grid.ColumnSpan="7" TextWrapping="WrapWithOverflow" Margin="10" FontSize="14"/>
+            <Label Grid.Row="3" Name="lblTrainingDurationText" Content="Dužina treninga: "  FontSize="18"/>
+            <Label Grid.Row="4" Name="lblTrainingDuration" Content="{Binding Duration}"  FontSize="18"/>
+            <Label Grid.Row="5" Name="lblTrainingPeriods" Content="{Binding TrainingPeriod}"  FontWeight="Bold" FontSize="18"/>
+            <TextBlock Grid.Row="6" Name="lblTrainingPeriodsDescription" Text="{Binding PeriodDescription}" Grid.ColumnSpan="7" TextWrapping="WrapWithOverflow" Margin="10" FontSize="14"/>
         </Grid>
     </ScrollViewer>
 </Window>

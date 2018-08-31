@@ -70,6 +70,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -90,7 +91,9 @@
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Model\Rider.cs" />
+    <Compile Include="Services\IMsgBoxService.cs" />
     <Compile Include="Services\IWindowService.cs" />
+    <Compile Include="Services\MsgBoxService.cs" />
     <Compile Include="Services\WindowService.cs" />
     <Compile Include="ViewModel\ChangeRider\LoginViewModel.cs" />
     <Compile Include="ViewModel\ChangeRider\NewRiderViewModel.cs" />

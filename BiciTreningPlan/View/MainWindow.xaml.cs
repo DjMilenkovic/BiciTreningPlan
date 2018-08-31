@@ -23,7 +23,11 @@ namespace BiciTreningPlan
     {
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
+        
+            string executable = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string path = (System.IO.Path.GetDirectoryName(executable));
+            AppDomain.CurrentDomain.SetData("DataDirectory", path);           
         }
     }
 }

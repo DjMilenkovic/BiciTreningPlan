@@ -12,7 +12,7 @@ namespace BiciTreningPlan.ViewModel
 
         private Predicate<object> _canExecute;
         private Action<object> _method;
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged;     
 
         public Command(Action<object> method)
             : this(method, null)
@@ -23,7 +23,7 @@ namespace BiciTreningPlan.ViewModel
         {
             _method = method;
             _canExecute = canExecute;
-        }
+        }      
 
         public bool CanExecute(object parameter)
         {

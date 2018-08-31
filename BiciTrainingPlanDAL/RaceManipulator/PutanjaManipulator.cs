@@ -16,11 +16,11 @@ namespace BiciTrainingPlanDAL.RaceManipulator
 
         public PutanjaManipulator() { }              
 
-        public List<dynamic> GetDataWithJoin()
+        public List<dynamic> GetDataWithJoin(long ID)
         {
             using (var db = new ProjectDBEntities())
             {
-                var query = from putanja in db.Putanjas.Where(o => o.ID_Bicikliste == IDBicikliste)
+                var query = from putanja in db.Putanjas.Where(o => o.ID_Bicikliste == ID)
                             join tipPutanje in db.Tip_putanje on putanja.ID_Tip_putanje equals tipPutanje.ID into newPutanja
                             from putanje in newPutanja.DefaultIfEmpty()
                             select new

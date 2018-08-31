@@ -5,10 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Tests"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="742"
+             d:DesignHeight="700" d:DesignWidth="742"             
              >
-    <!--Loaded="UserControl_Loaded"-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
             <Label Margin="10 10" FontWeight="Bold" FontSize="26">Test kritične snage</Label>
@@ -46,13 +51,13 @@
                 <Label Grid.Row="0" Grid.Column="5">CP 30 (30 min)</Label>
 
                 <Label Grid.Row="1" Grid.Column="0">Power</Label>
-                <TextBox Name="txtCP0" Grid.Row="1" Grid.Column="1" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
-                <TextBox Name="txtCP1" Grid.Row="1" Grid.Column="2" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
-                <TextBox Name="txtCP6" Grid.Row="1" Grid.Column="3" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
-                <TextBox Name="txtCP12" Grid.Row="1" Grid.Column="4" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
-                <TextBox Name="txtCP30" Grid.Row="1" Grid.Column="5" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP0" Text="{Binding CP0}" Grid.Row="1" Grid.Column="1" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP1" Text="{Binding CP1}" Grid.Row="1" Grid.Column="2" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP6" Text="{Binding CP6}" Grid.Row="1" Grid.Column="3" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP12" Text="{Binding CP12}" Grid.Row="1" Grid.Column="4" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
+                <TextBox Name="txtCP30" Text="{Binding CP30}" Grid.Row="1" Grid.Column="5" Margin="5" TextAlignment="Center" VerticalAlignment="Center"></TextBox>
             </Grid>
-            <Button Name="submit" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Unesi</Button>
+            <Button Name="submit" Command="{Binding Save}" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Unesi</Button>
 
             <Label Margin="10 0" FontWeight="Bold" FontSize="18">Rezultati testa</Label>
             <Grid MinHeight="250">

@@ -21,12 +21,12 @@ namespace BiciTrainingPlanDAL.TestManipulator
             throw new NotImplementedException();
         }
 
-        public Profilisanje_Profila_Vozaca GetOneData(long iD)
+        public Profilisanje_Profila_Vozaca GetOneData(long ID)
         {
             using (var db = new ProjectDBEntities())
             {
                 var query = from b in db.Profilisanje_Profila_Vozaca
-                            where b.ID_Bicikliste == IDBicikliste
+                            where b.ID_Bicikliste == ID
                             select b;
 
                 var profilVozaca = query.FirstOrDefault();
