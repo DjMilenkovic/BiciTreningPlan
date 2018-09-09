@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ProjectDBModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=&quot;C:\Users\PC\OneDrive\Veštačka Inteligencija - Projekat\CyclingTrainingPlan\CyclingTrainingPlan\Resources\BiciTreningPlanDB.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DataModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=C:\Users\PC\OneDrive\Dokumenti\Programiranje\C#\Projekti\BiciTreningPlan\BiciTrainingPlanDAL\Resources\BiciTreningPlanDB.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Biciklista">
           <Key>
             <PropertyRef Name="ID" />
@@ -61,7 +61,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Naziv_trke" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="ID_Putanje" Type="integer" Nullable="false" />
           <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
@@ -81,14 +81,16 @@
         </EntityType>
         <EntityType Name="Nedelja">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Broj_nedelje" />
+            <PropertyRef Name="ID_Sezone" />
+            <PropertyRef Name="ID_Bicikliste" />
           </Key>
-          <Property Name="ID" Type="integer" Nullable="false" />
           <Property Name="Broj_nedelje" Type="integer" Nullable="false" />
           <Property Name="Datum_pocetka" Type="datetime" Nullable="false" />
           <Property Name="Datum_zavrsetka" Type="datetime" Nullable="false" />
           <Property Name="ID_Sezone" Type="integer" Nullable="false" />
-          <Property Name="ID_Trening_perioda" Type="integer" Nullable="false" />
+          <Property Name="ID_Trening_perioda" Type="integer" />
+          <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
           <Property Name="Opis" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Prirodne_Sposobnosti">
@@ -117,7 +119,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pocetno_odrediste" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Odrediste_izmedju" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="Krajnje_odrediste" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
@@ -129,11 +131,11 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
           <Property Name="Datum_pocetka" Type="datetime" Nullable="false" />
-          <Property Name="Datum_zavrsetka" Type="datetime" Nullable="false" />
-          <Property Name="Godina" Type="int" Nullable="false" />
+          <Property Name="Datum_zavrsetka" Type="datetime" />
+          <Property Name="Godina" Type="int" />
         </EntityType>
         <EntityType Name="Sprint_Test">
           <Key>
@@ -196,9 +198,10 @@
           </Key>
           <Property Name="ID_Bicikliste" Type="integer" Nullable="false" />
           <Property Name="Datum_treninga" Type="datetime" Nullable="false" />
-          <Property Name="ID_Nedelje" Type="integer" Nullable="false" />
+          <Property Name="Broj_nedelje" Type="integer" Nullable="false" />
           <Property Name="ID_Treninga" Type="integer" Nullable="false" />
-          <Property Name="ID_Putanje" Type="integer" Nullable="false" />
+          <Property Name="ID_Sezone" Type="integer" Nullable="false" />
+          <Property Name="ID_Putanje" Type="integer" />
           <Property Name="Vreme_treninga" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Prosecna_brzina" Type="int" />
           <Property Name="Maksimalna_brzina" Type="int" />
@@ -258,7 +261,7 @@
           <Key>
             <PropertyRef Name="Datum" />
           </Key>
-          <Property Name="Datum" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="Datum" Type="datetime" Nullable="false" />
           <Property Name="Temperatura" Type="int" />
           <Property Name="Brzina_vetra" Type="int" />
           <Property Name="Smer_vetra" Type="int" />
@@ -329,18 +332,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Lista_Trka_0_0">
-          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
-          <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Biciklista">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Lista_Trka">
-              <PropertyRef Name="ID_Bicikliste" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Lista_Trka_1_0">
           <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
           <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
           <ReferentialConstraint>
@@ -349,6 +340,18 @@
             </Principal>
             <Dependent Role="Lista_Trka">
               <PropertyRef Name="ID_Putanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lista_Trka_1_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lista_Trka">
+              <PropertyRef Name="ID_Bicikliste" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -364,8 +367,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Nedelja_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Nedelja">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Nedelja_1_0">
-          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="1" />
+          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="0..1" />
           <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Trening_Periodi">
@@ -401,18 +416,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Putanja_0_0">
-          <End Role="Tip_putanje" Type="Self.Tip_putanje" Multiplicity="1" />
-          <End Role="Putanja" Type="Self.Putanja" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tip_putanje">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Putanja">
-              <PropertyRef Name="ID_Tip_putanje" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Putanja_1_0">
           <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
           <End Role="Putanja" Type="Self.Putanja" Multiplicity="*" />
           <ReferentialConstraint>
@@ -421,6 +424,18 @@
             </Principal>
             <Dependent Role="Putanja">
               <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Putanja_1_0">
+          <End Role="Tip_putanje" Type="Self.Tip_putanje" Multiplicity="1" />
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_putanje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Putanja">
+              <PropertyRef Name="ID_Tip_putanje" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -484,7 +499,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Trening_Dani_0_0">
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_Trening_Dani_0_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_Trening_Dani_0_0" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_Trening_Dani_1_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_Trening_Dani_1_0" />-->
+        <Association Name="FK_Trening_Dani_2_0">
           <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
           <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
           <ReferentialConstraint>
@@ -496,30 +517,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Trening_Dani_1_0">
-          <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="1" />
-          <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Nedelja">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Trening_Dani">
-              <PropertyRef Name="ID_Nedelje" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_Trening_Dani_2_0" />-->
         <Association Name="FK_Trening_Dani_3_0">
-          <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
+          <End Role="Sezona" Type="Self.Sezona" Multiplicity="1" />
           <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Putanja">
+            <Principal Role="Sezona">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Trening_Dani">
-              <PropertyRef Name="ID_Putanje" />
+              <PropertyRef Name="ID_Sezone" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -595,7 +601,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProjectDBModelStoreContainer">
+        <EntityContainer Name="DataModelStoreContainer">
           <EntitySet Name="Biciklista" EntityType="Self.Biciklista" store:Type="Tables" />
           <EntitySet Name="Dani" EntityType="Self.Dani" store:Type="Tables" />
           <EntitySet Name="Dnevni_Trening_Periodi" EntityType="Self.Dnevni_Trening_Periodi" store:Type="Tables" />
@@ -640,16 +646,20 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Glavni_Tipovi_Treninga" EntitySet="Glavni_Tipovi_Treninga" />
           </AssociationSet>
           <AssociationSet Name="FK_Lista_Trka_0_0" Association="Self.FK_Lista_Trka_0_0">
-            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Putanja" EntitySet="Putanja" />
             <End Role="Lista_Trka" EntitySet="Lista_Trka" />
           </AssociationSet>
           <AssociationSet Name="FK_Lista_Trka_1_0" Association="Self.FK_Lista_Trka_1_0">
-            <End Role="Putanja" EntitySet="Putanja" />
+            <End Role="Biciklista" EntitySet="Biciklista" />
             <End Role="Lista_Trka" EntitySet="Lista_Trka" />
           </AssociationSet>
           <AssociationSet Name="FK_Mentalne_Sposobnosti_0_0" Association="Self.FK_Mentalne_Sposobnosti_0_0">
             <End Role="Biciklista" EntitySet="Biciklista" />
             <End Role="Mentalne_Sposobnosti" EntitySet="Mentalne_Sposobnosti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nedelja_0_0" Association="Self.FK_Nedelja_0_0">
+            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Nedelja" EntitySet="Nedelja" />
           </AssociationSet>
           <AssociationSet Name="FK_Nedelja_1_0" Association="Self.FK_Nedelja_1_0">
             <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
@@ -664,11 +674,11 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Profilisanje_Profila_Vozaca" EntitySet="Profilisanje_Profila_Vozaca" />
           </AssociationSet>
           <AssociationSet Name="FK_Putanja_0_0" Association="Self.FK_Putanja_0_0">
-            <End Role="Tip_putanje" EntitySet="Tip_putanje" />
+            <End Role="Biciklista" EntitySet="Biciklista" />
             <End Role="Putanja" EntitySet="Putanja" />
           </AssociationSet>
           <AssociationSet Name="FK_Putanja_1_0" Association="Self.FK_Putanja_1_0">
-            <End Role="Biciklista" EntitySet="Biciklista" />
+            <End Role="Tip_putanje" EntitySet="Tip_putanje" />
             <End Role="Putanja" EntitySet="Putanja" />
           </AssociationSet>
           <AssociationSet Name="FK_Sezona_0_0" Association="Self.FK_Sezona_0_0">
@@ -691,16 +701,12 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Glavni_Tipovi_Treninga" EntitySet="Glavni_Tipovi_Treninga" />
             <End Role="Tipovi_Treninga" EntitySet="Tipovi_Treninga" />
           </AssociationSet>
-          <AssociationSet Name="FK_Trening_Dani_0_0" Association="Self.FK_Trening_Dani_0_0">
+          <AssociationSet Name="FK_Trening_Dani_2_0" Association="Self.FK_Trening_Dani_2_0">
             <End Role="Biciklista" EntitySet="Biciklista" />
             <End Role="Trening_Dani" EntitySet="Trening_Dani" />
           </AssociationSet>
-          <AssociationSet Name="FK_Trening_Dani_1_0" Association="Self.FK_Trening_Dani_1_0">
-            <End Role="Nedelja" EntitySet="Nedelja" />
-            <End Role="Trening_Dani" EntitySet="Trening_Dani" />
-          </AssociationSet>
           <AssociationSet Name="FK_Trening_Dani_3_0" Association="Self.FK_Trening_Dani_3_0">
-            <End Role="Putanja" EntitySet="Putanja" />
+            <End Role="Sezona" EntitySet="Sezona" />
             <End Role="Trening_Dani" EntitySet="Trening_Dani" />
           </AssociationSet>
           <AssociationSet Name="FK_Treninzi_0_0" Association="Self.FK_Treninzi_0_0">
@@ -728,10 +734,11 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Trke_U_Sezoni" EntitySet="Trke_U_Sezoni" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ProjectDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Biciklista">
           <Key>
             <PropertyRef Name="ID" />
@@ -752,17 +759,18 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           <Property Name="Zaposlenje" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID_Nivo_Iskustva" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Iskustveni_Nivo" Relationship="Self.FK_Biciklista_0_0" FromRole="Biciklista" ToRole="Iskustveni_Nivo" />
-          <NavigationProperty Name="Lista_Trka" Relationship="Self.FK_Lista_Trka_0_0" FromRole="Biciklista" ToRole="Lista_Trka" />
+          <NavigationProperty Name="Lista_Trka" Relationship="Self.FK_Lista_Trka_1_0" FromRole="Biciklista" ToRole="Lista_Trka" />
           <NavigationProperty Name="Mentalne_Sposobnosti" Relationship="Self.FK_Mentalne_Sposobnosti_0_0" FromRole="Biciklista" ToRole="Mentalne_Sposobnosti" />
+          <NavigationProperty Name="Nedeljas" Relationship="Self.FK_Nedelja_0_0" FromRole="Biciklista" ToRole="Nedelja" />
           <NavigationProperty Name="Prirodne_Sposobnosti" Relationship="Self.FK_Prirodne_Sposobnosti_0_0" FromRole="Biciklista" ToRole="Prirodne_Sposobnosti" />
           <NavigationProperty Name="Profilisanje_Profila_Vozaca" Relationship="Self.FK_Profilisanje_Profila_Vozaca_0_0" FromRole="Biciklista" ToRole="Profilisanje_Profila_Vozaca" />
+          <NavigationProperty Name="Putanjas" Relationship="Self.FK_Putanja_0_0" FromRole="Biciklista" ToRole="Putanja" />
           <NavigationProperty Name="Sezonas" Relationship="Self.FK_Sezona_0_0" FromRole="Biciklista" ToRole="Sezona" />
           <NavigationProperty Name="Sprint_Test" Relationship="Self.FK_Sprint_Test_0_0" FromRole="Biciklista" ToRole="Sprint_Test" />
           <NavigationProperty Name="Test_Kriticne_Snage" Relationship="Self.FK_Test_Kriticne_Snage_0_0" FromRole="Biciklista" ToRole="Test_Kriticne_Snage" />
           <NavigationProperty Name="Test_Ocenjivanja" Relationship="Self.FK_Test_Ocenjivanja_0_0" FromRole="Biciklista" ToRole="Test_Ocenjivanja" />
-          <NavigationProperty Name="Trening_Dani" Relationship="Self.FK_Trening_Dani_3_0" FromRole="Biciklista" ToRole="Trening_Dani" />
+          <NavigationProperty Name="Trening_Dani" Relationship="Self.FK_Trening_Dani_2_0" FromRole="Biciklista" ToRole="Trening_Dani" />
           <NavigationProperty Name="Trke_U_Sezoni" Relationship="Self.FK_Trke_U_Sezoni_0_0" FromRole="Biciklista" ToRole="Trke_U_Sezoni" />
-          <NavigationProperty Name="Putanjas" Relationship="ProjectDBModel.FK_Putanja_1_0" FromRole="Biciklista" ToRole="Putanja" />
         </EntityType>
         <EntityType Name="Dani">
           <Key>
@@ -808,12 +816,12 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Naziv_trke" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID_Putanje" Type="Int64" Nullable="false" />
           <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Lista_Trka_0_0" FromRole="Lista_Trka" ToRole="Biciklista" />
-          <NavigationProperty Name="Putanja" Relationship="Self.FK_Lista_Trka_1_0" FromRole="Lista_Trka" ToRole="Putanja" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Lista_Trka_1_0" FromRole="Lista_Trka" ToRole="Biciklista" />
+          <NavigationProperty Name="Putanja" Relationship="Self.FK_Lista_Trka_0_0" FromRole="Lista_Trka" ToRole="Putanja" />
           <NavigationProperty Name="Trke_U_Sezoni" Relationship="Self.FK_Trke_U_Sezoni_2_0" FromRole="Lista_Trka" ToRole="Trke_U_Sezoni" />
         </EntityType>
         <EntityType Name="Mentalne_Sposobnosti">
@@ -832,17 +840,19 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
         </EntityType>
         <EntityType Name="Nedelja">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Broj_nedelje" />
+            <PropertyRef Name="ID_Sezone" />
+            <PropertyRef Name="ID_Bicikliste" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
           <Property Name="Broj_nedelje" Type="Int64" Nullable="false" />
           <Property Name="Datum_pocetka" Type="DateTime" Nullable="false" />
           <Property Name="Datum_zavrsetka" Type="DateTime" Nullable="false" />
           <Property Name="ID_Sezone" Type="Int64" Nullable="false" />
-          <Property Name="ID_Trening_perioda" Type="Int64" Nullable="false" />
+          <Property Name="ID_Trening_perioda" Type="Int64" />
+          <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
           <Property Name="Opis" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Nedelja_0_0" FromRole="Nedelja" ToRole="Biciklista" />
           <NavigationProperty Name="Trening_Periodi" Relationship="Self.FK_Nedelja_1_0" FromRole="Nedelja" ToRole="Trening_Periodi" />
-          <NavigationProperty Name="Trening_Dani" Relationship="Self.FK_Trening_Dani_2_0" FromRole="Nedelja" ToRole="Trening_Dani" />
         </EntityType>
         <EntityType Name="Prirodne_Sposobnosti">
           <Key>
@@ -872,28 +882,28 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Pocetno_odrediste" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Odrediste_izmedju" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Krajnje_odrediste" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cela_putanja" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID_Tip_putanje" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Lista_Trka" Relationship="Self.FK_Lista_Trka_1_0" FromRole="Putanja" ToRole="Lista_Trka" />
-          <NavigationProperty Name="Tip_putanje" Relationship="Self.FK_Putanja_0_0" FromRole="Putanja" ToRole="Tip_putanje" />
-          <NavigationProperty Name="Trening_Dani" Relationship="Self.FK_Trening_Dani_0_0" FromRole="Putanja" ToRole="Trening_Dani" />
           <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Biciklista" Relationship="ProjectDBModel.FK_Putanja_1_0" FromRole="Putanja" ToRole="Biciklista" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Putanja_0_0" FromRole="Putanja" ToRole="Biciklista" />
+          <NavigationProperty Name="Lista_Trka" Relationship="Self.FK_Lista_Trka_0_0" FromRole="Putanja" ToRole="Lista_Trka" />
+          <NavigationProperty Name="Tip_putanje" Relationship="Self.FK_Putanja_1_0" FromRole="Putanja" ToRole="Tip_putanje" />
         </EntityType>
         <EntityType Name="Sezona">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
           <Property Name="Datum_pocetka" Type="DateTime" Nullable="false" />
-          <Property Name="Datum_zavrsetka" Type="DateTime" Nullable="false" />
-          <Property Name="Godina" Type="Int32" Nullable="false" />
+          <Property Name="Datum_zavrsetka" Type="DateTime" />
+          <Property Name="Godina" Type="Int32" />
           <NavigationProperty Name="Biciklista" Relationship="Self.FK_Sezona_0_0" FromRole="Sezona" ToRole="Biciklista" />
+          <NavigationProperty Name="Trening_Dani" Relationship="Self.FK_Trening_Dani_3_0" FromRole="Sezona" ToRole="Trening_Dani" />
           <NavigationProperty Name="Trke_U_Sezoni" Relationship="Self.FK_Trke_U_Sezoni_1_0" FromRole="Sezona" ToRole="Trke_U_Sezoni" />
         </EntityType>
         <EntityType Name="Sprint_Test">
@@ -943,7 +953,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" />
           <Property Name="Naziv" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Putanjas" Relationship="Self.FK_Putanja_0_0" FromRole="Tip_putanje" ToRole="Putanja" />
+          <NavigationProperty Name="Putanjas" Relationship="Self.FK_Putanja_1_0" FromRole="Tip_putanje" ToRole="Putanja" />
         </EntityType>
         <EntityType Name="Tipovi_Treninga">
           <Key>
@@ -964,9 +974,10 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           </Key>
           <Property Name="ID_Bicikliste" Type="Int64" Nullable="false" />
           <Property Name="Datum_treninga" Type="DateTime" Nullable="false" />
-          <Property Name="ID_Nedelje" Type="Int64" Nullable="false" />
+          <Property Name="Broj_nedelje" Type="Int64" Nullable="false" />
           <Property Name="ID_Treninga" Type="Int64" Nullable="false" />
-          <Property Name="ID_Putanje" Type="Int64" Nullable="false" />
+          <Property Name="ID_Sezone" Type="Int64" Nullable="false" />
+          <Property Name="ID_Putanje" Type="Int64" />
           <Property Name="Vreme_treninga" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Prosecna_brzina" Type="Int32" />
           <Property Name="Maksimalna_brzina" Type="Int32" />
@@ -979,9 +990,8 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           <Property Name="Jutarnji_otkucaji_srca" Type="Int32" />
           <Property Name="Subjektivni_osecaj_pre_treninga" Type="Int32" />
           <Property Name="Subjektivni_osecaj_posle_treninga" Type="Int32" />
-          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Trening_Dani_3_0" FromRole="Trening_Dani" ToRole="Biciklista" />
-          <NavigationProperty Name="Nedelja" Relationship="Self.FK_Trening_Dani_2_0" FromRole="Trening_Dani" ToRole="Nedelja" />
-          <NavigationProperty Name="Putanja" Relationship="Self.FK_Trening_Dani_0_0" FromRole="Trening_Dani" ToRole="Putanja" />
+          <NavigationProperty Name="Biciklista" Relationship="Self.FK_Trening_Dani_2_0" FromRole="Trening_Dani" ToRole="Biciklista" />
+          <NavigationProperty Name="Sezona" Relationship="Self.FK_Trening_Dani_3_0" FromRole="Trening_Dani" ToRole="Sezona" />
         </EntityType>
         <EntityType Name="Trening_Periodi">
           <Key>
@@ -1039,7 +1049,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           <Key>
             <PropertyRef Name="Datum" />
           </Key>
-          <Property Name="Datum" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" />
           <Property Name="Temperatura" Type="Int32" />
           <Property Name="Brzina_vetra" Type="Int32" />
           <Property Name="Smer_vetra" Type="Int32" />
@@ -1061,7 +1071,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Lista_Trka_0_0">
+        <Association Name="FK_Lista_Trka_1_0">
           <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
           <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1081,6 +1091,18 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Mentalne_Sposobnosti">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nedelja_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Nedelja">
               <PropertyRef Name="ID_Bicikliste" />
             </Dependent>
           </ReferentialConstraint>
@@ -1105,6 +1127,18 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Profilisanje_Profila_Vozaca">
+              <PropertyRef Name="ID_Bicikliste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Putanja_0_0">
+          <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
+          <End Role="Putanja" Type="Self.Putanja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biciklista">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Putanja">
               <PropertyRef Name="ID_Bicikliste" />
             </Dependent>
           </ReferentialConstraint>
@@ -1157,7 +1191,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Trening_Dani_3_0">
+        <Association Name="FK_Trening_Dani_2_0">
           <End Role="Biciklista" Type="Self.Biciklista" Multiplicity="1" />
           <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1253,7 +1287,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Lista_Trka_1_0">
+        <Association Name="FK_Lista_Trka_0_0">
           <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
           <End Role="Lista_Trka" Type="Self.Lista_Trka" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1278,7 +1312,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Nedelja_1_0">
-          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="1" />
+          <End Role="Trening_Periodi" Type="Self.Trening_Periodi" Multiplicity="0..1" />
           <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Trening_Periodi">
@@ -1289,19 +1323,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Trening_Dani_2_0">
-          <End Role="Nedelja" Type="Self.Nedelja" Multiplicity="1" />
-          <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Nedelja">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Trening_Dani">
-              <PropertyRef Name="ID_Nedelje" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Putanja_0_0">
+        <Association Name="FK_Putanja_1_0">
           <End Role="Tip_putanje" Type="Self.Tip_putanje" Multiplicity="1" />
           <End Role="Putanja" Type="Self.Putanja" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1313,15 +1335,15 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Trening_Dani_0_0">
-          <End Role="Putanja" Type="Self.Putanja" Multiplicity="1" />
+        <Association Name="FK_Trening_Dani_3_0">
+          <End Role="Sezona" Type="Self.Sezona" Multiplicity="1" />
           <End Role="Trening_Dani" Type="Self.Trening_Dani" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Putanja">
+            <Principal Role="Sezona">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Trening_Dani">
-              <PropertyRef Name="ID_Putanje" />
+              <PropertyRef Name="ID_Sezone" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1361,7 +1383,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProjectDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ProjectDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Biciklistas" EntityType="Self.Biciklista" />
           <EntitySet Name="Danis" EntityType="Self.Dani" />
           <EntitySet Name="Dnevni_Trening_Periodi" EntityType="Self.Dnevni_Trening_Periodi" />
@@ -1389,13 +1411,17 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Iskustveni_Nivo" EntitySet="Iskustveni_Nivo" />
             <End Role="Biciklista" EntitySet="Biciklistas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Lista_Trka_0_0" Association="Self.FK_Lista_Trka_0_0">
+          <AssociationSet Name="FK_Lista_Trka_1_0" Association="Self.FK_Lista_Trka_1_0">
             <End Role="Biciklista" EntitySet="Biciklistas" />
             <End Role="Lista_Trka" EntitySet="Lista_Trka" />
           </AssociationSet>
           <AssociationSet Name="FK_Mentalne_Sposobnosti_0_0" Association="Self.FK_Mentalne_Sposobnosti_0_0">
             <End Role="Biciklista" EntitySet="Biciklistas" />
             <End Role="Mentalne_Sposobnosti" EntitySet="Mentalne_Sposobnosti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nedelja_0_0" Association="Self.FK_Nedelja_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Nedelja" EntitySet="Nedeljas" />
           </AssociationSet>
           <AssociationSet Name="FK_Prirodne_Sposobnosti_0_0" Association="Self.FK_Prirodne_Sposobnosti_0_0">
             <End Role="Biciklista" EntitySet="Biciklistas" />
@@ -1404,6 +1430,10 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
           <AssociationSet Name="FK_Profilisanje_Profila_Vozaca_0_0" Association="Self.FK_Profilisanje_Profila_Vozaca_0_0">
             <End Role="Biciklista" EntitySet="Biciklistas" />
             <End Role="Profilisanje_Profila_Vozaca" EntitySet="Profilisanje_Profila_Vozaca" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Putanja_0_0" Association="Self.FK_Putanja_0_0">
+            <End Role="Biciklista" EntitySet="Biciklistas" />
+            <End Role="Putanja" EntitySet="Putanjas" />
           </AssociationSet>
           <AssociationSet Name="FK_Sezona_0_0" Association="Self.FK_Sezona_0_0">
             <End Role="Biciklista" EntitySet="Biciklistas" />
@@ -1421,7 +1451,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Biciklista" EntitySet="Biciklistas" />
             <End Role="Test_Ocenjivanja" EntitySet="Test_Ocenjivanja" />
           </AssociationSet>
-          <AssociationSet Name="FK_Trening_Dani_3_0" Association="Self.FK_Trening_Dani_3_0">
+          <AssociationSet Name="FK_Trening_Dani_2_0" Association="Self.FK_Trening_Dani_2_0">
             <End Role="Biciklista" EntitySet="Biciklistas" />
             <End Role="Trening_Dani" EntitySet="Trening_Dani" />
           </AssociationSet>
@@ -1453,7 +1483,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Iskustveni_Nivo" EntitySet="Iskustveni_Nivo" />
             <End Role="Treninzi" EntitySet="Treninzis" />
           </AssociationSet>
-          <AssociationSet Name="FK_Lista_Trka_1_0" Association="Self.FK_Lista_Trka_1_0">
+          <AssociationSet Name="FK_Lista_Trka_0_0" Association="Self.FK_Lista_Trka_0_0">
             <End Role="Putanja" EntitySet="Putanjas" />
             <End Role="Lista_Trka" EntitySet="Lista_Trka" />
           </AssociationSet>
@@ -1465,16 +1495,12 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
             <End Role="Nedelja" EntitySet="Nedeljas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Trening_Dani_2_0" Association="Self.FK_Trening_Dani_2_0">
-            <End Role="Nedelja" EntitySet="Nedeljas" />
-            <End Role="Trening_Dani" EntitySet="Trening_Dani" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Putanja_0_0" Association="Self.FK_Putanja_0_0">
+          <AssociationSet Name="FK_Putanja_1_0" Association="Self.FK_Putanja_1_0">
             <End Role="Tip_putanje" EntitySet="Tip_putanje" />
             <End Role="Putanja" EntitySet="Putanjas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Trening_Dani_0_0" Association="Self.FK_Trening_Dani_0_0">
-            <End Role="Putanja" EntitySet="Putanjas" />
+          <AssociationSet Name="FK_Trening_Dani_3_0" Association="Self.FK_Trening_Dani_3_0">
+            <End Role="Sezona" EntitySet="Sezonas" />
             <End Role="Trening_Dani" EntitySet="Trening_Dani" />
           </AssociationSet>
           <AssociationSet Name="FK_Trke_U_Sezoni_1_0" Association="Self.FK_Trke_U_Sezoni_1_0">
@@ -1489,31 +1515,15 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             <End Role="Trening_Periodi" EntitySet="Trening_Periodi" />
             <End Role="Treninzi" EntitySet="Treninzis" />
           </AssociationSet>
-          <AssociationSet Name="FK_Putanja_1_0" Association="ProjectDBModel.FK_Putanja_1_0">
-            <End Role="Biciklista" EntitySet="Biciklistas" />
-            <End Role="Putanja" EntitySet="Putanjas" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_Putanja_1_0">
-          <End Type="ProjectDBModel.Biciklista" Role="Biciklista" Multiplicity="1" />
-          <End Type="ProjectDBModel.Putanja" Role="Putanja" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Biciklista">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Putanja">
-              <PropertyRef Name="ID_Bicikliste" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProjectDBModelStoreContainer" CdmEntityContainer="ProjectDBEntities">
+        <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="ProjectDB">
           <EntitySetMapping Name="Biciklistas">
-            <EntityTypeMapping TypeName="ProjectDBModel.Biciklista">
+            <EntityTypeMapping TypeName="DataModel.Biciklista">
               <MappingFragment StoreEntitySet="Biciklista">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
@@ -1534,7 +1544,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Danis">
-            <EntityTypeMapping TypeName="ProjectDBModel.Dani">
+            <EntityTypeMapping TypeName="DataModel.Dani">
               <MappingFragment StoreEntitySet="Dani">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
@@ -1542,7 +1552,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dnevni_Trening_Periodi">
-            <EntityTypeMapping TypeName="ProjectDBModel.Dnevni_Trening_Periodi">
+            <EntityTypeMapping TypeName="DataModel.Dnevni_Trening_Periodi">
               <MappingFragment StoreEntitySet="Dnevni_Trening_Periodi">
                 <ScalarProperty Name="ID_Trening_period" ColumnName="ID_Trening_period" />
                 <ScalarProperty Name="ID_Dana" ColumnName="ID_Dana" />
@@ -1551,7 +1561,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Glavni_Tipovi_Treninga">
-            <EntityTypeMapping TypeName="ProjectDBModel.Glavni_Tipovi_Treninga">
+            <EntityTypeMapping TypeName="DataModel.Glavni_Tipovi_Treninga">
               <MappingFragment StoreEntitySet="Glavni_Tipovi_Treninga">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
@@ -1560,7 +1570,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Iskustveni_Nivo">
-            <EntityTypeMapping TypeName="ProjectDBModel.Iskustveni_Nivo">
+            <EntityTypeMapping TypeName="DataModel.Iskustveni_Nivo">
               <MappingFragment StoreEntitySet="Iskustveni_Nivo">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
@@ -1568,7 +1578,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lista_Trka">
-            <EntityTypeMapping TypeName="ProjectDBModel.Lista_Trka">
+            <EntityTypeMapping TypeName="DataModel.Lista_Trka">
               <MappingFragment StoreEntitySet="Lista_Trka">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Naziv_trke" ColumnName="Naziv_trke" />
@@ -1578,7 +1588,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mentalne_Sposobnosti">
-            <EntityTypeMapping TypeName="ProjectDBModel.Mentalne_Sposobnosti">
+            <EntityTypeMapping TypeName="DataModel.Mentalne_Sposobnosti">
               <MappingFragment StoreEntitySet="Mentalne_Sposobnosti">
                 <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
@@ -1591,20 +1601,20 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nedeljas">
-            <EntityTypeMapping TypeName="ProjectDBModel.Nedelja">
+            <EntityTypeMapping TypeName="DataModel.Nedelja">
               <MappingFragment StoreEntitySet="Nedelja">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Broj_nedelje" ColumnName="Broj_nedelje" />
                 <ScalarProperty Name="Datum_pocetka" ColumnName="Datum_pocetka" />
                 <ScalarProperty Name="Datum_zavrsetka" ColumnName="Datum_zavrsetka" />
                 <ScalarProperty Name="ID_Sezone" ColumnName="ID_Sezone" />
                 <ScalarProperty Name="ID_Trening_perioda" ColumnName="ID_Trening_perioda" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
                 <ScalarProperty Name="Opis" ColumnName="Opis" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Prirodne_Sposobnosti">
-            <EntityTypeMapping TypeName="ProjectDBModel.Prirodne_Sposobnosti">
+            <EntityTypeMapping TypeName="DataModel.Prirodne_Sposobnosti">
               <MappingFragment StoreEntitySet="Prirodne_Sposobnosti">
                 <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
@@ -1615,7 +1625,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Profilisanje_Profila_Vozaca">
-            <EntityTypeMapping TypeName="ProjectDBModel.Profilisanje_Profila_Vozaca">
+            <EntityTypeMapping TypeName="DataModel.Profilisanje_Profila_Vozaca">
               <MappingFragment StoreEntitySet="Profilisanje_Profila_Vozaca">
                 <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
@@ -1626,20 +1636,20 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Putanjas">
-            <EntityTypeMapping TypeName="ProjectDBModel.Putanja">
+            <EntityTypeMapping TypeName="DataModel.Putanja">
               <MappingFragment StoreEntitySet="Putanja">
-                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Pocetno_odrediste" ColumnName="Pocetno_odrediste" />
                 <ScalarProperty Name="Odrediste_izmedju" ColumnName="Odrediste_izmedju" />
                 <ScalarProperty Name="Krajnje_odrediste" ColumnName="Krajnje_odrediste" />
                 <ScalarProperty Name="Cela_putanja" ColumnName="Cela_putanja" />
                 <ScalarProperty Name="ID_Tip_putanje" ColumnName="ID_Tip_putanje" />
+                <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sezonas">
-            <EntityTypeMapping TypeName="ProjectDBModel.Sezona">
+            <EntityTypeMapping TypeName="DataModel.Sezona">
               <MappingFragment StoreEntitySet="Sezona">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
@@ -1650,7 +1660,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sprint_Test">
-            <EntityTypeMapping TypeName="ProjectDBModel.Sprint_Test">
+            <EntityTypeMapping TypeName="DataModel.Sprint_Test">
               <MappingFragment StoreEntitySet="Sprint_Test">
                 <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
@@ -1660,7 +1670,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Test_Kriticne_Snage">
-            <EntityTypeMapping TypeName="ProjectDBModel.Test_Kriticne_Snage">
+            <EntityTypeMapping TypeName="DataModel.Test_Kriticne_Snage">
               <MappingFragment StoreEntitySet="Test_Kriticne_Snage">
                 <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
@@ -1676,7 +1686,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Test_Ocenjivanja">
-            <EntityTypeMapping TypeName="ProjectDBModel.Test_Ocenjivanja">
+            <EntityTypeMapping TypeName="DataModel.Test_Ocenjivanja">
               <MappingFragment StoreEntitySet="Test_Ocenjivanja">
                 <ScalarProperty Name="Datum_testiranja" ColumnName="Datum_testiranja" />
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
@@ -1687,7 +1697,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tip_putanje">
-            <EntityTypeMapping TypeName="ProjectDBModel.Tip_putanje">
+            <EntityTypeMapping TypeName="DataModel.Tip_putanje">
               <MappingFragment StoreEntitySet="Tip_putanje">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
@@ -1695,7 +1705,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tipovi_Treninga">
-            <EntityTypeMapping TypeName="ProjectDBModel.Tipovi_Treninga">
+            <EntityTypeMapping TypeName="DataModel.Tipovi_Treninga">
               <MappingFragment StoreEntitySet="Tipovi_Treninga">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
@@ -1705,12 +1715,13 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Trening_Dani">
-            <EntityTypeMapping TypeName="ProjectDBModel.Trening_Dani">
+            <EntityTypeMapping TypeName="DataModel.Trening_Dani">
               <MappingFragment StoreEntitySet="Trening_Dani">
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
                 <ScalarProperty Name="Datum_treninga" ColumnName="Datum_treninga" />
-                <ScalarProperty Name="ID_Nedelje" ColumnName="ID_Nedelje" />
+                <ScalarProperty Name="Broj_nedelje" ColumnName="Broj_nedelje" />
                 <ScalarProperty Name="ID_Treninga" ColumnName="ID_Treninga" />
+                <ScalarProperty Name="ID_Sezone" ColumnName="ID_Sezone" />
                 <ScalarProperty Name="ID_Putanje" ColumnName="ID_Putanje" />
                 <ScalarProperty Name="Vreme_treninga" ColumnName="Vreme_treninga" />
                 <ScalarProperty Name="Prosecna_brzina" ColumnName="Prosecna_brzina" />
@@ -1728,7 +1739,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Trening_Periodi">
-            <EntityTypeMapping TypeName="ProjectDBModel.Trening_Periodi">
+            <EntityTypeMapping TypeName="DataModel.Trening_Periodi">
               <MappingFragment StoreEntitySet="Trening_Periodi">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
@@ -1737,7 +1748,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Treninzis">
-            <EntityTypeMapping TypeName="ProjectDBModel.Treninzi">
+            <EntityTypeMapping TypeName="DataModel.Treninzi">
               <MappingFragment StoreEntitySet="Treninzi">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Iskustveni_nivo" ColumnName="ID_Iskustveni_nivo" />
@@ -1749,7 +1760,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Treniraj_Ili_Ne">
-            <EntityTypeMapping TypeName="ProjectDBModel.Treniraj_Ili_Ne">
+            <EntityTypeMapping TypeName="DataModel.Treniraj_Ili_Ne">
               <MappingFragment StoreEntitySet="Treniraj_Ili_Ne">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
@@ -1757,7 +1768,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Trke_U_Sezoni">
-            <EntityTypeMapping TypeName="ProjectDBModel.Trke_U_Sezoni">
+            <EntityTypeMapping TypeName="DataModel.Trke_U_Sezoni">
               <MappingFragment StoreEntitySet="Trke_U_Sezoni">
                 <ScalarProperty Name="ID_Sezone" ColumnName="ID_Sezone" />
                 <ScalarProperty Name="ID_Bicikliste" ColumnName="ID_Bicikliste" />
@@ -1769,7 +1780,7 @@ warning 6035: The relationship 'FK_Trening_Dani_2_0' has columns that are not pa
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vremes">
-            <EntityTypeMapping TypeName="ProjectDBModel.Vreme">
+            <EntityTypeMapping TypeName="DataModel.Vreme">
               <MappingFragment StoreEntitySet="Vreme">
                 <ScalarProperty Name="Datum" ColumnName="Datum" />
                 <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />

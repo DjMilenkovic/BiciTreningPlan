@@ -19,15 +19,16 @@ namespace ProjectDBDataModel.Entity
         {
             this.Lista_Trka = new HashSet<Lista_Trka>();
             this.Mentalne_Sposobnosti = new HashSet<Mentalne_Sposobnosti>();
+            this.Nedeljas = new HashSet<Nedelja>();
             this.Prirodne_Sposobnosti = new HashSet<Prirodne_Sposobnosti>();
             this.Profilisanje_Profila_Vozaca = new HashSet<Profilisanje_Profila_Vozaca>();
+            this.Putanjas = new HashSet<Putanja>();
             this.Sezonas = new HashSet<Sezona>();
             this.Sprint_Test = new HashSet<Sprint_Test>();
             this.Test_Kriticne_Snage = new HashSet<Test_Kriticne_Snage>();
             this.Test_Ocenjivanja = new HashSet<Test_Ocenjivanja>();
             this.Trening_Dani = new HashSet<Trening_Dani>();
             this.Trke_U_Sezoni = new HashSet<Trke_U_Sezoni>();
-            this.Putanjas = new HashSet<Putanja>();
         }
     
         public long ID { get; set; }
@@ -52,9 +53,13 @@ namespace ProjectDBDataModel.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mentalne_Sposobnosti> Mentalne_Sposobnosti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Nedelja> Nedeljas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prirodne_Sposobnosti> Prirodne_Sposobnosti { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Profilisanje_Profila_Vozaca> Profilisanje_Profila_Vozaca { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Putanja> Putanjas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sezona> Sezonas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -67,7 +72,5 @@ namespace ProjectDBDataModel.Entity
         public virtual ICollection<Trening_Dani> Trening_Dani { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Trke_U_Sezoni> Trke_U_Sezoni { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Putanja> Putanjas { get; set; }
     }
 }

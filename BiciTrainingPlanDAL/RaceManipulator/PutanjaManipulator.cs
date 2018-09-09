@@ -18,7 +18,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
 
         public List<dynamic> GetDataWithJoin(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from putanja in db.Putanjas.Where(o => o.ID_Bicikliste == ID)
                             join tipPutanje in db.Tip_putanje on putanja.ID_Tip_putanje equals tipPutanje.ID into newPutanja
@@ -29,6 +29,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
                                 putanja.Pocetno_odrediste,
                                 putanja.Odrediste_izmedju,
                                 putanja.Krajnje_odrediste,
+                                putanja.Cela_putanja,
                                 putanje.Naziv
                             };
 
@@ -38,9 +39,9 @@ namespace BiciTrainingPlanDAL.RaceManipulator
 
         public List<Putanja> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
-                var query = from l in db.Putanjas
+                var query = from l in db.Putanjas where l.ID_Bicikliste == IDBicikliste
                             orderby l.ID
                             select l;
 
@@ -53,7 +54,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
             var testPutanjaManipulator = entity as Putanja;
             if (testPutanjaManipulator != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var customers = db.Set<Putanja>();
                     customers.Add(testPutanjaManipulator);
@@ -71,7 +72,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
             var putanja = entity as Putanja;
             if (putanja != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var result = db.Putanjas.SingleOrDefault(b => b.ID == putanja.ID);
                     if (result != null)
@@ -93,7 +94,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
 
         public void Delete(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var result = db.Putanjas.SingleOrDefault(b => b.ID == ID);
                 if (result != null)

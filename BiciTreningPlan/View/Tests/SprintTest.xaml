@@ -100,10 +100,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Margin="10">Maksimalna snaga:</Label>
-                <TextBox Name="txtMax" Grid.Row="0" Grid.Column="1" Margin="10" MinWidth="80"></TextBox>
+                <TextBox Name="txtMax" Text="{Binding MaxPower, Mode=OneWayToSource}" Grid.Row="0" Grid.Column="1" Margin="10" MinWidth="80"></TextBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="10">Prosečna snaga:</Label>
-                <TextBox Name="txtAvg" Grid.Row="1" Grid.Column="1" Margin="10"></TextBox>
-                <Button Name="btnSave" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="10" Content="Sačuvaj"/>
+                <TextBox Name="txtAvg" Text="{Binding AvgPower, Mode=OneWayToSource}" Grid.Row="1" Grid.Column="1" Margin="10"></TextBox>
+                <Button Name="btnSave" Command="{Binding Save}" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="10" Content="Sačuvaj"/>
             </Grid>
         </StackPanel>
     </ScrollViewer>

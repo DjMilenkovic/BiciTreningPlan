@@ -17,16 +17,19 @@ namespace ProjectDBDataModel.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sezona()
         {
+            this.Trening_Dani = new HashSet<Trening_Dani>();
             this.Trke_U_Sezoni = new HashSet<Trke_U_Sezoni>();
         }
     
         public long ID { get; set; }
         public long ID_Bicikliste { get; set; }
         public System.DateTime Datum_pocetka { get; set; }
-        public System.DateTime Datum_zavrsetka { get; set; }
-        public int Godina { get; set; }
+        public Nullable<System.DateTime> Datum_zavrsetka { get; set; }
+        public Nullable<int> Godina { get; set; }
     
         public virtual Biciklista Biciklista { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Trening_Dani> Trening_Dani { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Trke_U_Sezoni> Trke_U_Sezoni { get; set; }
     }

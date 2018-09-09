@@ -66,8 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BiciklistaRepository.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="IskustveniNivoManipulator.cs" />
     <Compile Include="DBModel\ProjectDBDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,9 +76,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProjectDBDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IskustveniNivoManipulator.cs" />
+    <Compile Include="NedeljeManipulator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaceManipulator\DnevniTreningPeriodiManipulator.cs" />
     <Compile Include="RaceManipulator\ListaTrkaManipulator.cs" />
+    <Compile Include="RaceManipulator\ListaTrkaUSezoniManipulator.cs" />
     <Compile Include="RaceManipulator\PutanjaManipulator.cs" />
+    <Compile Include="RaceManipulator\SezonaManipulator.cs" />
+    <Compile Include="RaceManipulator\TipPutanjeManipulator.cs" />
+    <Compile Include="RaceManipulator\TreningListManipulator.cs" />
     <Compile Include="RaceManipulator\TreningPeriodManipulator.cs" />
     <Compile Include="TestManipulator\ProfilisanjeProfilaVozacaManipulator.cs" />
     <Compile Include="TestManipulator\TestKriticneSnageManipulator.cs" />
@@ -88,10 +94,11 @@
     <Compile Include="TestManipulator\TestOcenjivanjaManipulator.cs" />
     <Compile Include="TestManipulator\TestPrirodnihSposobnostiVozacaManipulator.cs" />
     <Compile Include="TestManipulator\TestSprintaManipulator.cs" />
+    <Compile Include="TreningDaniManipulator.cs" />
+    <Compile Include="VremeManipulator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <EntityDeploy Include="DBModel\ProjectDBDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProjectDBDataModel.Designer.cs</LastGenOutput>
@@ -99,15 +106,15 @@
     <None Include="DBModel\ProjectDBDataModel.edmx.diagram">
       <DependentUpon>ProjectDBDataModel.edmx</DependentUpon>
     </None>
-    <None Include="Resources\BiciTreningPlanDB.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="packages.config" />
     <Content Include="DBModel\ProjectDBDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ProjectDBDataModel.edmx</DependentUpon>
       <LastGenOutput>ProjectDBDataModel.Context.cs</LastGenOutput>
+      <CustomToolNamespace>ProjectDBDataModel.Entity</CustomToolNamespace>
+    </Content>
+    <Content Include="Resources\BiciTreningPlanDB.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

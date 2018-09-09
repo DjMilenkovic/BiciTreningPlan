@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectDBDataModel;
 using BiciTrainingPlanDAL.TestManipulator;
+using System.Collections.ObjectModel;
 
 namespace BiciTreningPlanBLL
 {
@@ -43,6 +44,30 @@ namespace BiciTreningPlanBLL
                 result = "Sprinter";
 
             return result;   
+        }        
+
+        public void insertIntoDAL(ObservableCollection<int> Sprint, ObservableCollection<int> Climb, ObservableCollection<int> TT, long IDBicikliste)
+        {
+            Profilisanje_Profila_Vozaca profilVozaca = new Profilisanje_Profila_Vozaca();
+            profilVozaca.ID_Bicikliste = IDBicikliste;
+            profilVozaca.Datum_testiranja = DateTime.Today;
+            profilVozaca.Brdo = Total(Climb);
+            profilVozaca.Sprint = Total(Sprint);
+            profilVozaca.Hronometar = Total(TT);
+
+            ProfilisanjeProfilaVozacaManipulator profilVozacaManipulator = new ProfilisanjeProfilaVozacaManipulator();
+            profilVozacaManipulator.Insert(profilVozaca);
+        }
+
+
+        private int Total(ObservableCollection<int> collection)
+        {
+            int sum = 0;
+            foreach (var item in collection)
+            {
+                sum += item;
+            }
+            return sum;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace BiciTreningPlan
             InitializeComponent();
         
             string executable = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string path = (System.IO.Path.GetDirectoryName(executable));
+            string path = AppDomain.CurrentDomain.BaseDirectory;
             AppDomain.CurrentDomain.SetData("DataDirectory", path);           
         }
     }

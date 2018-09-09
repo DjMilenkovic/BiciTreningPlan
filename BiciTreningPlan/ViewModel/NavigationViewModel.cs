@@ -36,6 +36,16 @@ namespace BiciTreningPlan.ViewModel
         private object selectedViewModel;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string Ime
+        {
+            get { return Properties.Settings.Default.Ime; }            
+        }
+
+        public string Slika
+        {
+            get { return Properties.Settings.Default.Slika; }
+        }
+
         public object SelectedViewModel
         {
             get { return selectedViewModel; }

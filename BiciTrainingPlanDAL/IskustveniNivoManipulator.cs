@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BiciTrainingPlanDAL
 {
-    class IskustveniNivoManipulator : IRepository<Iskustveni_Nivo>
+   public class IskustveniNivoManipulator : IRepository<Iskustveni_Nivo>
     {          
         
         public void Delete(long ID)
@@ -15,7 +15,7 @@ namespace BiciTrainingPlanDAL
 
         public List<Iskustveni_Nivo> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from b in db.Iskustveni_Nivo
                             orderby b.ID

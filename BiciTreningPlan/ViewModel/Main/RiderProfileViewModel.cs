@@ -10,83 +10,209 @@ using System.Threading.Tasks;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Input;
+using BiciTreningPlan.Command;
 
 namespace BiciTreningPlan.ViewModel.Main
 {
-    class RiderProfileViewModel
+    class RiderProfileViewModel : INotifyPropertyChanged
     {
-        public RiderProfile riderProfile;
-        public ProficienciesProfile profProfile;
-        public Biciklista Rider { get; set; }
-        public ObservableCollection<Biciklista> Riders { get; set; }
-        public ObservableCollection<Test_Ocenjivanja> GradedTest { get; set; }
-        public ObservableCollection<Test_Kriticne_Snage> CriticalPowerTest { get; set; }
-        public ObservableCollection<Sprint_Test> SprintTest { get; set; }
-        public ObservableCollection<Profilisanje_Profila_Vozaca> ProficienciesProfile { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public int Weight { get; set; }
-        public int Height { get; set; }
-        public string FavoriteRaceA { get; set; }
-        public string FavoriteRaceB { get; set; }
-        public string FavoriteRaceC { get; set; }
-        public long MaxPower { get; set; }
-   //    public string GradedExercise { get; set; }
-        public string ProficienciesRiderProfile { get; set; }
-        public int MentalSkills { get; set; }
-        public int NaturalAbilitiesProfile { get; set; }
-        public double Sprint { get; set; }
-        public double Climb { get; set; }
-        public double TimeTrial { get; set; }
-        public Func<ChartPoint, string> PointLabel { get; set; }
+        private RiderProfile riderProfile;
+        private ProficienciesProfile profProfile;
+        private long IDBicikliste;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private Biciklista rider;
+        public Biciklista Rider
+        {
+            get { return rider; }
+            set
+            {
+                rider = value;
+                RaisePropertyChanged("Rider");
+            }
+        }
+        private Mentalne_Sposobnosti mentalSkill;
+        public Mentalne_Sposobnosti MentalSkill
+        {
+            get { return mentalSkill; }
+            set
+            {
+                mentalSkill = value;
+                RaisePropertyChanged("MentalSkill");
+            }
+        }
+
+        private Test_Ocenjivanja gradedTest;
+        public Test_Ocenjivanja GradedTest
+        {
+            get { return gradedTest; }
+            set
+            {
+                gradedTest = value;
+                RaisePropertyChanged("GradedTest");
+            }
+        }
+
+        private Sprint_Test sprintTest;
+        public Sprint_Test Sprint_Test
+        {
+            get { return sprintTest; }
+            set
+            {
+                sprintTest = value;
+                RaisePropertyChanged("Sprint_Test");
+            }
+        }
+
+        private Profilisanje_Profila_Vozaca proficienciesProfile;
+        public Profilisanje_Profila_Vozaca ProficienciesProfile
+        {
+            get { return proficienciesProfile; }
+            set
+            {
+                proficienciesProfile = value;
+                RaisePropertyChanged("ProficienciesProfile");
+            }
+        }
+
+        private int prirodneSposobnosti;
+        public int Prirodne_Sposobnosti
+        {
+            get { return prirodneSposobnosti; }
+            set
+            {
+                prirodneSposobnosti = value;
+                RaisePropertyChanged("Prirodne_Sposobnosti");
+            }
+        }
+
+        private string profVozaca;
+        public string ProfVozaca
+        {
+            get { return profVozaca; }
+            set
+            {
+                profVozaca = value;
+                RaisePropertyChanged("ProfVozaca");
+            }
+        }
+
+        private ChartValues<double> sprint;
+        public ChartValues<double> Sprint
+        {
+            get { return sprint; }
+            set
+            {
+                sprint = value;
+                RaisePropertyChanged("Sprint");
+            }
+        }
+
+        private ChartValues<double> brdo;
+        public ChartValues<double> Brdo
+        {
+            get { return brdo; }
+            set
+            {
+                brdo = value;
+                RaisePropertyChanged("Brdo");
+            }
+        }
+
+        private ChartValues<double> hronometar;
+        public ChartValues<double> Hronometar
+        {
+            get { return hronometar; }
+            set
+            {
+                hronometar = value;
+                RaisePropertyChanged("Hronometar");
+            }
+        }
+
+        private Func<ChartPoint, string> pointLabel;
+        public Func<ChartPoint, string> PointLabel
+        {
+            get { return pointLabel; }
+            set
+            {
+                pointLabel = value;
+                RaisePropertyChanged("PointLabel");
+            }
+        }
+        private bool isBusy;
+        public bool IsBusy
+        {
+            get
+            {
+                return isBusy;
+            }
+            set
+            {
+                isBusy = value;
+                RaisePropertyChanged("IsBusy");
+            }
+        }
+        public ICommand Loaded { get; set; }
 
         public RiderProfileViewModel()
         {
-            generateRiderInformation();
-            generateRiderTests();
-
+            IDBicikliste = Properties.Settings.Default.BiciklistaID;
+            Sprint = new ChartValues<double> { 0 };
+            Hronometar = new ChartValues<double> { 0 };
+            Brdo = new ChartValues<double> { 0 };
             PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.SeriesView.Title, chartPoint.Participation);
+            Loaded = new RelayCommand(loadScreen);
+
         }
 
+      
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void loadScreen(object obj)
+        {
+            IsBusy = true;
+
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.DoWork += (o, ea) =>
+            {
+                generateRiderInformation();
+                generateRiderTests();
+            };
+            worker.RunWorkerCompleted += (o, ea) =>
+            {
+                IsBusy = false;
+                Sprint = new ChartValues<double> { ProficienciesProfile.Sprint };
+                Brdo = new ChartValues<double> { ProficienciesProfile.Brdo };
+                Hronometar = new ChartValues<double> { ProficienciesProfile.Hronometar };
+            };
+         
+            worker.RunWorkerAsync();
+         }
+        
         private void generateRiderInformation()
         {
             riderProfile = new RiderProfile();
-            Rider = riderProfile.getDataFromDAL(1);
-            Name = Rider.Ime;
-            Surname = Rider.Prezime;
-            BirthDate = Rider.Datum_Rodjenja;
-            Address = Rider.Adresa;
-            City = Rider.Grad;
-            Country = Rider.Drzava;
-            Weight = (int)Rider.Tezina;
-            Height = (int)Rider.Visina;
-            FavoriteRaceA = Rider.Omiljena_Trka_A;
-            FavoriteRaceB = Rider.Omiljena_Trka_B;
-            FavoriteRaceC = Rider.Omiljena_Trka_C;
+            Rider = riderProfile.getDataFromDAL(IDBicikliste);          
         }
 
         private void generateRiderTests()
         {
-
             profProfile = new ProficienciesProfile();
-            Profilisanje_Profila_Vozaca profilisanjeVozaca = profProfile.getDataFromDAL(1);
-            Sprint = profilisanjeVozaca.Sprint;
-            Climb = profilisanjeVozaca.Brdo;
-            TimeTrial = profilisanjeVozaca.Hronometar;
-            ProficienciesRiderProfile = profProfile.returnProficiencies(profilisanjeVozaca);
+            ProficienciesProfile = profProfile.getDataFromDAL(IDBicikliste);
+            ProfVozaca = profProfile.returnProficiencies(ProficienciesProfile);
 
             SprintTest sprintTest = new SprintTest();
-            MaxPower = sprintTest.getDataFromDAL(1).Maksimalna_Snaga;
+            Sprint_Test = sprintTest.getDataFromDAL(IDBicikliste);
 
             MentalSkill mentalSkill = new MentalSkill();
-            MentalSkills = mentalSkill.getDataFromDAL(1).Motivacija;
+            MentalSkill = mentalSkill.getDataFromDAL(IDBicikliste);
 
             NaturalAbilities naturalAbilities = new NaturalAbilities();
-            NaturalAbilitiesProfile = naturalAbilities.getNaturalAbilite(ProficienciesRiderProfile, 1);
+            Prirodne_Sposobnosti = naturalAbilities.getNaturalAbilite(ProfVozaca, IDBicikliste);
         }
     }
 }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:BiciTreningPlan.Properties"
         xmlns:local="clr-namespace:BiciTreningPlan"
         xmlns:localVM="clr-namespace:BiciTreningPlan.ViewModel"
         mc:Ignorable="d"
@@ -33,11 +34,11 @@
 
             <Ellipse Name="photo" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="/Resources/defaultPicture.png"/>
+                    <ImageBrush ImageSource="{Binding Source={x:Static properties:Settings.Default}, Path=Slika}"/>
                 </Ellipse.Fill>
             </Ellipse>
             <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" LastChildFill="True" Width="{Binding ActualWidth, ElementName=Sidebar}">
-                <TextBlock DockPanel.Dock="Top" Foreground="#b8c7ce" Background="Transparent" HorizontalAlignment="Center">Ime</TextBlock>
+                <TextBlock DockPanel.Dock="Top" Text="{Binding Source={x:Static properties:Settings.Default}, Path=Ime}" Foreground="#b8c7ce" Background="Transparent" HorizontalAlignment="Center"/>
                 <Button Style="{StaticResource buttonStyle}" Margin="20 10 20 0" Command="{Binding ChangeUserCommand}">
                     <DockPanel LastChildFill="True">
                         <Image DockPanel.Dock="Left" Source="/Resources/changeUser.png" Margin="10" />

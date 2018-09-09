@@ -10,6 +10,7 @@ using ProjectDBDataModel.Entity;
 using System.Windows.Input;
 using BiciTreningPlan.Command;
 using System.ComponentModel;
+using BiciTreningPlan.Services;
 
 namespace BiciTreningPlan.ViewModel.Tests
 {
@@ -126,7 +127,8 @@ namespace BiciTreningPlan.ViewModel.Tests
         
         public ICommand Loaded { get; set; }
         public ICommand Save { get; set; }
-        public long IDBicikliste { get; set; }
+        private long IDBicikliste { get; set; }
+        private IMsgBoxService msgBox;
 
         protected void RaisePropertyChanged(string propertyName)
         {
@@ -138,6 +140,8 @@ namespace BiciTreningPlan.ViewModel.Tests
             Loaded = new RelayCommand(loadScreen);
             Save = new RelayCommand(insertTestResult);
             cpw = new CriticalPowerTest();
+            IDBicikliste = Properties.Settings.Default.BiciklistaID;
+            msgBox = new MsgBoxService();
         }
 
         public void loadScreen(object obj)
@@ -179,17 +183,23 @@ namespace BiciTreningPlan.ViewModel.Tests
 
             try
             {
-                cpw.insertIntoDAL(test);
-
-                SeriesCollection.Add(new LineSeries
+                if (msgBox.AskForConfirmation("Da li ste sigurni da želite da dodate test?")==true)
                 {
-                    Title = DateTime.Today.ToShortDateString(),
-                    Values = new ChartValues<double> { cp0, cp1, cp6, cp12, cp30, cp60, cp90, cp180 },
-                    LabelPoint = point => point.Y + "W",
-                });
+             //       cpw.insertIntoDAL(test);
+
+                    SeriesCollection.Add(new LineSeries
+                    {
+                        Title = DateTime.Today.ToShortDateString(),
+                        Values = new ChartValues<double> { cp0, cp1, cp6, cp12, cp30, cp60, cp90, cp180 },
+                        LabelPoint = point => point.Y + "W",
+                    });
+                                   
+                    msgBox.ShowNotification("Uspešno ste dodali test.");
+                }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
+                msgBox.ShowError("Došlo je do greške!");
             }
         }
 

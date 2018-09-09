@@ -4,12 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.ChangeRider"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <!--Loaded="UserControl_Loaded"-->
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                 mc:Ignorable="d" 
+                 d:DesignHeight="300" d:DesignWidth="680">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <StackPanel Orientation="Vertical">
-        <DataGrid Name="dtUsers" IsReadOnly="True" ColumnWidth="*" VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Extended" Margin="10"></DataGrid>
-        <Button Name="btnLogin" Style="{StaticResource buttonStyle}" Foreground="#ffffff" MinHeight="30" MinWidth="100" Margin="10 20">Prijavi izabranog korisnika</Button>
-        <Button Name="btnDelete" Style="{StaticResource buttonStyle}" Foreground="#ffffff" MinHeight="30" MinWidth="100" Margin="10 20">Obriši izabranog korisnika</Button>
+        <DataGrid ItemsSource="{Binding ListaBiciklista}" SelectedItem="{Binding SelectedCyclist}" AutoGenerateColumns="False" IsReadOnly="True" VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Single" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="Auto"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="Auto"/>
+                <DataGridTextColumn Header="Datum rodjenja" Binding="{Binding Datum_Rodjenja, StringFormat=\{0:dd.MM.yyyy\}}" Width="Auto"/>
+                <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" Width="Auto"/>
+                <DataGridTextColumn Header="Grad" Binding="{Binding Grad}" Width="Auto"/>
+                <DataGridTextColumn Header="Država" Binding="{Binding Drzava}" Width="Auto"/>
+                <DataGridTextColumn Header="Težina" Binding="{Binding Visina}" Width="Auto"/>
+                <DataGridTextColumn Header="Visina" Binding="{Binding Tezina}" Width="Auto"/>
+                <DataGridTextColumn Header="Omiljena trka A" Binding="{Binding Omiljena_Trka_A}" Width="Auto"/>
+                <DataGridTextColumn Header="Omiljena trka B" Binding="{Binding Omiljena_Trka_B}" Width="Auto"/>
+                <DataGridTextColumn Header="Omiljena trka C" Binding="{Binding Omiljena_Trka_C}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Command="{Binding Login}" Style="{StaticResource buttonStyle}" Foreground="#ffffff" MinHeight="30" MinWidth="100" Margin="10 20">Prijavi izabranog korisnika</Button>
+        <Button Command="{Binding Delete}" Name="btnDelete" Style="{StaticResource buttonStyle}" Foreground="#ffffff" MinHeight="30" MinWidth="100" Margin="10 20">Obriši izabranog korisnika</Button>
     </StackPanel>
 </UserControl>

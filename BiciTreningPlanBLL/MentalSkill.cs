@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BiciTrainingPlanDAL.TestManipulator;
 using ProjectDBDataModel.Entity;
+using System.Collections.ObjectModel;
 
 namespace BiciTreningPlanBLL
 {
@@ -25,6 +26,37 @@ namespace BiciTreningPlanBLL
                 result.Vizualizacija = 0;
             }
             return result;
+        }
+
+        public void insertIntoDAL(ObservableCollection<int> Visualisation,ObservableCollection<int> Motivation, ObservableCollection<int> Focus, ObservableCollection<int> Habit, ObservableCollection<int> Confidence, long IDBicikliste)
+        {
+            int visualisation = Total(Visualisation);
+            int motivation = Total(Motivation);
+            int focus = Total(Focus);
+            int habit = Total(Habit);
+            int confidence = Total(Confidence);
+
+            Mentalne_Sposobnosti mentalneSposobnosti = new Mentalne_Sposobnosti();
+            mentalneSposobnosti.Datum_testiranja = DateTime.Today;
+            mentalneSposobnosti.ID_Bicikliste = IDBicikliste;
+            mentalneSposobnosti.Motivacija = motivation;
+            mentalneSposobnosti.Samopouzdanje = confidence;
+            mentalneSposobnosti.Navika = habit;
+            mentalneSposobnosti.Fokus = focus;
+            mentalneSposobnosti.Vizualizacija = visualisation;
+           
+            TestMentalnihSposobnostiManipulator mentalneSposobnostiManipulator = new TestMentalnihSposobnostiManipulator();
+            mentalneSposobnostiManipulator.Insert(mentalneSposobnosti);
+        }
+
+        private int Total(ObservableCollection<int> collection)
+        {
+            int sum = 0;
+            foreach(var item in collection)
+            {
+                sum += item;
+            }
+            return sum; 
         }
     }
 }

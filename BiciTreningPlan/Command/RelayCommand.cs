@@ -12,6 +12,7 @@ namespace BiciTreningPlan.Command
         private Action<object> execute;
 
         private Predicate<object> canExecute;
+        private ICommand save;
 
         private event EventHandler CanExecuteChangedInternal;
 
@@ -34,6 +35,11 @@ namespace BiciTreningPlan.Command
 
             this.execute = execute;
             this.canExecute = canExecute;
+        }
+
+        public RelayCommand(ICommand save)
+        {
+            this.save = save;
         }
 
         public event EventHandler CanExecuteChanged

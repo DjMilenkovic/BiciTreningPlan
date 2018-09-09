@@ -9,10 +9,10 @@ namespace BiciTrainingPlanDAL
     {             
         public List<Biciklista> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from b in db.Biciklistas
-                            orderby b.Ime
+                            orderby b.ID
                             select b;
 
                 return query.ToList();
@@ -21,8 +21,9 @@ namespace BiciTrainingPlanDAL
 
         public Biciklista GetOneData(long IDBiciklista)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
+                
                 var query = from b in db.Biciklistas
                             where b.ID == IDBiciklista                        
                             select b;
@@ -34,7 +35,7 @@ namespace BiciTrainingPlanDAL
         
         public void Delete(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var result = db.Biciklistas.SingleOrDefault(b => b.ID == ID);
                 if (result != null)
@@ -50,7 +51,7 @@ namespace BiciTrainingPlanDAL
             var biciklista = entity as Biciklista;
             if (biciklista != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var customers = db.Set<Biciklista>();
                     customers.Add(biciklista);
@@ -68,7 +69,7 @@ namespace BiciTrainingPlanDAL
             var biciklista = entity as Biciklista;
             if (biciklista != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var result = db.Biciklistas.SingleOrDefault(b => b.ID == biciklista.ID);
                     if (result != null)

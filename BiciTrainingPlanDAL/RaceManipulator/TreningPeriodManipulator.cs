@@ -19,7 +19,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
         public List<Trening_Periodi> GetData()
         {
             return null;
-          /*  using (var db = new ProjectDBEntities())
+          /*  using (var db = new ProjectDB())
             {
 
                 var query = //from trainingDan in db.Trening_Dani
@@ -34,7 +34,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
 
         public Trening_Periodi GetDataWithJoin(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
 
                 var query = //from trainingDan in db.Trening_Dani
@@ -43,8 +43,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
                             where treninzi.ID == ID
                             select treningPeriod;
 
-                return (Trening_Periodi)query
-                    ;
+                return (Trening_Periodi)query;
             }
         }
 

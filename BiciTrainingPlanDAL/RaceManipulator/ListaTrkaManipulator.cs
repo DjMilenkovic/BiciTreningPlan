@@ -18,7 +18,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
 
         public void Delete(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var result = db.Lista_Trka.SingleOrDefault(b => b.ID == ID);
                 if (result != null)
@@ -31,7 +31,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
 
         public List<dynamic> GetDataWithJoin(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from listaTrka in db.Lista_Trka.Where(o => o.ID_Bicikliste == ID)
                             join putanja in db.Putanjas on listaTrka.ID_Putanje equals putanja.ID into newListaTrka
@@ -49,10 +49,11 @@ namespace BiciTrainingPlanDAL.RaceManipulator
 
         public List<Lista_Trka> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from l in db.Lista_Trka
                             orderby l.ID
+                            where l.ID_Bicikliste == IDBicikliste
                             select l;
 
                 return query.ToList();
@@ -64,7 +65,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
             var testListaTrkaManipulator = entity as Lista_Trka;
             if (testListaTrkaManipulator != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var customers = db.Set<Lista_Trka>();
                     customers.Add(testListaTrkaManipulator);
@@ -82,7 +83,7 @@ namespace BiciTrainingPlanDAL.RaceManipulator
             var trka = entity as Lista_Trka;
             if (trka != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var result = db.Lista_Trka.SingleOrDefault(b => b.ID == trka.ID);
                     if (result != null)

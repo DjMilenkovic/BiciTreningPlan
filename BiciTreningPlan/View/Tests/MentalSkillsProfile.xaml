@@ -4,19 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Tests"
-             mc:Ignorable="d" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d"
              d:DesignHeight="569" d:DesignWidth="742">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
-
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -64,247 +60,97 @@
             </TextBlock>
             <Label Grid.Row="3"/>
 
-            <RadioButton Name="confNever1" IsChecked="True" Grid.Row="4" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="confidence1">Nikada</RadioButton>
-            <RadioButton Name="confRerely1" Grid.Row="4" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="confidence1">Retko</RadioButton>
-            <RadioButton Name="confSometimes1" Grid.Row="4" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="confidence1">Ponekad</RadioButton>
-            <RadioButton Name="confFrequently1" Grid.Row="4" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="confidence1">Često</RadioButton>
-            <RadioButton Name="confUsually1" Grid.Row="4" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="confidence1">Obično</RadioButton>
-            <RadioButton Name="confAlways1" Grid.Row="4" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="confidence1">Uvek</RadioButton>
-            <Label Grid.Row="4" Grid.Column="6">Verujem da je moj potencijal kao sportiste odličan.</Label>
+            <ComboBox Grid.Row="4" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Confidence[0],Mode=TwoWay}"/>
+            <Label Grid.Row="4" Grid.Column="1">Verujem da je moj potencijal kao sportiste odličan.</Label>
 
-            <RadioButton Name="motNever1"    IsChecked="True"  Grid.Row="5" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="motivation1">Nikada</RadioButton>
-            <RadioButton Name="motRerely1"     Grid.Row="5" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="motivation1">Retko</RadioButton>
-            <RadioButton Name="motSometimes1"  Grid.Row="5" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="motivation1">Ponekad</RadioButton>
-            <RadioButton Name="motFrequently1" Grid.Row="5" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="motivation1">Često</RadioButton>
-            <RadioButton Name="motUsually1"   Grid.Row="5" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="motivation1">Obično</RadioButton>
-            <RadioButton Name="motAlways1"    Grid.Row="5" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="motivation1">Uvek</RadioButton>
-            <Label Grid.Row="5" Grid.Column="6">Treniram dosledno i nestrpljivo.</Label>
+            <ComboBox Grid.Row="5" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Motivation[0],Mode=TwoWay}"/>
+            <Label Grid.Row="5" Grid.Column="1">Treniram dosledno i nestrpljivo.</Label>
 
-            <RadioButton Name="habNever1"  IsChecked="True"    Grid.Row="6" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="habits1">Nikad</RadioButton>
-            <RadioButton Name="habRerely1"     Grid.Row="6" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="habits1">Retko</RadioButton>
-            <RadioButton Name="habSometimes1"  Grid.Row="6" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="habits1">Ponekad</RadioButton>
-            <RadioButton Name="habFrequently1" Grid.Row="6" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="habits1">Često</RadioButton>
-            <RadioButton Name="habUsually1"    Grid.Row="6" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="habits1">Obično</RadioButton>
-            <RadioButton Name="habAlways1"     Grid.Row="6" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="habits1">Uvek</RadioButton>
-            <Label Grid.Row="6" Grid.Column="6">Kada stvari ne idu dobro u trci, ostanem pozitivan.</Label>
+            <ComboBox Grid.Row="6" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Habit[0],Mode=TwoWay}"/>
+            <Label Grid.Row="6" Grid.Column="1">Kada stvari ne idu dobro u trci, ostanem pozitivan.</Label>
+            
+            <ComboBox Grid.Row="7" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Visualisation[0],Mode=TwoWay}"/>
+            <Label Grid.Row="7" Grid.Column="1">U teškim trkama, mogu da zamislim sebe kako se odlično osećam.</Label>
 
-            <RadioButton Name="visNever1"   IsChecked="True"   Grid.Row="7" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="visualization1">Nikad</RadioButton>
-            <RadioButton Name="visRerely1"     Grid.Row="7" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="visualization1">Retko</RadioButton>
-            <RadioButton Name="visSometimes1"  Grid.Row="7" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="visualization1">Ponekads</RadioButton>
-            <RadioButton Name="visFrequently1" Grid.Row="7" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="visualization1">Često</RadioButton>
-            <RadioButton Name="visUsually1"    Grid.Row="7" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="visualization1">Obično</RadioButton>
-            <RadioButton Name="visAlways1"     Grid.Row="7" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="visualization1">Uvek</RadioButton>
-            <Label Grid.Row="7" Grid.Column="6">U teškim trkama, mogu da zamislim sebe kako se odlično osećam.</Label>
+            <ComboBox Grid.Row="8" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Habit[1],Mode=TwoWay}"/>
+            <Label Grid.Row="8" Grid.Column="1">Pre trke, ostanem pozitivan i optimističan.</Label>
 
-            <RadioButton Name="habNever2"  IsChecked="True"   Grid.Row="8" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="habits2">Nikad</RadioButton>
-            <RadioButton Name="habRerely2"    Grid.Row="8" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="habits2">Retko</RadioButton>
-            <RadioButton Name="habSometimes2" Grid.Row="8" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="habits2">Ponekads</RadioButton>
-            <RadioButton Name="habFrequently2" Grid.Row="8" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="habits2">Često</RadioButton>
-            <RadioButton Name="habUsually2"   Grid.Row="8" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="habits2">Obično</RadioButton>
-            <RadioButton Name="habAlways2"    Grid.Row="8" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="habits2">Uvek</RadioButton>
-            <Label Grid.Row="8" Grid.Column="6">Pre trke, ostanem pozitivan i optimističan.</Label>
+            <ComboBox Grid.Row="9" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Confidence[1],Mode=TwoWay}"/>
+            <Label Grid.Row="9" Grid.Column="1">Za sebe mislim da sam više uspešan nego neuspešan.</Label>
 
-            <RadioButton Name="confNever2"   IsChecked="True"   Grid.Row="9" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="confidence2">Nikad</RadioButton>
-            <RadioButton Name="confRerely2"     Grid.Row="9" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="confidence2">Retko</RadioButton>
-            <RadioButton Name="confSometimes2"  Grid.Row="9" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="confidence2">Ponekad</RadioButton>
-            <RadioButton Name="confFrequently2" Grid.Row="9" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="confidence2">Često</RadioButton>
-            <RadioButton Name="confUsually2"    Grid.Row="9" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="confidence2">Obično</RadioButton>
-            <RadioButton Name="confAlways2"     Grid.Row="9" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="confidence2">Uvek</RadioButton>
-            <Label Grid.Row="9" Grid.Column="6">Za sebe mislim da sam više uspešan nego neuspešan.</Label>
+            <ComboBox Grid.Row="10" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Focus[0],Mode=TwoWay}"/>
+            <Label Grid.Row="10" Grid.Column="1">Pre trke, sposoban sam da obrišem samopouzdanje.</Label>
 
-            <RadioButton Name="focNever1"  IsChecked="True"    Grid.Row="10" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="focus1">Nikad</RadioButton>
-            <RadioButton Name="focRerely1"     Grid.Row="10" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="focus1">Retko</RadioButton>
-            <RadioButton Name="focSometimes1"  Grid.Row="10" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="focus1">Ponekades</RadioButton>
-            <RadioButton Name="focFrequently1" Grid.Row="10" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="focus1">Često</RadioButton>
-            <RadioButton Name="focUsually1"    Grid.Row="10" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="focus1">Obično</RadioButton>
-            <RadioButton Name="focAlways1"     Grid.Row="10" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="focus1">Uvek</RadioButton>
-            <Label Grid.Row="10" Grid.Column="6">Pre trke, sposoban sam da obrišem samopouzdanje.</Label>
+            <ComboBox Grid.Row="11" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Motivation[1],Mode=TwoWay}"/>
+            <Label Grid.Row="11" Grid.Column="1">Jutro pred trku, probudim se sa puno entuzijazma.</Label>
 
-            <RadioButton Name="motNever2"   IsChecked="True"   Grid.Row="11" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="motivation2">Nikad</RadioButton>
-            <RadioButton Name="motRerely2"     Grid.Row="11" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="motivation2">Retko</RadioButton>
-            <RadioButton Name="motSometimes2"  Grid.Row="11" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="motivation2">Ponekads</RadioButton>
-            <RadioButton Name="motFrequently2" Grid.Row="11" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="motivation2">Često</RadioButton>
-            <RadioButton Name="motUsually2"    Grid.Row="11" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="motivation2">Obično</RadioButton>
-            <RadioButton Name="motAlways2"     Grid.Row="11" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="motivation2">Uvek</RadioButton>
-            <Label Grid.Row="11" Grid.Column="6">Jutro pred trku, probudim se sa puno entuzijazma.</Label>
+            <ComboBox Grid.Row="12" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Habit[2],Mode=TwoWay}"/>
+            <Label Grid.Row="12" Grid.Column="1">Učim ponešto od trka na kojima nisam bio dobar.</Label>
 
-            <RadioButton Name="habNever3"    IsChecked="True"  Grid.Row="12" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="habits3">Nikad</RadioButton>
-            <RadioButton Name="habRerely3"     Grid.Row="12" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="habits3">Retko</RadioButton>
-            <RadioButton Name="habSometimes3"  Grid.Row="12" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="habits3">Ponekad</RadioButton>
-            <RadioButton Name="habFrequently3" Grid.Row="12" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="habits3">Često</RadioButton>
-            <RadioButton Name="habUsually3"    Grid.Row="12" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="habits3">Obično</RadioButton>
-            <RadioButton Name="habAlways3"     Grid.Row="12" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="habits3">Uvek</RadioButton>
-            <Label Grid.Row="12" Grid.Column="6">Učim ponešto od trka na kojima nisam bio dobar.</Label>
+            <ComboBox Grid.Row="13" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Visualisation[1],Mode=TwoWay}"/>
+            <Label Grid.Row="13" Grid.Column="1">Vidim sebe kako rukovodim teškim situacijama.</Label>
 
-            <RadioButton Name="visNever2"   IsChecked="True"   Grid.Row="13" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="visualization2">Nikad</RadioButton>
-            <RadioButton Name="visRerely2"     Grid.Row="13" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="visualization2">Retko</RadioButton>
-            <RadioButton Name="visSometimes2"  Grid.Row="13" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="visualization2">Ponekad</RadioButton>
-            <RadioButton Name="visFrequently2" Grid.Row="13" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="visualization2">Često</RadioButton>
-            <RadioButton Name="visUsually2"    Grid.Row="13" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="visualization2">Obično</RadioButton>
-            <RadioButton Name="visAlways2"     Grid.Row="13" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="visualization2">Uvek</RadioButton>
-            <Label Grid.Row="13" Grid.Column="6">Vidim sebe kako rukovodim teškim situacijama.</Label>
+            <ComboBox Grid.Row="14" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Confidence[2],Mode=TwoWay}"/>
+            <Label Grid.Row="14" Grid.Column="1">Mogu da se trkam blizu mog nivoa sposobnosti.</Label>
 
-            <RadioButton Name="confNever3"    IsChecked="True"  Grid.Row="14" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="confidence3">Nikad</RadioButton>
-            <RadioButton Name="confRerely3"     Grid.Row="14" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="confidence3">Retko</RadioButton>
-            <RadioButton Name="confSometimes3"  Grid.Row="14" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="confidence3">Ponekad</RadioButton>
-            <RadioButton Name="confFrequently3" Grid.Row="14" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="confidence3">Često</RadioButton>
-            <RadioButton Name="confUsually3"    Grid.Row="14" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="confidence3">Obično</RadioButton>
-            <RadioButton Name="confAlways3"     Grid.Row="14" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="confidence3">Uvek</RadioButton>
-            <Label Grid.Row="14" Grid.Column="6">Mogu da se trkam blizu mog nivoa sposobnosti.</Label>
+            <ComboBox Grid.Row="15" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Visualisation[2],Mode=TwoWay}"/>
+            <Label Grid.Row="15" Grid.Column="1">Lako mogu da zamislim moj trening i trku.</Label>
 
-            <RadioButton Name="visNever3"  IsChecked="True"    Grid.Row="15" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="visualization3">Nikad</RadioButton>
-            <RadioButton Name="visRerely3"     Grid.Row="15" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="visualization3">Retko</RadioButton>
-            <RadioButton Name="visSometimes3"  Grid.Row="15" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="visualization3">Ponekad</RadioButton>
-            <RadioButton Name="visFrequently3" Grid.Row="15" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="visualization3">Često</RadioButton>
-            <RadioButton Name="visUsually3"    Grid.Row="15" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="visualization3">Obično</RadioButton>
-            <RadioButton Name="visAlways3"     Grid.Row="15" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="visualization3">Uvek</RadioButton>
-            <Label Grid.Row="15" Grid.Column="6">Lako mogu da zamislim moj trening i trku.</Label>
+            <ComboBox Grid.Row="16" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Focus[1],Mode=TwoWay}"/>
+            <Label Grid.Row="16" Grid.Column="1">Ostati fokusiran tokom trke je lako za mene.</Label>
 
-            <RadioButton Name="focNever2"   IsChecked="True"   Grid.Row="16" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="focus2">Nikad</RadioButton>
-            <RadioButton Name="focRerely2"     Grid.Row="16" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="focus2">Retko</RadioButton>
-            <RadioButton Name="focSometimes2"  Grid.Row="16" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="focus2">Ponekad</RadioButton>
-            <RadioButton Name="focFrequently2" Grid.Row="16" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="focus2">Često</RadioButton>
-            <RadioButton Name="focUsually2"    Grid.Row="16" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="focus2">Obično</RadioButton>
-            <RadioButton Name="focAlways2"     Grid.Row="16" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="focus2">Uvek</RadioButton>
-            <Label Grid.Row="16" Grid.Column="6">Ostati fokusiran tokom trke je lako za mene.</Label>
+            <ComboBox Grid.Row="17" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Focus[2],Mode=TwoWay}"/>
+            <Label Grid.Row="17" Grid.Column="1">Ostajem u skladu sa mojim naporima na trkama.</Label>
 
-            <RadioButton Name="focNever3"  IsChecked="True"    Grid.Row="17" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="focus3">Nikad</RadioButton>
-            <RadioButton Name="focRerely3"     Grid.Row="17" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="focus3">Retko</RadioButton>
-            <RadioButton Name="focSometimes3"  Grid.Row="17" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="focus3">Ponekad</RadioButton>
-            <RadioButton Name="focFrequently3" Grid.Row="17" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="focus3">Često</RadioButton>
-            <RadioButton Name="focUsually3"    Grid.Row="17" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="focus3">Obično</RadioButton>
-            <RadioButton Name="focAlways3"     Grid.Row="17" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="focus3">Uvek</RadioButton>
-            <Label Grid.Row="17" Grid.Column="6">Ostajem u skladu sa mojim naporima na trkama.</Label>
+            <ComboBox Grid.Row="18" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Visualisation[3],Mode=TwoWay}"/>
+            <Label Grid.Row="18" Grid.Column="1">Mentalno uvežbavam veštine i taktike pre trke.</Label>
 
-            <RadioButton Name="visNever4"    IsChecked="True"  Grid.Row="18" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="visualization4">Nikad</RadioButton>
-            <RadioButton Name="visRerely4"     Grid.Row="18" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="visualization4">Retko</RadioButton>
-            <RadioButton Name="visSometimes4"  Grid.Row="18" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="visualization4">Ponekad</RadioButton>
-            <RadioButton Name="visFrequently4" Grid.Row="18" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="visualization4">Često</RadioButton>
-            <RadioButton Name="visUsually4"    Grid.Row="18" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="visualization4">Obično</RadioButton>
-            <RadioButton Name="visAlways4"     Grid.Row="18" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="visualization4">Uvek</RadioButton>
-            <Label Grid.Row="18" Grid.Column="6">Mentalno uvežbavam veštine i taktike pre trke.</Label>
+            <ComboBox Grid.Row="19" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Focus[3],Mode=TwoWay}"/>
+            <Label Grid.Row="19" Grid.Column="1">Dobro se koncentrišem kako trka napreduje.</Label>
 
-            <RadioButton Name="focNever4"   IsChecked="True"   Grid.Row="19" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="focus4">Nikad</RadioButton>
-            <RadioButton Name="focRerely4"     Grid.Row="19" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="focus4">Retko</RadioButton>
-            <RadioButton Name="focSometimes4"  Grid.Row="19" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="focus4">Ponekad</RadioButton>
-            <RadioButton Name="focFrequently4" Grid.Row="19" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="focus4">Često</RadioButton>
-            <RadioButton Name="focUsually4"    Grid.Row="19" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="focus4">Obično</RadioButton>
-            <RadioButton Name="focAlways4"     Grid.Row="19" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="focus4">Uvek</RadioButton>
-            <Label Grid.Row="19" Grid.Column="6">Dobro se koncentrišem kako trka napreduje.</Label>
+            <ComboBox Grid.Row="20" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Motivation[2],Mode=TwoWay}"/>
+            <Label Grid.Row="20" Grid.Column="1">Žrtvujem se da postignem svoj cilj.</Label>
 
-            <RadioButton Name="motNever3"  IsChecked="True"    Grid.Row="20" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="motivation3">Nikad</RadioButton>
-            <RadioButton Name="motRerely3"     Grid.Row="20" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="motivation3">Retko</RadioButton>
-            <RadioButton Name="motSometimes3"  Grid.Row="20" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="motivation3">Ponekad</RadioButton>
-            <RadioButton Name="motFrequently3" Grid.Row="20" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="motivation3">Često</RadioButton>
-            <RadioButton Name="motUsually3"    Grid.Row="20" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="motivation3">Obično</RadioButton>
-            <RadioButton Name="motAlways3"     Grid.Row="20" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="motivation3">Uvek</RadioButton>
-            <Label Grid.Row="20" Grid.Column="6">Žrtvujem se da postignem svoj cilj.</Label>
+            <ComboBox Grid.Row="21" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Visualisation[4],Mode=TwoWay}"/>
+            <Label Grid.Row="21" Grid.Column="1">Pre važne trke, mogu da zamislim sebe kako mi ide dobro.</Label>
 
-            <RadioButton Name="visNever5"  IsChecked="True"    Grid.Row="21" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="visualization5">Nikad</RadioButton>
-            <RadioButton Name="visRerely5"     Grid.Row="21" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="visualization5">Retko</RadioButton>
-            <RadioButton Name="visSometimes5"  Grid.Row="21" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="visualization5">Ponekad</RadioButton>
-            <RadioButton Name="visFrequently5" Grid.Row="21" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="visualization5">Često</RadioButton>
-            <RadioButton Name="visUsually5"    Grid.Row="21" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="visualization5">Obično</RadioButton>
-            <RadioButton Name="visAlways5"     Grid.Row="21" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="visualization5">Uvek</RadioButton>
-            <Label Grid.Row="21" Grid.Column="6">Pre važne trke, mogu da zamislim sebe kako mi ide dobro.</Label>
+            <ComboBox Grid.Row="22" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Motivation[3],Mode=TwoWay}"/>
+            <Label Grid.Row="22" Grid.Column="1">Radujem se trininzima.</Label>
 
-            <RadioButton Name="motNever4"  IsChecked="True"    Grid.Row="22" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="motivation4">Nikad</RadioButton>
-            <RadioButton Name="motRerely4"     Grid.Row="22" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="motivation4">Retko</RadioButton>
-            <RadioButton Name="motSometimes4"  Grid.Row="22" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="motivation4">Ponekad</RadioButton>
-            <RadioButton Name="motFrequently4" Grid.Row="22" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="motivation4">Često</RadioButton>
-            <RadioButton Name="motUsually4"    Grid.Row="22" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="motivation4">Obično</RadioButton>
-            <RadioButton Name="motAlways4"     Grid.Row="22" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="motivation4">Uvek</RadioButton>
-            <Label Grid.Row="22" Grid.Column="6">Radujem se trininzima.</Label>
+            <ComboBox Grid.Row="23" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Visualisation[5],Mode=TwoWay}"/>
+            <Label Grid.Row="23" Grid.Column="1">Kada zamišljam trku, osećam se kao da je stvarna.</Label>
 
-            <RadioButton Name="visNever6"   IsChecked="True"   Grid.Row="23" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="visualization6">Nikad</RadioButton>
-            <RadioButton Name="visRerely6"     Grid.Row="23" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="visualization6">Retko</RadioButton>
-            <RadioButton Name="visSometimes6"  Grid.Row="23" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="visualization6">Ponekad</RadioButton>
-            <RadioButton Name="visFrequently6" Grid.Row="23" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="visualization6">Često</RadioButton>
-            <RadioButton Name="visUsually6"    Grid.Row="23" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="visualization6">Obično</RadioButton>
-            <RadioButton Name="visAlways6"     Grid.Row="23" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="visualization6">Uvek</RadioButton>
-            <Label Grid.Row="23" Grid.Column="6">Kada zamišljam trku, osećam se kao da je stvarna.</Label>
+            <ComboBox Grid.Row="24" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Confidence[3],Mode=TwoWay}"/>
+            <Label Grid.Row="24" Grid.Column="1">Mislim za sebe da sam težak takmičar.</Label>
 
-            <RadioButton Name="confNever4" IsChecked="True"     Grid.Row="24" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="confidence4">Nikad</RadioButton>
-            <RadioButton Name="confRerely4"     Grid.Row="24" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="confidence4">Retko</RadioButton>
-            <RadioButton Name="confSometimes4"  Grid.Row="24" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="confidence4">Ponekad</RadioButton>
-            <RadioButton Name="confFrequently4" Grid.Row="24" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="confidence4">Često</RadioButton>
-            <RadioButton Name="confUsually4"    Grid.Row="24" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="confidence4">Obično</RadioButton>
-            <RadioButton Name="confAlways4"     Grid.Row="24" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="confidence4">Uvek</RadioButton>
-            <Label Grid.Row="24" Grid.Column="6">Mislim za sebe da sam težak takmičar.</Label>
+            <ComboBox Grid.Row="25" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Focus[4],Mode=TwoWay}"/>
+            <Label Grid.Row="25" Grid.Column="1">U trkama, postavljam distrakcije.</Label>
 
-            <RadioButton Name="focNever5"  IsChecked="True"    Grid.Row="25" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="focus5">Nikad</RadioButton>
-            <RadioButton Name="focRerely5"     Grid.Row="25" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="focus5">Retko</RadioButton>
-            <RadioButton Name="focSometimes5"  Grid.Row="25" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="focus5">Ponekad</RadioButton>
-            <RadioButton Name="focFrequently5" Grid.Row="25" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="focus5">Često</RadioButton>
-            <RadioButton Name="focUsually5"    Grid.Row="25" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="focus5">Obično</RadioButton>
-            <RadioButton Name="focAlways5"     Grid.Row="25" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="focus5">Uvek</RadioButton>
-            <Label Grid.Row="25" Grid.Column="6">U trkama, postavljam distrakcije.</Label>
+            <ComboBox Grid.Row="26" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Motivation[4],Mode=TwoWay}"/>
+            <Label Grid.Row="26" Grid.Column="1">Postavljam visoke ciljeve.</Label>
 
-            <RadioButton Name="motNever5"  IsChecked="True"    Grid.Row="26" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="motivation5">Nikad</RadioButton>
-            <RadioButton Name="motRerely5"     Grid.Row="26" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="motivation5">Retko</RadioButton>
-            <RadioButton Name="motSometimes5"  Grid.Row="26" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="motivation5">Ponekad</RadioButton>
-            <RadioButton Name="motFrequently5" Grid.Row="26" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="motivation5">Često</RadioButton>
-            <RadioButton Name="motUsually5"    Grid.Row="26" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="motivation5">Obično</RadioButton>
-            <RadioButton Name="motAlways5"     Grid.Row="26" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="motivation5">Uvek</RadioButton>
-            <Label Grid.Row="26" Grid.Column="6">Postavljam visoke ciljeve.</Label>
+            <ComboBox Grid.Row="27" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Habit[3],Mode=TwoWay}"/>
+            <Label Grid.Row="27" Grid.Column="1">Sviđa mi se izazov teških trka.</Label>
 
-            <RadioButton Name="habNever4"  IsChecked="True"    Grid.Row="27" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="habits4">Nikad</RadioButton>
-            <RadioButton Name="habRerely4"     Grid.Row="27" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="habits4">Retko</RadioButton>
-            <RadioButton Name="habSometimes4"  Grid.Row="27" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="habits4">Ponekad</RadioButton>
-            <RadioButton Name="habFrequently4" Grid.Row="27" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="habits4">Često</RadioButton>
-            <RadioButton Name="habUsually4"    Grid.Row="27" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="habits4">Obično</RadioButton>
-            <RadioButton Name="habAlways4"     Grid.Row="27" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="habits4">Uvek</RadioButton>
-            <Label Grid.Row="27" Grid.Column="6">Sviđa mi se izazov teških trka.</Label>
+            <ComboBox Grid.Row="28" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Focus[5],Mode=TwoWay}"/>
+            <Label Grid.Row="28" Grid.Column="1">Kada trka postane teška, moja koncentracija se popravlja.</Label>
 
-            <RadioButton Name="focNever6"   IsChecked="True"   Grid.Row="28" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="focus6">Nikad</RadioButton>
-            <RadioButton Name="focRerely6"     Grid.Row="28" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="focus6">Retko</RadioButton>
-            <RadioButton Name="focSometimes6"  Grid.Row="28" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="focus6">Ponekad</RadioButton>
-            <RadioButton Name="focFrequently6" Grid.Row="28" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="focus6">Često</RadioButton>
-            <RadioButton Name="focUsually6"    Grid.Row="28" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="focus6">Obično</RadioButton>
-            <RadioButton Name="focAlways6"     Grid.Row="28" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="focus6">Uvek</RadioButton>
-            <Label Grid.Row="28" Grid.Column="6">Kada trka postane teška, moja koncentracija se popravlja.</Label>
+            <ComboBox Grid.Row="29" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Confidence[4],Mode=TwoWay}"/>
+            <Label Grid.Row="29" Grid.Column="1">U trkama, mentalno se teško osećam.</Label>
 
-            <RadioButton Name="confNever5"  IsChecked="True"    Grid.Row="29" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="confidence5">Nikad</RadioButton>
-            <RadioButton Name="confRerely5"     Grid.Row="29" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="confidence5">Retko</RadioButton>
-            <RadioButton Name="confSometimes5"  Grid.Row="29" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="confidence5">Ponekad</RadioButton>
-            <RadioButton Name="confFrequently5" Grid.Row="29" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="confidence5">Često</RadioButton>
-            <RadioButton Name="confUsually5"    Grid.Row="29" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="confidence5">Obično</RadioButton>
-            <RadioButton Name="confAlways5"     Grid.Row="29" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="confidence5">Uvek</RadioButton>
-            <Label Grid.Row="29" Grid.Column="6">U trkama, mentalno se teško osećam.</Label>
+            <ComboBox Grid.Row="30" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Habit[4],Mode=TwoWay}"/>
+            <Label Grid.Row="30" Grid.Column="1">Mogu da opustim mišiće pre trka.</Label>
+            
+            <ComboBox Grid.Row="31" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Habit[5],Mode=TwoWay}"/>
+            <Label Grid.Row="31" Grid.Column="1">Ostanem pozitivan usled lošeg starta ili lošeg vremena.</Label>
 
-            <RadioButton Name="habNever5"   IsChecked="True"   Grid.Row="30" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="habits5">Nikad</RadioButton>
-            <RadioButton Name="habRerely5"     Grid.Row="30" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="habits5">Retko</RadioButton>
-            <RadioButton Name="habSometimes5"  Grid.Row="30" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="habits5">Ponekad</RadioButton>
-            <RadioButton Name="habFrequently5" Grid.Row="30" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="habits5">Često</RadioButton>
-            <RadioButton Name="habUsually5"    Grid.Row="30" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="habits5">Obično</RadioButton>
-            <RadioButton Name="habAlways5"     Grid.Row="30" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="habits5">Uvek</RadioButton>
-            <Label Grid.Row="30" Grid.Column="6">Mogu da opustim mišiće pre trka.</Label>
+            <ComboBox Grid.Row="32" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Confidence[5],Mode=TwoWay}"/>
+            <Label Grid.Row="32" Grid.Column="1">Moje samopuzdanje ostane visoko nedelju dana posle loše trke.</Label>
 
-            <RadioButton Name="habNever6"  IsChecked="True"    Grid.Row="31" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="habits6">Nikad</RadioButton>
-            <RadioButton Name="habRerely6"     Grid.Row="31" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="habits6">Retko</RadioButton>
-            <RadioButton Name="habSometimes6"  Grid.Row="31" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="habits6">Ponekad</RadioButton>
-            <RadioButton Name="habFrequently6" Grid.Row="31" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="habits6">Često</RadioButton>
-            <RadioButton Name="habUsually6"    Grid.Row="31" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="habits6">Obično</RadioButton>
-            <RadioButton Name="habAlways6"     Grid.Row="31" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="habits6">Uvek</RadioButton>
-            <Label Grid.Row="31" Grid.Column="6">Ostanem pozitivan usled lošeg starta ili lošeg vremena.</Label>
+            <ComboBox Grid.Row="33" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}"   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Motivation[5],Mode=TwoWay}"/>
+            <Label Grid.Row="33" Grid.Column="1">Trudim se da budem najbolji sportista koji mogu biti.</Label>
 
-            <RadioButton Name="confNever6" IsChecked="True"     Grid.Row="32" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="confidence6">Nikad</RadioButton>
-            <RadioButton Name="confRerely6"     Grid.Row="32" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="confidence6">Retko</RadioButton>
-            <RadioButton Name="confSometimes6"  Grid.Row="32" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="confidence6">Ponekad</RadioButton>
-            <RadioButton Name="confFrequently6" Grid.Row="32" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="confidence6">Često</RadioButton>
-            <RadioButton Name="confUsually6"    Grid.Row="32" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="confidence6">Obično</RadioButton>
-            <RadioButton Name="confAlways6"     Grid.Row="32" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="confidence6">Uvek</RadioButton>
-            <Label Grid.Row="32" Grid.Column="6">Moje samopuzdanje ostane visoko nedelju dana posle loše trke.</Label>
-
-            <RadioButton Name="motNever6"  IsChecked="True"     Grid.Row="33" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="motivation6">Nikad</RadioButton>
-            <RadioButton Name="motRerely6"      Grid.Row="33" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="motivation6">Retko</RadioButton>
-            <RadioButton Name="motSometimes6"   Grid.Row="33" Grid.Column="2" Style="{StaticResource radioButtonStyle}" GroupName="motivation6">Ponekad</RadioButton>
-            <RadioButton Name="motFrequently6"  Grid.Row="33" Grid.Column="3" Style="{StaticResource radioButtonStyle}" GroupName="motivation6">Često</RadioButton>
-            <RadioButton Name="motUsually6"     Grid.Row="33" Grid.Column="4" Style="{StaticResource radioButtonStyle}" GroupName="motivation6">Obično</RadioButton>
-            <RadioButton Name="motAlways6"      Grid.Row="33" Grid.Column="5" Style="{StaticResource radioButtonStyle}" GroupName="motivation6">Uvek</RadioButton>
-            <Label Grid.Row="33" Grid.Column="6">Trudim se da budem najbolji sportista koji mogu biti.</Label>
-
-            <Button Name="btnSubmit" Grid.Row="34" Grid.Column="6" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
+            <Button Name="btnSubmit" Command="{Binding Save}" Grid.Row="34" Grid.Column="6" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
         </Grid>
     </ScrollViewer>
 </UserControl>

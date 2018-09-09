@@ -14,7 +14,7 @@ namespace ProjectDBDataModel.Entity
     
     public partial class Vreme
     {
-        public decimal Datum { get; set; }
+        public System.DateTime Datum { get; set; }
         public Nullable<int> Temperatura { get; set; }
         public Nullable<int> Brzina_vetra { get; set; }
         public Nullable<int> Smer_vetra { get; set; }

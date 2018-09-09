@@ -23,7 +23,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
 
         public Profilisanje_Profila_Vozaca GetOneData(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from b in db.Profilisanje_Profila_Vozaca
                             where b.ID_Bicikliste == ID
@@ -36,7 +36,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
 
         public List<Profilisanje_Profila_Vozaca> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from b in db.Profilisanje_Profila_Vozaca
                             where b.ID_Bicikliste == IDBicikliste
@@ -51,7 +51,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
             var testProfilisanjeProfilaVozaca = entity as Profilisanje_Profila_Vozaca;
             if (testProfilisanjeProfilaVozaca != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var customers = db.Set<Profilisanje_Profila_Vozaca>();
                     customers.Add(testProfilisanjeProfilaVozaca);

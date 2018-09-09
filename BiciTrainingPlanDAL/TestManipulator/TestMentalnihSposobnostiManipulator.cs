@@ -23,7 +23,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
 
         public Mentalne_Sposobnosti GetOneData(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = (from b in db.Mentalne_Sposobnosti
                             where b.ID_Bicikliste == ID
@@ -36,7 +36,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
 
         public List<Mentalne_Sposobnosti> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from b in db.Mentalne_Sposobnosti
                             where b.ID_Bicikliste == IDBicikliste
@@ -51,7 +51,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
             var testMentalnihSposobnosti = entity as Mentalne_Sposobnosti;
             if (testMentalnihSposobnosti != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var customers = db.Set<Mentalne_Sposobnosti>();
                     customers.Add(testMentalnihSposobnosti);

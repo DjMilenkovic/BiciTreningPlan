@@ -15,8 +15,9 @@ namespace BiciTreningPlan.Services
             win.Title=title;
             win.Content = viewModel;
             win.SizeToContent = SizeToContent.WidthAndHeight;
+            win.ResizeMode = ResizeMode.NoResize;
             win.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            win.Show();
+            win.ShowDialog();
         }
     }
 }

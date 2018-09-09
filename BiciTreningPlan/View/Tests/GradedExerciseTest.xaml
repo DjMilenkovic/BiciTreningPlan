@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Tests"
+             xmlns:localVM="clr-namespace:BiciTreningPlan.ViewModel.Tests"
              mc:Ignorable="d" 
              d:DesignHeight="1300" d:DesignWidth="742">
+    <UserControl.DataContext>
+        <localVM:GradedExerciseTestViewModel/>
+    </UserControl.DataContext>
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
             <Label Margin="10 10" FontWeight="Bold" FontSize="26">Test ocenjivanja</Label>
@@ -128,8 +132,6 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -146,62 +148,51 @@
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Grid.Column="0" MinWidth="50">Snaga</Label>
-                <Label Grid.Row="0" Grid.Column="1" MinWidth="50">Otkucaj srca</Label>
-                <Label Grid.Row="0" Grid.Column="2" MinWidth="50">Subjektivni osećaj</Label>
-                <Label Grid.Row="0" Grid.Column="3">VT*</Label>
+                <Label Grid.Row="0" Grid.Column="1" MinWidth="50">Otkucaji srca</Label>
+                <Label Grid.Row="0" Grid.Column="2" MinWidth="50">Napor</Label>
 
-                <TextBox Name="txtPower1" Grid.Row="1" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate1" Grid.Row="1" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion1" Grid.Row="1" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT1" IsChecked="True" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Name="txtPower1" Text="{Binding GradedTests[0].Snaga,Mode=OneWayToSource}" Grid.Row="1" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate1" Text="{Binding GradedTests[0].Otkucaji_srca,Mode=OneWayToSource}" Grid.Row="1" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion1" Text="{Binding GradedTests[0].Napor, Mode=OneWayToSource}"  Grid.Row="1" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPower2" Grid.Row="2" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate2" Grid.Row="2" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion2" Grid.Row="2" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT2" IsChecked="False" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Name="txtPower2" Text="{Binding GradedTests[1].Snaga,Mode=OneWayToSource}" Grid.Row="2" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate2" Text="{Binding GradedTests[1].Otkucaji_srca, Mode=OneWayToSource}" Grid.Row="2" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion2" Text="{Binding GradedTests[1].Napor, Mode=OneWayToSource}" Grid.Row="2" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPower3" Grid.Row="3" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate3" Grid.Row="3" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion3" Grid.Row="3" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT3" IsChecked="False" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Name="txtPower3" Text="{Binding GradedTests[2].Snaga, Mode=OneWayToSource}" Grid.Row="3" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Name="txtHeartRate3" Text="{Binding GradedTests[2].Otkucaji_srca, Mode=OneWayToSource}" Grid.Row="3" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Name="txtExertion3" Text="{Binding GradedTests[2].Napor, Mode=OneWayToSource}" Grid.Row="3" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPower4" Grid.Row="4" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate4" Grid.Row="4" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion4" Grid.Row="4" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT4" IsChecked="False" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Text="{Binding GradedTests[3].Snaga, Mode=OneWayToSource}"         Name="txtPower4" Grid.Row="4" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[3].Otkucaji_srca, Mode=OneWayToSource}" Name="txtHeartRate4" Grid.Row="4" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[3].Napor, Mode=OneWayToSource}"         Name="txtExertion4" Grid.Row="4" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPowe5" Grid.Row="5" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate5" Grid.Row="5" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion5" Grid.Row="5" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT5" IsChecked="False" Grid.Row="5" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Text="{Binding GradedTests[4].Snaga, Mode=OneWayToSource}"          Name="txtPowe5" Grid.Row="5" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[4].Otkucaji_srca, Mode=OneWayToSource}"  Name="txtHeartRate5" Grid.Row="5" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[4].Napor, Mode=OneWayToSource}"          Name="txtExertion5" Grid.Row="5" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPower6" Grid.Row="6" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate6" Grid.Row="6" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion6" Grid.Row="6" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT6" IsChecked="False" Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Text="{Binding GradedTests[5].Snaga, Mode=OneWayToSource}"         Name="txtPower6" Grid.Row="6" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[5].Otkucaji_srca, Mode=OneWayToSource}" Name="txtHeartRate6" Grid.Row="6" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[5].Napor, Mode=OneWayToSource}"         Name="txtExertion6" Grid.Row="6" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPower7" Grid.Row="7" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate7" Grid.Row="7" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion7" Grid.Row="7" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT7" IsChecked="False" Grid.Row="7" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Text="{Binding GradedTests[6].Snaga, Mode=OneWayToSource}"         Name="txtPower7" Grid.Row="7" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[6].Otkucaji_srca, Mode=OneWayToSource}" Name="txtHeartRate7" Grid.Row="7" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[6].Napor, Mode=OneWayToSource}"         Name="txtExertion7" Grid.Row="7" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPower8" Grid.Row="8" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate8" Grid.Row="8" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion8" Grid.Row="8" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT8" IsChecked="False" Grid.Row="8" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"  GroupName="VTGroup"></RadioButton>
+                <TextBox Text="{Binding GradedTests[7].Snaga, Mode=OneWayToSource}"        Name="txtPower8" Grid.Row="8" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[7].Otkucaji_srca, Mode=OneWayToSource}" Name="txtHeartRate8" Grid.Row="8" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[7].Napor, Mode=OneWayToSource}"        Name="txtExertion8" Grid.Row="8" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPower9" Grid.Row="9" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate9" Grid.Row="9" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion9" Grid.Row="9" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT9" IsChecked="False" Grid.Row="9" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Text="{Binding GradedTests[8].Snaga, Mode=OneWayToSource}"         Name="txtPower9" Grid.Row="9" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[8].Otkucaji_srca, Mode=OneWayToSource}" Name="txtHeartRate9" Grid.Row="9" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[8].Napor, Mode=OneWayToSource}"         Name="txtExertion9" Grid.Row="9" Grid.Column="2" Margin="2 0"></TextBox>
 
-                <TextBox Name="txtPower10" Grid.Row="10" Grid.Column="0" Margin="2 0"></TextBox>
-                <TextBox Name="txtHeartRate10" Grid.Row="10" Grid.Column="1" Margin="2 0"></TextBox>
-                <TextBox Name="txtExertion10" Grid.Row="10" Grid.Column="2" Margin="2 0"></TextBox>
-                <RadioButton Name="rbVT10" IsChecked="False" Grid.Row="10" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" GroupName="VTGroup"></RadioButton>
+                <TextBox Text="{Binding GradedTests[9].Snaga, Mode=OneWayToSource}"        Name="txtPower10" Grid.Row="10" Grid.Column="0" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[9].Otkucaji_srca, Mode=OneWayToSource}" Name="txtHeartRate10" Grid.Row="10" Grid.Column="1" Margin="2 0"></TextBox>
+                <TextBox Text="{Binding GradedTests[9].Napor, Mode=OneWayToSource}"        Name="txtExertion10" Grid.Row="10" Grid.Column="2" Margin="2 0"></TextBox>
             </Grid>
             
-            <Button Name="submit" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Submit</Button>
+            <Button Name="submit" Command="{Binding Save}" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" HorizontalAlignment="Right" Margin="50 5">Submit</Button>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

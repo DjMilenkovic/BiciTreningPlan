@@ -24,7 +24,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
 
         public List<Test_Ocenjivanja> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from b in db.Test_Ocenjivanja
                             where b.ID_Bicikliste == IDBicikliste
@@ -39,7 +39,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
             var testOcenjivanja = entity as Test_Ocenjivanja;
             if (testOcenjivanja != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var customers = db.Set<Test_Ocenjivanja>();
                     customers.Add(testOcenjivanja);

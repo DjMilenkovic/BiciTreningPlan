@@ -6,131 +6,138 @@
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
              xmlns:vm="clr-namespace:BiciTreningPlan.ViewModel.Main"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:extToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="569" d:DesignWidth="942" Loaded="UserControl_Loaded"
+             d:DesignHeight="569" d:DesignWidth="942"
              >
     <UserControl.DataContext>
         <vm:RiderProfileViewModel/>
     </UserControl.DataContext>
-    
-    <DockPanel LastChildFill="True">
-        <Grid Margin="20 10" DockPanel.Dock="Left">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Ellipse Name="photo" Grid.Row="0" Grid.ColumnSpan="2" Width="100" Height="100" Margin="30" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="/Resources/defaultPicture.png"/>
-                </Ellipse.Fill>
-            </Ellipse>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <extToolkit:BusyIndicator Background="#ffffff" IsBusy="{Binding IsBusy}" BusyContent="Molimo Vas sačekajte...">
+        <DockPanel LastChildFill="True">
+            <Grid Margin="20 10" DockPanel.Dock="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Ellipse Name="photo" Grid.Row="0" Grid.ColumnSpan="2" Width="100" Height="100" Margin="30" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Resources/defaultPicture.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
 
-            <Label Grid.Row="1" Grid.Column="0">Ime:</Label>
-            <Label Name="lblName" Content="{Binding Name}" Grid.Row="1" Grid.Column="1"/>
-            <Label Grid.Row="2" Grid.Column="0">Prezime:</Label>
-            <Label Name="lblSurname" Content="{Binding Surname}" Grid.Row="2" Grid.Column="1"/>
-            <Label Grid.Row="3" Grid.Column="0">Datum rođenja:</Label>
-            <Label Name="lblBirth" Content="{Binding BirthDate}" Grid.Row="3" Grid.Column="1"/>
+                <Label Grid.Row="1" Grid.Column="0">Ime:</Label>
+                <Label Name="lblName" Content="{Binding Rider.Ime}" Grid.Row="1" Grid.Column="1"/>
+                <Label Grid.Row="2" Grid.Column="0">Prezime:</Label>
+                <Label Name="lblSurname" Content="{Binding Rider.Prezime}" Grid.Row="2" Grid.Column="1"/>
+                <Label Grid.Row="3" Grid.Column="0">Datum rođenja:</Label>
+                <Label Name="lblBirth" Content="{Binding Rider.Datum_Rodjenja}" Grid.Row="3" Grid.Column="1"/>
 
-            <Label Grid.Row="4" Grid.Column="0" Margin="0 20 0 0">Adresa:</Label>
-            <Label Name="lblAddress" Content="{Binding Address}" Grid.Row="4" Grid.Column="1" Margin="0 20 0 0"/>
-            <Label Grid.Row="5" Grid.Column="0">Grad:</Label>
-            <Label Name="lblCity" Content="{Binding City}" Grid.Row="5" Grid.Column="1"/>
-            <Label Grid.Row="6" Grid.Column="0">Država:</Label>
-            <Label Name="lblCountry" Content="{Binding Country}" Grid.Row="6" Grid.Column="1"/>
+                <Label Grid.Row="4" Grid.Column="0" Margin="0 20 0 0">Adresa:</Label>
+                <Label Name="lblAddress" Content="{Binding Rider.Adresa}" Grid.Row="4" Grid.Column="1" Margin="0 20 0 0"/>
+                <Label Grid.Row="5" Grid.Column="0">Grad:</Label>
+                <Label Name="lblCity" Content="{Binding Rider.Grad}" Grid.Row="5" Grid.Column="1"/>
+                <Label Grid.Row="6" Grid.Column="0">Država:</Label>
+                <Label Name="lblCountry" Content="{Binding Rider.Drzava}" Grid.Row="6" Grid.Column="1"/>
 
-            <Label Grid.Row="7" Grid.Column="0" Margin="0 20 0 0">Težina:</Label>
-            <Label Name="lblWeight" Content="{Binding Weight}" Grid.Row="7" Grid.Column="1" Margin="0 20 0 0"/>
-            <Label Grid.Row="8" Grid.Column="0">Visina:</Label>
-            <Label Name="lblHeight" Content="{Binding Height}" Grid.Row="8" Grid.Column="1"/>
+                <Label Grid.Row="7" Grid.Column="0" Margin="0 20 0 0">Težina:</Label>
+                <Label Name="lblWeight" Content="{Binding Rider.Tezina}" Grid.Row="7" Grid.Column="1" Margin="0 20 0 0"/>
+                <Label Grid.Row="8" Grid.Column="0">Visina:</Label>
+                <Label Name="lblHeight" Content="{Binding Rider.Visina}" Grid.Row="8" Grid.Column="1"/>
 
-            <Label Grid.Row="9" Margin="0 20 0 0">Omiljene trke:</Label>
-            <Label Grid.Column="1" Content="{Binding FavoriteRaceA}" Grid.Row="9" Name="lblFavoriteRaceA" Margin="0 20 0 0"/>
-            <Label Grid.Column="1" Content="{Binding FavoriteRaceB}" Grid.Row="10" Name="lblFavoriteRaceB"/>
-            <Label Grid.Column="1" Content="{Binding FavoriteRaceC}" Grid.Row="11" Name="lblFavoriteRaceC"/>
+                <Label Grid.Row="9" Margin="0 20 0 0">Omiljene trke:</Label>
+                <Label Grid.Column="1" Content="{Binding Rider.Omiljena_Trka_A}" Grid.Row="9" Name="lblFavoriteRaceA" Margin="0 20 0 0"/>
+                <Label Grid.Column="1" Content="{Binding Rider.Omiljena_Trka_B}" Grid.Row="10" Name="lblFavoriteRaceB"/>
+                <Label Grid.Column="1" Content="{Binding Rider.Omiljena_Trka_C}" Grid.Row="11" Name="lblFavoriteRaceC"/>
 
-        </Grid>
-        <Grid DockPanel.Dock="Right" Margin="20 10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Poslednji rezultati testova</Label>
-            <Label Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0 10 0 0">Procena učinka</Label>
-            <Label Grid.Row="2">Max test snage u sprintu</Label>
-            <Label Name="lblMaxPower" Content="{Binding MaxPower}" Grid.Row="2" Grid.Column="1"/>
-            <!--<Label Grid.Row="3">Raznovrsan Test</Label>-->
-            <!--<Label Name="lblGradedExerciseTest" Content="{Binding GradedExercise}" Grid.Row="3" Grid.Column="1"/>-->
-            <Label Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0 10 0 0">Testovi samorpocene</Label>
-            <!--Self-Assesments Tests-->
-            <Label Grid.Row="7">Tip vozača</Label>
-            <Label Name="lblProficienciesProfile" Content="{Binding ProficienciesRiderProfile}" Grid.Row="7" Grid.Column="1"/>
-            <Label Grid.Row="8">Motivacija</Label>
-            <Label Name="lblMentalSkills" Content="{Binding MentalSkills}" Grid.Row="8" Grid.Column="1"/>
-            <Label Grid.Row="9">Prirodne sposobnosti</Label>
-            <Label Name="lblNaturalAbilitiesProfile" Content="{Binding NaturalAbilitiesProfile}" Grid.Row="9" Grid.Column="1"/> 
+            </Grid>
+            <Grid DockPanel.Dock="Right" Margin="20 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">Poslednji rezultati testova</Label>
+                <Label Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0 10 0 0">Procena učinka</Label>
+                <Label Grid.Row="2">Max test snage u sprintu</Label>
+                <Label Name="lblMaxPower" Content="{Binding Sprint_Test.Maksimalna_Snaga}" Grid.Row="2" Grid.Column="1"/>
+                <!--<Label Grid.Row="3">Raznovrsan Test</Label>-->
+                <!--<Label Name="lblGradedExerciseTest" Content="{Binding GradedExercise}" Grid.Row="3" Grid.Column="1"/>-->
+                <Label Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0 10 0 0">Testovi samorpocene</Label>
+                <!--Self-Assesments Tests-->
+                <Label Grid.Row="7">Tip vozača</Label>
+                <Label Name="lblProficienciesProfile" Content="{Binding ProfVozaca}" Grid.Row="7" Grid.Column="1"/>
+                <Label Grid.Row="8">Motivacija</Label>
+                <Label Name="lblMentalSkills" Content="{Binding MentalSkill.Motivacija}" Grid.Row="8" Grid.Column="1"/>
+                <Label Grid.Row="9">Prirodne sposobnosti</Label>
+                <Label Name="lblNaturalAbilitiesProfile" Content="{Binding Prirodne_Sposobnosti}" Grid.Row="9" Grid.Column="1"/>
 
-            <!--  <Button Grid.Row="11" Grid.ColumnSpan="2" Style="{StaticResource buttonStyle}" Margin="0" Background="#222d32" VerticalAlignment="Bottom">Test Results</Button>
+                <!--  <Button Grid.Row="11" Grid.ColumnSpan="2" Style="{StaticResource buttonStyle}" Margin="0" Background="#222d32" VerticalAlignment="Bottom">Test Results</Button>
 -->
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <!--Series="{Binding SeriesCollection}" -->
-            <!--<lvc:CartesianChart Grid.Row="0" LegendLocation="Right" Margin="20">
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Series="{Binding SeriesCollection}" -->
+                <!--<lvc:CartesianChart Grid.Row="0" LegendLocation="Right" Margin="20">
                 <lvc:CartesianChart.AxisY>
                     -->
-            <!--LabelFormatter="{Binding YFormatter}"-->
-            <!--
+                <!--LabelFormatter="{Binding YFormatter}"-->
+                <!--
                     <lvc:Axis Title="Time" ></lvc:Axis>
                 </lvc:CartesianChart.AxisY>
                 <lvc:CartesianChart.AxisX>
                     -->
-            <!--Labels="{Binding Labels}"-->
-            <!--
+                <!--Labels="{Binding Labels}"-->
+                <!--
                     <lvc:Axis Title="Date" ></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>-->
-
-            <lvc:PieChart Grid.Row="1" LegendLocation="Bottom" Hoverable="False" DataTooltip="{x:Null}" Margin="20">
-                <lvc:PieChart.Series>
-                    <lvc:PieSeries Name="pieSprint" Title="Sprint" LabelPoint="{Binding PointLabel}"  DataLabels="True"/>
-                    <lvc:PieSeries Name="pieClimb" Title="Brdo" LabelPoint="{Binding PointLabel}" DataLabels="True"/>
-                    <lvc:PieSeries Name="pieTT" Title="Hronometar" LabelPoint="{Binding PointLabel}" DataLabels="True"/>
-                </lvc:PieChart.Series>
-            </lvc:PieChart>
-        </Grid>
-    </DockPanel>
+                <lvc:PieChart Grid.Row="1" LegendLocation="Bottom" Hoverable="False" DataTooltip="{x:Null}" Margin="20">
+                    <lvc:PieChart.Series>
+                        <lvc:PieSeries Name="pieSprint" Title="Sprint" LabelPoint="{Binding PointLabel}" Values="{Binding Sprint}"  DataLabels="True"/>
+                        <lvc:PieSeries Name="pieClimb" Title="Brdo" LabelPoint="{Binding PointLabel}" Values="{Binding Brdo}" DataLabels="True"/>
+                        <lvc:PieSeries Name="pieTT" Title="Hronometar" LabelPoint="{Binding PointLabel}" Values="{Binding Hronometar}" DataLabels="True"/>
+                    </lvc:PieChart.Series>
+                </lvc:PieChart>
+            </Grid>
+        </DockPanel>
+    </extToolkit:BusyIndicator>
 </UserControl>

@@ -4,10 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiciTreningPlan.View.TrainingPlan"
+        xmlns:lovalVM="clr-namespace:BiciTreningPlan.ViewModel.TrainingPlan"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Height="300" Width="300"
         >
+    <UserControl.DataContext>
+        <lovalVM:RoutesViewModel/>
+    </UserControl.DataContext>
     <!--Loaded="Window_Loaded"-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -24,16 +34,21 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Početna destinacija</Label>
-        <TextBox  Grid.Row="0" Grid.Column="1" Name="txtStartPlace" MinWidth="70" Margin="5"/>
+        <TextBox Text="{Binding Putanja.Pocetno_odrediste}" Grid.Row="0" Grid.Column="1" Name="txtStartPlace" MinWidth="70" Margin="5"/>
         <Label  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Destinacija između</Label>
-        <TextBox  Grid.Row="1" Grid.Column="1" Name="txtToPlace" MinWidth="70" Margin="5"/>
+        <TextBox Text="{Binding Putanja.Odrediste_izmedju}" Grid.Row="1" Grid.Column="1" Name="txtToPlace" MinWidth="70" Margin="5"/>
         <Label  Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Odredište</Label>
-        <TextBox  Grid.Row="2" Grid.Column="1" Name="txtEndPlace" MinWidth="70" Margin="5"/>
+        <TextBox Text="{Binding Putanja.Krajnje_odrediste}" Grid.Row="2" Grid.Column="1" Name="txtEndPlace" MinWidth="70" Margin="5"/>
         <Label Grid.Row="3" Grid.Column="0" Content="Tip putanje"/>
-        <ComboBox Name="cmbRouteType" Grid.Row="3" Grid.Column="1" Margin="5"/>
-        <Button Name="btnAddRoute" Grid.Row="4" Grid.Column="1" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="30" MinWidth="100" Margin="5">Dodaj putanju</Button>
-        <DataGrid Name="dgRoutes" Grid.Row="5" Grid.ColumnSpan="2" ColumnWidth="Auto" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
-      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Extended"/>
-        <Button Name="btnDelete" Grid.Row="6" Grid.Column="1" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="30" MinWidth="100" Margin="5">Obriši putanju</Button>
+        <ComboBox ItemsSource="{Binding TipPutanje}" SelectedIndex="0" SelectedValuePath="ID" DisplayMemberPath="Naziv" SelectedItem="{Binding SelectedTipPutanje}" Name="cmbRouteType" Grid.Row="3" Grid.Column="1" Margin="5"/>
+        <Button Command="{Binding Save}" Name="btnAddRoute" Grid.Row="4" Grid.Column="1" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="30" MinWidth="100" Margin="5">Dodaj putanju</Button>
+        <DataGrid ItemsSource="{Binding ListaPutanji}" SelectedItem="{Binding SelectedPutanja}" AutoGenerateColumns="False" Grid.Row="5" Grid.ColumnSpan="2" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
+      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Extended">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Putanja" Binding="{Binding Cela_putanja}" Width="*"/>
+                <DataGridTextColumn Header="Tip putanje" Binding="{Binding Naziv}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="btnDelete" Command="{Binding Delete}" Grid.Row="6" Grid.Column="1" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="30" MinWidth="100" Margin="5">Obriši putanju</Button>
     </Grid>
 </UserControl>

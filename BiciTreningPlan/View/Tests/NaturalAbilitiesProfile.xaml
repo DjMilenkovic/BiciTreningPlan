@@ -9,7 +9,7 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -44,65 +44,65 @@
             </TextBlock>
             <Label Grid.Row="3"/>
 
-            <RadioButton Name="rbStrength1" Grid.Row="4" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength1">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="4" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength1">Ne slažem se</RadioButton>
-            <Label Grid.Row="4" Grid.Column="2">Više volim da vozim teži prenos sa manjom kadencom nego većina mojih kolega.</Label>
+            <!--Strenght-->
+            <ComboBox Grid.Row="4" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Strength[0],Mode=TwoWay}"/>
+            <Label Grid.Row="4" Grid.Column="1">Više volim da vozim teži prenos sa manjom kadencom nego većina mojih kolega.</Label>
 
-            <RadioButton Name="rbSpeed1" Grid.Row="5" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed1">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="5" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed1">Ne slažem se</RadioButton>
-            <Label Grid.Row="5" Grid.Column="2">Najbolje vozim kriterijumske i kratke trke.</Label>
+            <!--Speed-->
+            <ComboBox Grid.Row="5" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Speed[0],Mode=TwoWay}"/>
+            <Label Grid.Row="5" Grid.Column="1">Najbolje vozim kriterijumske i kratke trke.</Label>
 
-            <RadioButton Name="rbSpeed2" Grid.Row="6" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed2">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="6" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed2">Ne slažem se</RadioButton>
-            <Label Grid.Row="6" Grid.Column="2">Dobar sam na sprintu.</Label>
+            <!--Speed2-->
+            <ComboBox Grid.Row="6" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Speed[1],Mode=TwoWay}"/>
+            <Label Grid.Row="6" Grid.Column="1">Dobar sam na sprintu.</Label>
 
-            <RadioButton Name="rbEndurance1" Grid.Row="7" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance1">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="7" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance1">Ne slažem se</RadioButton>
-            <Label Grid.Row="7" Grid.Column="2">Jači sam na kraju dugih treninga od mojih kolega.</Label>
+            <!--Endurance-->
+            <ComboBox Grid.Row="7" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Endurance[0],Mode=TwoWay}"/>
+            <Label Grid.Row="7" Grid.Column="1">Jači sam na kraju dugih treninga od mojih kolega.</Label>
 
-            <RadioButton Name="rbStrength2" Grid.Row="8" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength2">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="8" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength2">Ne slažem se</RadioButton>
-            <Label Grid.Row="8" Grid.Column="2">Mogu da uradim više čučnjeva sa tegovima od većine mojih kolega u mojoj kategoriji.</Label>
+            <!--Strenght2-->
+            <ComboBox Grid.Row="8" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Strength[1],Mode=TwoWay}"/>
+            <Label Grid.Row="8" Grid.Column="1">Mogu da uradim više čučnjeva sa tegovima od većine mojih kolega u mojoj kategoriji.</Label>
 
-            <RadioButton Name="rbEndurance2" Grid.Row="9" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance2">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="9" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance2">Ne slažem se</RadioButton>
-            <Label Grid.Row="9" Grid.Column="2">Više volim duge trke.</Label>
+            <!--Endurance2-->
+            <ComboBox Grid.Row="9" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Endurance[1],Mode=TwoWay}"/>
+            <Label Grid.Row="9" Grid.Column="1">Više volim duge trke.</Label>
 
-            <RadioButton Name="rbStrength3" Grid.Row="10" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength3">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="10" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength3">Ne slažem se</RadioButton>
-            <Label Grid.Row="10" Grid.Column="2">Koristim duže ručke volana od većine kolega moje visine.</Label>
+            <!--Strenght3-->
+            <ComboBox Grid.Row="10" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Strength[2],Mode=TwoWay}"/>
+            <Label Grid.Row="10" Grid.Column="1">Koristim duže ručke volana od većine kolega moje visine.</Label>
 
-            <RadioButton Name="rbEndurance3" Grid.Row="11" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance3">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="11" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance3">Ne slažem se</RadioButton>
-            <Label Grid.Row="11" Grid.Column="2">Postajem jači na etapnim trkama ili na treninzima visokog intenziteta.</Label>
+            <!--Endurance3-->
+            <ComboBox Grid.Row="11" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Endurance[2],Mode=TwoWay}"/>
+            <Label Grid.Row="11" Grid.Column="1">Postajem jači na etapnim trkama ili na treninzima visokog intenziteta.</Label>
 
-            <RadioButton Name="rbSpeed3" Grid.Row="12" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed3">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="12" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed3">Ne slažem se</RadioButton>
-            <Label Grid.Row="12" Grid.Column="2">Komforno koristim manju brzinu sa većom kadencom nego većina sa kojima treniram.</Label>
+            <!--Speed3-->
+            <ComboBox Grid.Row="12" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Speed[2],Mode=TwoWay}"/>
+            <Label Grid.Row="12" Grid.Column="1">Komforno koristim manju brzinu sa većom kadencom nego većina sa kojima treniram.</Label>
 
-            <RadioButton Name="rbSpeed4" Grid.Row="13" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed4">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="13" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed4">Ne slažem se</RadioButton>
-            <Label Grid.Row="13" Grid.Column="2">Uvek sam bio brži od većine drugih ljudi za svaki sport koji sam trenirao.</Label>
+            <!--Speed4-->
+            <ComboBox Grid.Row="13" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Speed[3],Mode=TwoWay}"/>
+            <Label Grid.Row="13" Grid.Column="1">Uvek sam bio brži od većine drugih ljudi za svaki sport koji sam trenirao.</Label>
 
-            <RadioButton Name="rbEndurance4" Grid.Row="14" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance4">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="14" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance4">Ne slažem se</RadioButton>
-            <Label Grid.Row="14" Grid.Column="2">U većini sportova, uspevao sam da završim jači od većine drugih.</Label>
+            <!--Endurance4-->
+            <ComboBox Grid.Row="14" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Endurance[3],Mode=TwoWay}"/>
+            <Label Grid.Row="14" Grid.Column="1">U većini sportova, uspevao sam da završim jači od većine drugih.</Label>
 
-            <RadioButton Name="rbStrength4" Grid.Row="15" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength4">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="15" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength4">Ne slažem se</RadioButton>
-            <Label Grid.Row="15" Grid.Column="2">Uvek sam imao veću mišićnu snagu nego većina drugih sa kojima sam trenirao.</Label>
+            <!--Strenght4-->
+            <ComboBox Grid.Row="15" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Strength[3],Mode=TwoWay}"/>
+            <Label Grid.Row="15" Grid.Column="1">Uvek sam imao veću mišićnu snagu nego većina drugih sa kojima sam trenirao.</Label>
 
-            <RadioButton Name="rbStrength5" Grid.Row="16" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="strength5">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="16" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="strength5">Ne slažem se</RadioButton>
-            <Label Grid.Row="16" Grid.Column="2">Najbolje se penjam sedeći.</Label>
+            <!--Strength5-->
+            <ComboBox Grid.Row="16" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Strength[4],Mode=TwoWay}"/>
+            <Label Grid.Row="16" Grid.Column="1">Najbolje se penjam sedeći.</Label>
 
-            <RadioButton Name="rbSpeed5" Grid.Row="17" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="speed5">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="17" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="speed5">Ne slažem se</RadioButton>
-            <Label Grid.Row="17" Grid.Column="2">Više volim kratke ali brze treninge.</Label>
+            <!--Speed5-->
+            <ComboBox Grid.Row="17" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Speed[4],Mode=TwoWay}"/>
+            <Label Grid.Row="17" Grid.Column="1">Više volim kratke ali brze treninge.</Label>
 
-            <RadioButton Name="rbEndurance5" Grid.Row="18" Grid.Column="0" Style="{StaticResource radioButtonStyle}" GroupName="endurance5">Slažem se</RadioButton>
-            <RadioButton IsChecked="true" Grid.Row="18" Grid.Column="1" Style="{StaticResource radioButtonStyle}" GroupName="endurance5">Ne slažem se</RadioButton>
-            <Label Grid.Row="18" Grid.Column="2">Uveren sam u moju izdržljivost na početku dugih trka.</Label>
+            <!--Endurance5-->
+            <ComboBox Grid.Row="18" Grid.Column="0"  Margin="5" ItemsSource="{Binding ComboBoxDisplay}" SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Endurance[4],Mode=TwoWay}"/>
+            <Label Grid.Row="18" Grid.Column="1">Uveren sam u moju izdržljivost na početku dugih trka.</Label>
 
             <Button Name="btnSubmit" Grid.Row="19" Grid.Column="2" Style="{StaticResource buttonStyle}" Margin="10" Height="30" HorizontalAlignment="Right" MinWidth="80">Upisati</Button>
         </Grid>

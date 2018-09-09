@@ -16,9 +16,10 @@ namespace ProjectDBDataModel.Entity
     {
         public long ID_Bicikliste { get; set; }
         public System.DateTime Datum_treninga { get; set; }
-        public long ID_Nedelje { get; set; }
+        public long Broj_nedelje { get; set; }
         public long ID_Treninga { get; set; }
-        public long ID_Putanje { get; set; }
+        public long ID_Sezone { get; set; }
+        public Nullable<long> ID_Putanje { get; set; }
         public string Vreme_treninga { get; set; }
         public Nullable<int> Prosecna_brzina { get; set; }
         public Nullable<int> Maksimalna_brzina { get; set; }
@@ -33,7 +34,6 @@ namespace ProjectDBDataModel.Entity
         public Nullable<int> Subjektivni_osecaj_posle_treninga { get; set; }
     
         public virtual Biciklista Biciklista { get; set; }
-        public virtual Nedelja Nedelja { get; set; }
-        public virtual Putanja Putanja { get; set; }
+        public virtual Sezona Sezona { get; set; }
     }
 }

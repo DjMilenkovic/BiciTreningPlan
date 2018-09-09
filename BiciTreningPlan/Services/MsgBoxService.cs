@@ -21,9 +21,11 @@ namespace BiciTreningPlan.Services
 
         public bool AskForConfirmation(string message)
         {
-            MessageBoxResult result = MessageBox.Show(message, "Da li ste sigurni?", MessageBoxButton.YesNo);
-            return result.HasFlag(MessageBoxResult.OK);
+            MessageBoxResult result = MessageBox.Show(message, "Da li ste sigurni?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+                return true;
+            else
+                return false;
         }
-
     }
 }

@@ -4,114 +4,111 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:extToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"             
              mc:Ignorable="d"              
              d:DesignHeight="569" d:DesignWidth="942">
-    <!--Loaded="UserControl_Loaded"-->
-    <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Bottom">
-            <RichTextBox Padding="30" IsEnabled="False"></RichTextBox>
-        </StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-            </Grid.RowDefinitions>
-            <Button Name="btnFirst" Grid.Column="0" Style="{StaticResource dashboardButtonStyle}">
-                <StackPanel Orientation="Vertical" >
-                    <Label Name="lblWeatherDescription1" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblTemp1" HorizontalContentAlignment="Center" FontSize="28" Foreground="#ffffff" Content="N/A"/>
-                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <extToolkit:BusyIndicator Background="#ffffff" IsBusy="{Binding IsBusy}" BusyContent="Molimo Vas sačekajte...">
+        <DockPanel LastChildFill="True">
+            <StackPanel DockPanel.Dock="Bottom">
+                <RichTextBox Padding="30" IsEnabled="False"></RichTextBox>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Style="{StaticResource dashboardButtonStyle}">
+                    <StackPanel Orientation="Vertical" >
+                        <Label Name="lblWeatherDescription1" Content="{Binding Vreme[5].Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff"/>
+                        <Image Margin="40" Source="{Binding Vreme[5].Slika}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Name="lblTemp1" Content="{Binding Vreme[5].Temperatura}" HorizontalContentAlignment="Center" FontSize="28" Foreground="#ffffff" />
+                            <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Name="lblWindSpeed1" Content="{Binding Vreme[5].Brzina_vetra}" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" />
+                            <Image Name="lblWindDirection1" Height="20" RenderTransformOrigin=".5,.5" RenderTransform="{Binding ElementName[5].Smer_vetra}"  Source="/Resources/wind.png"/>
+                        </StackPanel>
+                        <Label Name="lblShortDesc1" Content="{Binding TreningDan.Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
+                        <Label Name="lblDate1" Content="{Binding Vreme[5].Datum}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblWindSpeed1" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection1" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
+                </Button>
+                <Button Name="btnSecond" Grid.Column="1" Style="{StaticResource dashboardButtonStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding Vreme[4].Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff"/>
+                        <Image Margin="40" Source="{Binding Vreme[4].Slika}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="{Binding Vreme[4].Temperatura}" HorizontalContentAlignment="Center" FontSize="28" Foreground="#ffffff" />
+                            <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="{Binding Vreme[4].Brzina_vetra}" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" />
+                            <Image Height="20" RenderTransformOrigin=".5,.5" RenderTransform="{Binding ElementName[4].Smer_vetra}" Source="/Resources/wind.png"/>
+                        </StackPanel>
+                        <Label Content="{Binding TreningDan.Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
+                        <Label Content="{Binding Vreme[4].Datum}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
                     </StackPanel>
-                    <Label Name="lblShortDesc1" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
-                    <Label Name="lblDate1" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                </StackPanel>
-            </Button>
-            <Button Name="btnSecond" Grid.Column="1" Style="{StaticResource dashboardButtonStyle}">
-                <StackPanel Orientation="Vertical">
-                    <Label Name="lblWeatherDescription2" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblTemp2" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                </Button>
+                <Button Name="btnThird" Grid.Column="2" Style="{StaticResource dashboardButtonStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding Vreme[3].Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff"/>
+                        <Image Margin="40" Source="{Binding Vreme[3].Slika}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="{Binding Vreme[3].Temperatura}" HorizontalContentAlignment="Center" FontSize="28" Foreground="#ffffff" />
+                            <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="{Binding Vreme[3].Brzina_vetra}" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" />
+                            <Image Height="20" RenderTransformOrigin=".5,.5" RenderTransform="{Binding ElementName[3].Smer_vetra}" Source="/Resources/wind.png"/>
+                        </StackPanel>
+                        <Label Content="{Binding TreningDan.Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
+                        <Label Content="{Binding Vreme[3].Datum}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblWindSpeed2" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection2" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
+                </Button>
+                <Button Name="btnFourth" Grid.Column="3" Style="{StaticResource dashboardButtonStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding Vreme[2].Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff"/>
+                        <Image Margin="40" Source="{Binding Vreme[2].Slika}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="{Binding Vreme[2].Temperatura}" HorizontalContentAlignment="Center" FontSize="28" Foreground="#ffffff" />
+                            <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="{Binding Vreme[2].Brzina_vetra}" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" />
+                            <Image Height="20" RenderTransformOrigin=".5,.5" RenderTransform="{Binding ElementName[2].Smer_vetra}" Source="/Resources/wind.png"/>
+                        </StackPanel>
+                        <Label Content="{Binding TreningDan.Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
+                        <Label Content="{Binding Vreme[2].Datum}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
                     </StackPanel>
-                    <Label Name="lblShortDesc2" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
-                    <Label Name="lblDate2" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                </StackPanel>
-            </Button>
-            <Button Name="btnThird" Grid.Column="2" Style="{StaticResource dashboardButtonStyle}">
-                <StackPanel Orientation="Vertical">
-                    <Label Name="lblWeatherDescription3" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblTemp3" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                </Button>
+                <Button Name="btnFifth" Grid.Column="4" Style="{StaticResource dashboardButtonStyle}">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding Vreme[1].Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff"/>
+                        <Image Margin="40" Source="{Binding Vreme[1].Slika}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="{Binding Vreme[1].Temperatura}" HorizontalContentAlignment="Center" FontSize="28" Foreground="#ffffff" />
+                            <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="{Binding Vreme[1].Brzina_vetra}" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" />
+                            <Image Height="20" RenderTransformOrigin=".5,.5" RenderTransform="{Binding ElementName[1].Smer_vetra}" Source="/Resources/wind.png"/>
+                        </StackPanel>
+                        <Label Content="{Binding TreningDan.Opis}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
+                        <Label Content="{Binding Vreme[1].Datum}" HorizontalContentAlignment="Center" Foreground="#ffffff" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblWindSpeed3" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection3" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
-                    </StackPanel>
-                    <Label Name="lblShortDesc3" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <Label Name="lblDate3" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                </StackPanel>
-            </Button>
-            <Button Name="btnFourth" Grid.Column="3" Style="{StaticResource dashboardButtonStyle}">
-                <StackPanel Orientation="Vertical">
-                    <Label Name="lblWeatherDescription4" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblTemp4" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblWindSpeed4" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection4" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
-                    </StackPanel>
-                    <Label Name="lblShortDesc4" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A" />
-                    <Label Name="lblDate4" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                </StackPanel>
-            </Button>
-            <Button Name="btnFifth" Grid.Column="4" Style="{StaticResource dashboardButtonStyle}">
-                <StackPanel Orientation="Vertical">
-                    <Label Name="lblWeatherDescription5" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblTemp5" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblWindSpeed5" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection5" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
-                    </StackPanel>
-                    <Label Name="lblShortDesc5" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <Label Name="lblDate5" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                </StackPanel>
-            </Button>
-            <!-- <Button Name="btnSixth" Grid.Column="5" Style="{StaticResource dashboardButtonStyle}">
-                <StackPanel Orientation="Vertical">
-                    <Label Name="lblWeatherDescription6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblTemp6" FontSize="28" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Label Content="°C" FontSize="28" Foreground="#ffffff"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Name="lblWindSpeed6" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                        <Image Name="lblWindDirection6" Height="20" RenderTransformOrigin=".5,.5"  Source="/Resources/wind.png"/>
-                    </StackPanel>
-                    <Label Name="lblShortDesc6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                    <Label Name="lblDate6" HorizontalContentAlignment="Center" Foreground="#ffffff" Content="N/A"/>
-                </StackPanel>
-            </Button>
--->
-        </Grid>
-    </DockPanel>
+                </Button>
+            </Grid>
+        </DockPanel>
+    </extToolkit:BusyIndicator>
 </UserControl>

@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiciTreningPlan.View.TrainingPlan"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"            
         mc:Ignorable="d"
         Height="300" Width="380">
-    <!--Loaded="Window_Loaded"-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -22,14 +27,19 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Trka:</Label>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-            <ComboBox Name="cmbRaces" MinWidth="130" Margin="5"/>
-            <DatePicker Name="dtRaceDate" VerticalAlignment="Center" Margin="5"/>
+            <ComboBox ItemsSource="{Binding Trke}" SelectedIndex="0" SelectedValuePath="ID" DisplayMemberPath="Naziv_trke" SelectedValue="{Binding SelectedTrkaID}" MinWidth="155" Margin="5" />
+            <DatePicker SelectedDate="{Binding RaceDate}" VerticalAlignment="Center" Margin="5"/>
         </StackPanel>
-        <Button Name="btnNewRace" Command="{Binding OpenAddNewRaces}" Grid.Row="1" Grid.Column="1" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="30" MinWidth="100" Margin="5">Dodaj novu trku</Button>
-        <Button Name="btnAddRaceToSeason" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5">Dodaj trku za ovu sezonu</Button>
+        <Button Command="{Binding OpenAddNewRaces}" Grid.Row="1" Grid.Column="1" Style="{StaticResource buttonStyle}"  HorizontalAlignment="Right" Height="30" MinWidth="100" Margin="5">Dodaj novu trku</Button>
+        <Button Command="{Binding Save}" Grid.Row="2" Grid.Column="1" Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5">Dodaj trku za ovu sezonu</Button>
         <Label VerticalAlignment="Center" Grid.Row="3">Trke u ovoj sezoni:</Label>
-        <DataGrid Name="dgRaces" Grid.Row="4" Grid.ColumnSpan="2" ColumnWidth="*" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
-      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Extended"/>
-        <Button Name="btnDelete" Grid.Row="5" Grid.Column="1" Content="Obriši trku iz ove sezone"  Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5"/>
+        <DataGrid ItemsSource="{Binding ListaTrkaUSezoni}" SelectedItem="{Binding SelectedTrkaUSezoni}" AutoGenerateColumns="False" Grid.Row="4" Grid.ColumnSpan="2" ColumnWidth="*" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
+      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Extended">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv trke" Binding="{Binding Naziv_trke}" Width="*"/>
+                <DataGridTextColumn Header="Putanja" Binding="{Binding Cela_putanja}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Command="{Binding Delete}" Grid.Row="5" Grid.Column="1" Content="Obriši trku iz ove sezone"  Style="{StaticResource buttonStyle}" Height="30" MinWidth="70" Margin="5"/>
     </Grid>
 </UserControl>

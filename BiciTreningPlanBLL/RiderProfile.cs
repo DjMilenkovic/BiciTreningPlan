@@ -17,5 +17,17 @@ namespace BiciTreningPlanBLL
             BiciklistaRepository biciklista = new BiciklistaRepository();
             return biciklista.GetOneData(ID);            
         }
+
+        public List<Biciklista> getDataFromDAL()
+        {
+            BiciklistaRepository biciklista = new BiciklistaRepository();
+            return biciklista.GetData();
+        }
+
+        public void insertIntoDAL(Biciklista biciklista)
+        {
+            BiciklistaRepository biciRepo = new BiciklistaRepository();
+            biciRepo.Insert(biciklista);
+        }
     }
 }

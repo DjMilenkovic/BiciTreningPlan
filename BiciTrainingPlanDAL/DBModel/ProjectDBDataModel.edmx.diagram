@@ -4,57 +4,57 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8b412bc5f52f4486baed7f89277c6466" Name="Diagram1" ZoomLevel="57">
-        <EntityTypeShape EntityType="ProjectDBModel.Biciklista" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Dani" Width="1.5" PointX="8.75" PointY="25.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Dnevni_Trening_Periodi" Width="1.5" PointX="11" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Glavni_Tipovi_Treninga" Width="1.5" PointX="3.5" PointY="34.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Iskustveni_Nivo" Width="1.5" PointX="0.75" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Lista_Trka" Width="1.5" PointX="8.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Mentalne_Sposobnosti" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Nedelja" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Prirodne_Sposobnosti" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Profilisanje_Profila_Vozaca" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Putanja" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Sezona" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Sprint_Test" Width="1.5" PointX="5.25" PointY="24.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Test_Kriticne_Snage" Width="1.5" PointX="5.25" PointY="26.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Test_Ocenjivanja" Width="1.5" PointX="5.25" PointY="30.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Tip_putanje" Width="1.5" PointX="3.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Tipovi_Treninga" Width="1.5" PointX="5.75" PointY="34.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Trening_Dani" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Trening_Periodi" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Treninzi" Width="1.5" PointX="8" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Treniraj_Ili_Ne" Width="1.5" PointX="1.25" PointY="34.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Trke_U_Sezoni" Width="1.5" PointX="10.5" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Vreme" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="ProjectDBModel.FK_Biciklista_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Lista_Trka_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Mentalne_Sposobnosti_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Prirodne_Sposobnosti_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Profilisanje_Profila_Vozaca_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Sezona_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Sprint_Test_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Test_Kriticne_Snage_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Test_Ocenjivanja_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Trening_Dani_3_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Trke_U_Sezoni_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Dnevni_Trening_Periodi_1_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Dnevni_Trening_Periodi_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Dnevni_Trening_Periodi_2_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Glavni_Tipovi_Treninga_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Tipovi_Treninga_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Treninzi_1_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Lista_Trka_1_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Trke_U_Sezoni_2_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Nedelja_1_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Trening_Dani_2_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Putanja_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Trening_Dani_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Trke_U_Sezoni_1_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Treninzi_0_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Treninzi_2_0" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDBModel.FK_Putanja_1_0" />
+      <Diagram DiagramId="512230e814eb483dacdc4b45b9a688fe" Name="Diagram1" ZoomLevel="90">
+        <EntityTypeShape EntityType="DataModel.Biciklista" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Dani" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Dnevni_Trening_Periodi" Width="1.5" PointX="9" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Glavni_Tipovi_Treninga" Width="1.5" PointX="1.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Iskustveni_Nivo" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Lista_Trka" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Mentalne_Sposobnosti" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Nedelja" Width="1.5" PointX="8.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Prirodne_Sposobnosti" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Profilisanje_Profila_Vozaca" Width="1.5" PointX="5.25" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Putanja" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Sezona" Width="1.5" PointX="5.25" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Sprint_Test" Width="1.5" PointX="5.25" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Test_Kriticne_Snage" Width="1.5" PointX="5.25" PointY="36.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Test_Ocenjivanja" Width="1.5" PointX="5.25" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Tip_putanje" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Tipovi_Treninga" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Trening_Dani" Width="1.5" PointX="7.5" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Trening_Periodi" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Treninzi" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Treniraj_Ili_Ne" Width="1.5" PointX="1.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Trke_U_Sezoni" Width="1.5" PointX="10.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Vreme" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.FK_Biciklista_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Lista_Trka_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Mentalne_Sposobnosti_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Nedelja_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Prirodne_Sposobnosti_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Profilisanje_Profila_Vozaca_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Putanja_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Sezona_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Sprint_Test_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Test_Kriticne_Snage_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Test_Ocenjivanja_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Trening_Dani_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Trke_U_Sezoni_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Dnevni_Trening_Periodi_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Dnevni_Trening_Periodi_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Dnevni_Trening_Periodi_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Glavni_Tipovi_Treninga_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Tipovi_Treninga_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Treninzi_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Lista_Trka_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Trke_U_Sezoni_2_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Nedelja_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Putanja_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Trening_Dani_3_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Trke_U_Sezoni_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Treninzi_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_Treninzi_2_0" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

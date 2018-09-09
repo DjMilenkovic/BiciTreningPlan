@@ -23,12 +23,12 @@ namespace BiciTrainingPlanDAL.TestManipulator
 
         public Sprint_Test GetOneData(long ID)
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = (from b in db.Sprint_Test
-                            where b.ID_Bicikliste == ID
-                            orderby b.Datum_testiranja descending
-                            select b).FirstOrDefault();
+                             where b.ID_Bicikliste == ID
+                             orderby b.Datum_testiranja descending
+                             select b).FirstOrDefault() ;
                 
                 return query;
             }
@@ -36,7 +36,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
 
         public List<Sprint_Test> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from b in db.Sprint_Test
                             where b.ID_Bicikliste == IDBicikliste
@@ -51,7 +51,7 @@ namespace BiciTrainingPlanDAL.TestManipulator
             var testSprinta = entity as Sprint_Test;
             if (testSprinta != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var customers = db.Set<Sprint_Test>();
                     customers.Add(testSprinta);

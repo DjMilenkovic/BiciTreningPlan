@@ -14,7 +14,7 @@ namespace BiciTreningPlanBLL
         {
             TestSprintaManipulator biciklistaManipulator = new TestSprintaManipulator();
             var result = biciklistaManipulator.GetOneData(ID);
-            if(result == null)
+            if (result == null)
             {
                 result = new Sprint_Test();
                 result.ID_Bicikliste = ID;
@@ -22,6 +22,12 @@ namespace BiciTreningPlanBLL
                 result.Prosecna_Snaga = 0;
             }
             return result;
+        }
+
+        public void insertDataToDAL(Sprint_Test test)
+        {
+            TestSprintaManipulator sprintTestManipulator = new TestSprintaManipulator();
+            sprintTestManipulator.Insert(test);
         }
     }
 }

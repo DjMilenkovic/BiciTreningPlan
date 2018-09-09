@@ -18,7 +18,6 @@ namespace ProjectDBDataModel.Entity
         public Putanja()
         {
             this.Lista_Trka = new HashSet<Lista_Trka>();
-            this.Trening_Dani = new HashSet<Trening_Dani>();
         }
     
         public long ID { get; set; }
@@ -29,11 +28,9 @@ namespace ProjectDBDataModel.Entity
         public long ID_Tip_putanje { get; set; }
         public long ID_Bicikliste { get; set; }
     
+        public virtual Biciklista Biciklista { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lista_Trka> Lista_Trka { get; set; }
         public virtual Tip_putanje Tip_putanje { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Trening_Dani> Trening_Dani { get; set; }
-        public virtual Biciklista Biciklista { get; set; }
     }
 }

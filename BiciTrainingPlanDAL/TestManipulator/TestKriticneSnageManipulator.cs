@@ -23,7 +23,7 @@ namespace BiciTrainingPlanDAL
 
         public List<Test_Kriticne_Snage> GetData()
         {
-            using (var db = new ProjectDBEntities())
+            using (var db = new ProjectDB())
             {
                 var query = from b in db.Test_Kriticne_Snage
                             where b.ID_Bicikliste == IDBicikliste
@@ -38,7 +38,7 @@ namespace BiciTrainingPlanDAL
             var testKriticneSnageManipulator = entity as Test_Kriticne_Snage;
             if (testKriticneSnageManipulator != null)
             {
-                using (var db = new ProjectDBEntities())
+                using (var db = new ProjectDB())
                 {
                     var customers = db.Set<Test_Kriticne_Snage>();
                     customers.Add(testKriticneSnageManipulator);

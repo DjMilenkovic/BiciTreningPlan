@@ -5,19 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BiciTreningPlan.View.Main"
              xmlns:localVM="clr-namespace:BiciTreningPlan.ViewModel.Main"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"        
+             xmlns:extToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="569" d:DesignWidth="942"  
              >
-    <!--Loaded="UserControl_Loaded"-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <UserControl.DataContext>
         <localVM:TrainingPlanViewModel/>
     </UserControl.DataContext>
-    <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Right" Margin="10">
-            <Button Name="btnGenerate" IsEnabled="True" Style="{StaticResource buttonStyle}" Command="{Binding OpenNewTrainingPlan}" Height="30" MinWidth="160">Generiši novi trening plan</Button>
-        </StackPanel>
-        <DataGrid Name="dgTrainingPlan" ItemsSource="{Binding TrainingPlanList}" MouseDoubleClick="{Binding TrainingInformation}" Margin="10" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
-      VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Single"/>
-        <!--MouseDoubleClick="dgTrainingPlan_MouseDoubleClick"-->
-    </DockPanel>
+    <extToolkit:BusyIndicator Background="#ffffff" IsBusy="{Binding IsBusy}" BusyContent="Molimo Vas sačekajte...">
+
+        <DockPanel LastChildFill="True">
+            <StackPanel DockPanel.Dock="Right" Margin="10">
+                <Button Command="{Binding OpenNewTrainingPlan}" IsEnabled="True" Style="{StaticResource buttonStyle}" Height="30" MinWidth="160">Generiši novi trening plan</Button>
+            </StackPanel>
+            <DataGrid ItemsSource="{Binding TrainingPlanList}" AutoGenerateColumns="False" Margin="10" IsReadOnly="True" ScrollViewer.CanContentScroll="True" 
+      VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Datum_treninga}" Width="Auto"/>
+                    <DataGridTextColumn Header="Trening" Binding="{Binding Naziv}" Width="Auto"/>
+                    <DataGridTextColumn Header="Dužina treninga" Binding="{Binding Vreme_treninga}" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </extToolkit:BusyIndicator>
 </UserControl>

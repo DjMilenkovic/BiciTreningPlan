@@ -21,16 +21,16 @@ namespace BiciTreningPlan.ViewModel.TrainingPlan
         public Trening_Dani trainingDay { get; set; }
         public Treninzi trainings { get; set; }
 
-        public DescriptionViewModel(Trening_Dani trainingDay)
+        public DescriptionViewModel(DateTime trainindDayDate)
         {
-            this.trainingDay = trainingDay;
+            //this.trainingDay = trainindDayDate;
 //            ID_Treninga = trainingDay.ID_Treninga;
         }
 
         public void setTrainingPeriod()
         {
-            TrainingPeriods period = new TrainingPeriods();
-            trainingPeriod = period.getDataFromDAL(trainingDay.ID_Treninga);
+          //  TrainingPeriods period = new TrainingPeriods(IDBicikliste,IDSezone);
+         //   trainingPeriod = period.getDataFromDAL(trainingDay.ID_Treninga);
             //send PeriodID
         }
 
